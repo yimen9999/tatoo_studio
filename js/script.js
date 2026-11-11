@@ -102,8 +102,8 @@ $(function () {
   /* ---------------------------------------------
        3. SIMPLEPARALLAX · galería de artistas
     --------------------------------------------- */
-  if (window.simpleParallax) {
-    var imagenesArtistas = document.querySelectorAll(".artista img");
+  var imagenesArtistas = document.querySelectorAll(".artista img");
+  if (window.simpleParallax && imagenesArtistas.length) {
     new simpleParallax(imagenesArtistas, {
       scale: 1.25,
       delay: 0.5,
