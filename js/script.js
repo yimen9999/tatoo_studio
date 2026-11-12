@@ -19,7 +19,10 @@ $(function () {
     --------------------------------------------- */
   if (window.AOS) {
     AOS.init({
-      once: true,
+      // se repite cada vez que el texto entra en pantalla,
+      // tanto bajando como subiendo
+      once: false,
+      mirror: true,
       offset: 80,
       easing: "ease-out-cubic",
     });
@@ -194,9 +197,25 @@ $(function () {
     var $puntos = $slider.find(".slider-puntos");
     var total = $items.length;
     var porVista = 3;
-    var indice = 0;
-    var intervalo = null;
-    var TIEMPO = 2500;
+
+    var VELOCIDAD = 45; // px por segundo del desplazamiento continuo
+    var DURACION_SALTO = 600; // ms que tarda en moverse al usar flechas/puntos
+
+    var posicion = 0; // px desplazados hacia la izquierda
+    var pausado = false;
+    var salto = null; // {desde, hasta, inicio} mientras dura un salto
+    var ultimoTiempo = null;
+
+    // Copia de las reseñas al final: así, cuando se acaba la primera
+    // tanda, la pista vuelve a 0 sin que se note y el pase es infinito.
+    $items
+      .clone()
+      .attr("aria-hidden", "true")
+      .addClass("resena-copia")
+      .appendTo($pista);
+
+    // el movimiento lo hace JS, no la transición de CSS
+    $pista.css("transition", "none");
 
     function calcularPorVista() {
       var ancho = window.innerWidth;
@@ -209,13 +228,17 @@ $(function () {
       return 3;
     }
 
-    function paginas() {
-      return total - porVista + 1;
+    function anchoItem() {
+      return $items.first().outerWidth() || 1;
+    }
+
+    function anchoTanda() {
+      return anchoItem() * total;
     }
 
     function crearPuntos() {
       $puntos.empty();
-      for (var i = 0; i < paginas(); i++) {
+      for (var i = 0; i < total; i++) {
         $('<button type="button" role="tab"></button>')
           .attr("aria-label", "Ir a la reseña " + (i + 1))
           .data("indice", i)
@@ -223,83 +246,109 @@ $(function () {
       }
     }
 
-    function ir(nuevo, animar) {
-      var max = paginas();
-      indice = ((nuevo % max) + max) % max;
+    function pintar() {
+      var tanda = anchoTanda();
+      posicion = ((posicion % tanda) + tanda) % tanda;
+      $pista.css("transform", "translateX(" + -posicion + "px)");
 
-      $pista.css("transition", animar === false ? "none" : "");
-      $pista.css(
-        "transform",
-        "translateX(-" + (indice * 100) / porVista + "%)",
-      );
-
+      var actual = Math.round(posicion / anchoItem()) % total;
       $puntos.children().each(function (i) {
         $(this)
-          .toggleClass("activo", i === indice)
-          .attr("aria-selected", String(i === indice));
+          .toggleClass("activo", i === actual)
+          .attr("aria-selected", String(i === actual));
       });
+    }
 
-      // lectores de pantalla: solo las reseñas visibles
-      $items.each(function (i) {
-        var visible = i >= indice && i < indice + porVista;
-        $(this).attr("aria-hidden", String(!visible));
-      });
+    function suavizar(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    // flechas: avanza o retrocede una reseña con un salto suave
+    function moverUna(direccion) {
+      var ancho = anchoItem();
+      var base = salto ? salto.hasta : posicion;
+      // si una reseña acaba de pasar (menos de un 30 %),
+      // "anterior" vuelve a la de antes y no solo unos píxeles
+      var actual =
+        direccion > 0
+          ? Math.floor(base / ancho + 0.01)
+          : Math.ceil(base / ancho - 0.3);
+      var destino = actual + direccion;
+      if (destino < 0) {
+        posicion += anchoTanda();
+        destino += total;
+      }
+      salto = { desde: posicion, hasta: destino * ancho, inicio: null };
+    }
+
+    function bucle(tiempo) {
+      if (ultimoTiempo === null) {
+        ultimoTiempo = tiempo;
+      }
+      var dt = Math.min(tiempo - ultimoTiempo, 100) / 1000;
+      ultimoTiempo = tiempo;
+
+      if (salto) {
+        if (salto.inicio === null) {
+          salto.inicio = tiempo;
+        }
+        var t = Math.min((tiempo - salto.inicio) / DURACION_SALTO, 1);
+        posicion = salto.desde + (salto.hasta - salto.desde) * suavizar(t);
+        if (t === 1) {
+          salto = null;
+        }
+      } else if (!pausado && !document.hidden) {
+        posicion += VELOCIDAD * dt;
+      }
+
+      pintar();
+      window.requestAnimationFrame(bucle);
     }
 
     function maquetar() {
       porVista = calcularPorVista();
-      $items.css("flex-basis", 100 / porVista + "%");
-      crearPuntos();
-      ir(Math.min(indice, paginas() - 1), false);
-    }
-
-    function arrancar() {
-      parar();
-      // pase automático (slideshow); salta al inicio al llegar al final
-      intervalo = window.setInterval(function () {
-        if (!document.hidden) {
-          ir(indice + 1);
-        }
-      }, TIEMPO);
-    }
-
-    function parar() {
-      if (intervalo) {
-        window.clearInterval(intervalo);
-        intervalo = null;
-      }
+      $pista.children().css("flex-basis", 100 / porVista + "%");
+      pintar();
     }
 
     $slider.on("click", ".slider-next", function () {
-      ir(indice + 1);
-      arrancar();
+      moverUna(1);
     });
     $slider.on("click", ".slider-prev", function () {
-      ir(indice - 1);
-      arrancar();
+      moverUna(-1);
     });
     $puntos.on("click", "button", function () {
-      ir($(this).data("indice"));
-      arrancar();
+      salto = {
+        desde: posicion,
+        hasta: $(this).data("indice") * anchoItem(),
+        inicio: null,
+      };
     });
 
-    // pausa solo mientras el ratón está encima de las reseñas
-    $ventanaSlider.on("mouseenter", parar).on("mouseleave", arrancar);
+    // se para solo mientras el ratón está encima de las reseñas
+    $ventanaSlider
+      .on("mouseenter", function () {
+        pausado = true;
+      })
+      .on("mouseleave", function () {
+        pausado = false;
+      });
 
-    // gesto táctil
+    // gesto táctil: deslizar mueve una reseña
     var inicioX = null;
     $ventanaSlider
       .on("touchstart", function (e) {
         inicioX = e.originalEvent.touches[0].clientX;
+        pausado = true;
       })
       .on("touchend", function (e) {
+        pausado = false;
         if (inicioX === null) {
           return;
         }
         var dx = e.originalEvent.changedTouches[0].clientX - inicioX;
         if (Math.abs(dx) > 40) {
-          ir(indice + (dx < 0 ? 1 : -1));
-          arrancar();
+          moverUna(dx < 0 ? 1 : -1);
         }
         inicioX = null;
       });
@@ -307,24 +356,18 @@ $(function () {
     // flechas de teclado
     $slider.on("keydown", function (e) {
       if (e.key === "ArrowRight") {
-        ir(indice + 1);
-        arrancar();
+        moverUna(1);
       }
       if (e.key === "ArrowLeft") {
-        ir(indice - 1);
-        arrancar();
+        moverUna(-1);
       }
     });
 
-    $ventana.on("resize", function () {
-      var nuevo = calcularPorVista();
-      if (nuevo !== porVista) {
-        maquetar();
-      }
-    });
+    $ventana.on("resize", maquetar);
 
+    crearPuntos();
     maquetar();
-    arrancar();
+    window.requestAnimationFrame(bucle);
   })();
 
   /* ---------------------------------------------

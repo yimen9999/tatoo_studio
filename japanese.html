@@ -1,216 +1,358 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tatuajes japanese en El Gato Negro, estudio de tatuaje en Madrid.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tatuajes de estilo Japanese en El Gato Negro, estudio de tatuaje en el centro de Madrid."
+    />
     <title>Japanese | El Gato Negro</title>
 
     <!-- fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&amp;family=League+Spartan:wght@300;400;500;900&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&amp;family=League+Spartan:wght@300;400;500;900&amp;display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body id="inicio">
+    <!-- AOS (animaciones al hacer scroll) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
 
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body id="inicio" class="pagina-estilo japanese">
     <!-- MENU -->
     <header>
-        <nav>
-            <a class="logo" href="index.html">EL GATO NEGRO</a>
+      <nav>
+        <a class="logo" href="index.html">EL GATO NEGRO</a>
 
-            <button class="hamburguesa" type="button" aria-label="Abrir menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+        <button class="hamburguesa" type="button" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-            <ul class="menu">
-              <ul class="menu">
-                <li><a href="#artistas">ARTISTAS</a></li>
-                <li><a href="#estilos">ESTILOS</a></li>
-                <li><a href="#estudio">STUDIO</a></li>
-                <li><a class="reservar" href="#reserva">RESERVA CON NOSOTROS</a></li>
-                <li><a href="index.html#estudio">STUDIO</a></li>
-                <li><a class="reservar" href="#reserva">RESERVA CON NOSOTROS</a></li>
-             </ul>
-                <li><a href="index.html#estudio">STUDIO</a></li>
-                <li><a class="reservar" href="#reserva">RESERVA CON NOSOTROS</a></li>
-            </ul>
-        </nav>
+        <ul class="menu">
+          <li><a href="index.html#artistas">ARTISTAS</a></li>
+          <li><a href="index.html#estilos">ESTILOS</a></li>
+          <li><a href="studio.html">STUDIO</a></li>
+          <li><a class="reservar" href="#reserva">RESERVA CON NOSOTROS</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <!-- INTRO -->
-        <section class="intro">
-            <p>ust explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, ust explain to you how all this mistaken idea of denouncing p truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself,</p>
-            <h1>JAPANESE</h1>
-        </section>
+      <!-- PORTADA: texto + nombre del estilo -->
+      <section class="portada">
+        <p class="intro" data-aos="fade-up" data-aos-duration="900">
+          El estilo japonés nace del tatuaje tradicional irezumi y está lleno de historia. Dragones, carpas koi, flores de cerezo, olas y máscaras se combinan en piezas grandes con mucho movimiento. Diseñamos cada tatuaje pensando en el cuerpo entero, para que fluya con la forma del tu cuerpo. Respetamos la simbología original y la adaptamos a tu propia historia. También tatuamos personajes y escenas de anime y manga, cuidando cada detalle: las líneas, los colores y la expresión, para que se reconozcan al instante y conserven el estilo del dibujo original.
+        </p>
+        <h1 class="nombre-estilo">JAPANESE</h1>
+      </section>
 
-        <!-- GALERIA -->
-        <section class="galeria">
-            <h2 class="oculto">Galería</h2>
-            <figure class="foto1">
-                <img src="IMG/japones/J4%204.png" alt="Tatuaje japonés">
-            </figure>
-            <figure class="foto2">
-                <img src="IMG/japones/J7%207.png" alt="Tatuaje japonés">
-            </figure>
-            <figure class="foto3">
-                <img src="IMG/japones/J3%203.png" alt="Tatuaje japonés">
-            </figure>
-            <figure class="foto4">
-                <img src="IMG/japones/J5%205.png" alt="Tatuaje japonés">
-            </figure>
-            <figure class="foto5">
-                <img src="IMG/japones/J6%206.png" alt="Tatuaje japonés">
-            </figure>
-            <figure class="foto6">
-                <img src="IMG/japones/J1%201.png" alt="Tatuaje japonés">
-            </figure>
-            <figure class="foto7">
-                <img src="IMG/japones/J2%202.png" alt="Tatuaje japonés">
-            </figure>
-        </section>
+      <!-- COLLAGE DE FOTOS (al pinchar se abren en grande) -->
+      <section class="collage" aria-label="Trabajos de Japanese">
+        <h2 class="oculto">Trabajos de Japanese</h2>
+        <button class="foto arriba-izq" type="button" aria-label="Ver foto 1 en grande">
+          <img
+            src="IMG/japones/J4.png"
+            data-color="IMG/japones/J4%204.png"
+            alt="Tatuaje de estilo Japanese, foto 1"
+            width="723"
+            height="1023"
+            loading="lazy"
+          />
+        </button>
+        <button class="foto arriba-der" type="button" aria-label="Ver foto 2 en grande">
+          <img
+            src="IMG/japones/J7.png"
+            data-color="IMG/japones/J7%207.png"
+            alt="Tatuaje de estilo Japanese, foto 2"
+            width="717"
+            height="1023"
+            loading="lazy"
+          />
+        </button>
+        <button class="foto banda" type="button" aria-label="Ver foto 3 en grande">
+          <img
+            src="IMG/japones/J3.png"
+            data-color="IMG/japones/J3%203.png"
+            alt="Tatuaje de estilo Japanese, foto 3"
+            width="1440"
+            height="414"
+            loading="lazy"
+          />
+        </button>
+        <button class="foto grande" type="button" aria-label="Ver foto 4 en grande">
+          <img
+            src="IMG/japones/J5.png"
+            data-color="IMG/japones/J5%205.png"
+            alt="Tatuaje de estilo Japanese, foto 4"
+            width="1074"
+            height="1104"
+            loading="lazy"
+          />
+        </button>
+        <button class="foto lado-1" type="button" aria-label="Ver foto 5 en grande">
+          <img
+            src="IMG/japones/J6.png"
+            data-color="IMG/japones/J6%206.png"
+            alt="Tatuaje de estilo Japanese, foto 5"
+            width="366"
+            height="368"
+            loading="lazy"
+          />
+        </button>
+        <button class="foto lado-2" type="button" aria-label="Ver foto 6 en grande">
+          <img
+            src="IMG/japones/J1.png"
+            data-color="IMG/japones/J1%201.png"
+            alt="Tatuaje de estilo Japanese, foto 6"
+            width="366"
+            height="368"
+            loading="lazy"
+          />
+        </button>
+        <button class="foto lado-3" type="button" aria-label="Ver foto 7 en grande">
+          <img
+            src="IMG/japones/J2.png"
+            data-color="IMG/japones/J2%202.png"
+            alt="Tatuaje de estilo Japanese, foto 7"
+            width="366"
+            height="368"
+            loading="lazy"
+          />
+        </button>
+      </section>
 
-        <!-- ARTISTAS -->
-        <section class="artistas-estilo">
-            <h2 class="frase">Donde las ideas cobran vida en la piel</h2>
-            <div class="tarjetas">
-                <article class="tarjeta">
-                    <img src="IMG/japones/A1.png" alt="Artista del estudio">
-                    <h3>LOREM IPSUM</h3>
-                    <p>ust explain to you ust explain to you</p>
-                </article>
-                <article class="tarjeta">
-                    <img src="IMG/japones/A2.png" alt="Artista del estudio">
-                    <h3>LOREM IPSUM</h3>
-                    <p>ust explain to you ust explain to you</p>
-                </article>
-                <article class="tarjeta">
-                    <img src="IMG/japones/A3.png" alt="Artista del estudio">
-                    <h3>LOREM IPSUM</h3>
-                    <p>ust explain to you ust explain to you</p>
-                </article>
-            </div>
-            <p class="gigante" aria-hidden="true">ARTISTAS</p>
-        </section>
+      <!-- FRASE -->
+      <section class="frase-estilo">
+        <p data-aos="fade-up" data-aos-duration="1000">
+          Donde las ideas cobran vida en la piel
+        </p>
+      </section>
 
-        <!-- RESERVA -->
-        <section id="reserva">
-            <h2 class="titulo">¿TIENES UNA IDEA?</h2>
-            <p class="subtitulo">RESERVA UNA CITA CON NOSOTROS</p>
+      <!-- ARTISTAS DE ESTE ESTILO -->
+      <section class="equipo" aria-labelledby="titulo-artistas">
+        <article class="persona" data-aos="fade-up" data-aos-delay="0">
+          <img
+            src="IMG/japones/A1.png"
+            alt="Mei Ochoa"
+            width="331"
+            height="558"
+            loading="lazy"
+          />
+          <h3>Mei Ochoa</h3>
+          <p>Brazos completos de estilo irezumi</p>
+        </article>
+        <article class="persona" data-aos="fade-up" data-aos-delay="150">
+          <img
+            src="IMG/japones/A3.png"
+            alt="Nora Valcárcel"
+            width="331"
+            height="378"
+            loading="lazy"
+          />
+          <h3>Nora Valcárcel</h3>
+          <p>Flores, olas y carpas koi</p>
+        </article>
+        <article class="persona" data-aos="fade-up" data-aos-delay="300">
+          <img
+            src="IMG/japones/A2.png"
+            alt="Hugo Sarmiento"
+            width="331"
+            height="507"
+            loading="lazy"
+          />
+          <h3>Hugo Sarmiento</h3>
+          <p>Dragones y máscaras tradicionales</p>
+        </article>
+        <h2 class="titulo-artistas" id="titulo-artistas">ARTISTAS</h2>
+      </section>
 
-            <form id="formulario" action="#" method="post" novalidate>
-                <div class="campo">
-                    <label for="nombre">NOMBRE</label>
-                    <input type="text" id="nombre" name="nombre">
-                </div>
-                <div class="campo">
-                    <label for="apellidos">APELLIDOS</label>
-                    <input type="text" id="apellidos" name="apellidos">
-                </div>
-                <div class="campo">
-                    <label for="telefono">NÚMERO</label>
-                    <input type="tel" id="telefono" name="telefono">
-                </div>
-                <div class="campo">
-                    <label for="email">GMAIL</label>
-                    <input type="email" id="email" name="email">
-                </div>
-                <div class="campo">
-                    <label for="artista">ARTISTA</label>
-                    <select id="artista" name="artista">
-                        <option value="">Elige un artista</option>
-                        <option value="tomas">Tomás Arrieta</option>
-                        <option value="nora">Nora Valcárcel</option>
-                        <option value="dario">Darío Mendes</option>
-                        <option value="hugo">Hugo Sarmiento</option>
-                        <option value="amara">Amara Ndiaye</option>
-                        <option value="mei">Mei Ochoa</option>
-                        <option value="ines">Inés Lorente</option>
-                        <option value="ernesto">Ernesto Vidal</option>
-                        <option value="cualquiera">Sin preferencia</option>
-                    </select>
-                </div>
-                <div class="campo">
-                    <label for="zona">LUGAR DEL CUERPO</label>
-                    <input type="text" id="zona" name="zona">
-                </div>
-                <div class="campo completo">
-                    <label for="idea">ESCRÍBENOS LA IDEA DE TU TATTOO</label>
-                    <textarea id="idea" name="idea" rows="6" placeholder="Escribe una descripción"></textarea>
-                </div>
+      <!-- RESERVA -->
+      <section id="reserva">
+        <h2 class="titulo">¿TIENES UNA IDEA?</h2>
+        <p class="subtitulo">RESERVA UNA CITA CON NOSOTROS</p>
 
-                <p class="mensaje"></p>
+        <form id="formulario" action="#" method="post" novalidate>
+          <div class="campo">
+            <label for="nombre">NOMBRE</label>
+            <input type="text" id="nombre" name="nombre" />
+          </div>
+          <div class="campo">
+            <label for="apellidos">APELLIDOS</label>
+            <input type="text" id="apellidos" name="apellidos" />
+          </div>
+          <div class="campo">
+            <label for="telefono">NÚMERO</label>
+            <input type="tel" id="telefono" name="telefono" />
+          </div>
+          <div class="campo">
+            <label for="email">GMAIL</label>
+            <input type="email" id="email" name="email" />
+          </div>
+          <div class="campo">
+            <label for="artista">ARTISTA</label>
+            <select id="artista" name="artista">
+              <option value="">Elige un artista</option>
+              <option value="tomas">Tomás Arrieta</option>
+              <option value="nora">Nora Valcárcel</option>
+              <option value="dario">Darío Mendes</option>
+              <option value="hugo">Hugo Sarmiento</option>
+              <option value="amara">Amara Ndiaye</option>
+              <option value="mei">Mei Ochoa</option>
+              <option value="ines">Inés Lorente</option>
+              <option value="ernesto">Ernesto Vidal</option>
+              <option value="cualquiera">Sin preferencia</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="zona">LUGAR DEL CUERPO</label>
+            <input type="text" id="zona" name="zona" />
+          </div>
+          <div class="campo completo">
+            <label for="idea">ESCRÍBENOS LA IDEA DE TU TATTOO</label>
+            <textarea
+              id="idea"
+              name="idea"
+              rows="6"
+              placeholder="Escribe una descripción"
+            ></textarea>
+          </div>
 
-                <button class="enviar" type="submit">ENVIAR</button>
-            </form>
-        </section>
+          <p class="mensaje"></p>
+
+          <button class="enviar" type="submit">ENVIAR</button>
+        </form>
+      </section>
     </main>
 
     <!-- FOOTER -->
     <footer>
-        <div class="columnas">
-            <div class="bloque">
-                <h2>DESCÚBRENOS</h2>
-                <ul class="enlaces">
-                    <li><a href="index.html#quienes">¿QUIÉNES SOMOS?</a></li>
-                    <li><a href="index.html#estudio">ESTUDIO</a></li>
-                    <li><a href="index.html#artistas">ARTISTAS</a></li>
-                    <li><a href="index.html#estilos">ESTILOS</a></li>
-                    <li><a href="index.html#resenas">RESEÑAS</a></li>
-                    <li><a href="index.html#faq">FAQ</a></li>
-                    <li><a href="#reserva">PIDE CITA</a></li>
-                </ul>
-            </div>
-
-            <div class="bloque">
-                <h2>ESTILOS</h2>
-                <ul class="enlaces">
-                    <li><a href="realismo.html">REALISMO</a></li>
-                    <li><a href="lettering.html">LETTERING</a></li>
-                    <li><a href="japanese.html">JAPANESE</a></li>
-                    <li><a href="fine-line.html">FINE LINE</a></li>
-                    <li><a href="black-grey.html">BLACK &amp; GREY</a></li>
-                </ul>
-            </div>
-
-            <div class="bloque">
-                <h2>SÍGUENOS</h2>
-                <ul class="enlaces redes">
-                    <li><a href="https://www.instagram.com/" target="_blank"><img src="IMG/iconos/flecha.svg" alt="" width="12" height="12"> INSTAGRAM</a></li>
-                    <li><a href="https://www.tiktok.com/" target="_blank"><img src="IMG/iconos/flecha.svg" alt="" width="12" height="12"> TIKTOK</a></li>
-                    <li><a href="https://www.youtube.com/" target="_blank"><img src="IMG/iconos/flecha.svg" alt="" width="12" height="12"> YOUTUBE</a></li>
-                </ul>
-            </div>
+      <div class="columnas">
+        <div class="bloque">
+          <h2>DESCÚBRENOS</h2>
+          <ul class="enlaces">
+            <li><a href="index.html#quienes">¿QUIÉNES SOMOS?</a></li>
+            <li><a href="studio.html">ESTUDIO</a></li>
+            <li><a href="index.html#artistas">ARTISTAS</a></li>
+            <li><a href="index.html#estilos">ESTILOS</a></li>
+            <li><a href="index.html#resenas">RESEÑAS</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="#reserva">PIDE CITA</a></li>
+          </ul>
         </div>
 
-        <div class="columnas">
-            <div class="bloque">
-                <h2>DIRECCIÓN</h2>
-                <address>
-                    <p><img src="IMG/iconos/ubicacion.svg" alt="" width="16" height="16"> C/ ALONSO MARTINEZ 118, 28006 MADRID</p>
-                    <p><img src="IMG/iconos/reloj.svg" alt="" width="14" height="14"> L–V 10–21 · S 9–20 · D 10–19</p>
-                </address>
-            </div>
-
-            <div class="bloque">
-                <h2>CONTÁCTANOS</h2>
-                <address>
-                    <p><a href="tel:+34654786284">+34 654 786 284</a></p>
-                    <p><a href="mailto:loremipsum@gmail.com">LOREMIPSUM@GMAIL.COM</a></p>
-                </address>
-            </div>
+        <div class="bloque">
+          <h2>ESTILOS</h2>
+          <ul class="enlaces">
+            <li><a href="realismo.html">REALISMO</a></li>
+            <li><a href="lettering.html">LETTERING</a></li>
+            <li><a href="japanese.html">JAPANESE</a></li>
+            <li><a href="fine-line.html">FINE LINE</a></li>
+            <li><a href="black-grey.html">BLACK &amp; GREY</a></li>
+          </ul>
         </div>
 
-        <div class="abajo">
-            <p>© 2026 Lorem ipsum lorem Todos los derechos reservados.</p>
-            <a class="volver" href="#inicio">VOLVER ARRIBA</a>
+        <div class="bloque">
+          <h2>SÍGUENOS</h2>
+          <ul class="enlaces redes">
+            <li>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener"
+                ><img
+                  src="IMG/iconos/flecha.svg"
+                  alt=""
+                  width="12"
+                  height="12"
+                />
+                INSTAGRAM</a
+              >
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/" target="_blank" rel="noopener"
+                ><img
+                  src="IMG/iconos/flecha.svg"
+                  alt=""
+                  width="12"
+                  height="12"
+                />
+                TIKTOK</a
+              >
+            </li>
+            <li>
+              <a href="https://www.youtube.com/" target="_blank" rel="noopener"
+                ><img
+                  src="IMG/iconos/flecha.svg"
+                  alt=""
+                  width="12"
+                  height="12"
+                />
+                YOUTUBE</a
+              >
+            </li>
+          </ul>
         </div>
+      </div>
+
+      <div class="columnas">
+        <div class="bloque">
+          <h2>DIRECCIÓN</h2>
+          <address>
+            <p>
+              <img
+                src="IMG/iconos/ubicacion.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+              C/ DEL ESPÍRITU SANTO 21, 28004 MADRID
+            </p>
+            <p>
+              <img src="IMG/iconos/reloj.svg" alt="" width="14" height="14" />
+              L–V 10–21 · S 9–20 · D 10–19
+            </p>
+          </address>
+        </div>
+
+        <div class="bloque">
+          <h2>CONTÁCTANOS</h2>
+          <address>
+            <p><a href="tel:+34654786284">+34 654 786 284</a></p>
+            <p>
+              <a href="mailto:loremipsum@gmail.com">LOREMIPSUM@GMAIL.COM</a>
+            </p>
+          </address>
+        </div>
+      </div>
+
+      <div class="abajo">
+        <p>© 2026 Lorem ipsum lorem Todos los derechos reservados.</p>
+        <a class="volver" href="#inicio">VOLVER ARRIBA</a>
+      </div>
     </footer>
 
+    <!-- VISOR DE FOTOS (ventana modal con jQuery) -->
+    <div class="visor" role="dialog" aria-modal="true" aria-label="Foto en grande">
+      <button class="visor-cerrar" type="button" aria-label="Cerrar">&times;</button>
+      <button class="visor-flecha visor-antes" type="button" aria-label="Foto anterior">&larr;</button>
+      <img src="IMG/japones/J4.png" alt="" />
+      <button class="visor-flecha visor-despues" type="button" aria-label="Foto siguiente">&rarr;</button>
+      <p class="visor-contador"></p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.2/dist/simpleParallax.min.js"></script>
     <script src="js/script.js"></script>
-</body>
+    <script src="js/estilos.js"></script>
+  </body>
 </html>
