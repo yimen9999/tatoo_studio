@@ -124,10 +124,12 @@ $(function () {
   var fotosArtistas = document.querySelectorAll(".persona img");
   if (window.simpleParallax && fotosArtistas.length) {
     new simpleParallax(fotosArtistas, {
-      scale: 1.2,
+      // scale pequeño = la foto se mueve poco, un efecto suave
+      scale: 1.25,
       delay: 0.4,
       transition: "cubic-bezier(0,0,0,1)",
       orientation: "up",
+      overflow: false,
     });
   }
 

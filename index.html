@@ -8,6 +8,7 @@
       content="Estudio de tatuaje en el centro de Madrid: realismo, lettering, japanese, fine line y black & grey."
     />
     <title>El Gato Negro | Estudio de tatuaje en Madrid</title>
+    <link rel="icon" type="image/png" href="IMG/favicon.png" />
 
     <!-- fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,8 +48,11 @@
     </header>
 
     <main>
+      <!-- PORTADA: el vídeo se queda fijo y el panel de textos
+           (#estudio) sube por encima hasta cubrirlo -->
+      <div class="capas">
       <!-- HERO -->
-      <section class="hero">
+      <section class="hero capa-fija">
         <h1 class="oculto">El Gato Negro, estudio de tatuaje en Madrid</h1>
         <!-- vídeo en silencio y en bucle; la imagen se ve mientras carga -->
         <video
@@ -63,14 +67,19 @@
       </section>
 
       <!-- ESTUDIO -->
-      <section id="estudio">
+      <section id="estudio" class="capa-sube">
         <h2 class="oculto">El estudio</h2>
 
+        <!-- AOS: suben cuando el panel #estudio ya casi cubre la
+             pantalla (anchor top-top, 100px antes) y uno detrás de otro -->
         <article
           class="quienes"
           id="quienes"
           data-aos="fade-up"
-          data-aos-duration="900"
+          data-aos-duration="1200"
+          data-aos-anchor="#estudio"
+          data-aos-anchor-placement="top-top"
+          data-aos-offset="-100"
         >
           <h3>¿QUIÉNES SOMOS?</h3>
           <p>
@@ -91,8 +100,12 @@
         <article
           class="vision"
           id="vision"
-          data-aos="fade-right"
-          data-aos-duration="900"
+          data-aos="fade-up"
+          data-aos-duration="1200"
+          data-aos-delay="300"
+          data-aos-anchor="#estudio"
+          data-aos-anchor-placement="top-top"
+          data-aos-offset="-100"
         >
           <h3>VISIÓN</h3>
           <p>
@@ -109,9 +122,12 @@
         <article
           class="valores"
           id="valores"
-          data-aos="fade-left"
-          data-aos-duration="900"
-          data-aos-delay="100"
+          data-aos="fade-up"
+          data-aos-duration="1200"
+          data-aos-delay="500"
+          data-aos-anchor="#estudio"
+          data-aos-anchor-placement="top-top"
+          data-aos-offset="-100"
         >
           <h3>VALORES</h3>
           <p>
@@ -125,6 +141,7 @@
           </p>
         </article>
       </section>
+      </div>
 
       <!-- ARTISTAS -->
       <section id="artistas">
@@ -727,14 +744,14 @@
           <address>
             <p><a href="tel:+34654786284">+34 654 786 284</a></p>
             <p>
-              <a href="mailto:loremipsum@gmail.com">LOREMIPSUM@GMAIL.COM</a>
+              <a href="mailto:elgatonegro@gmail.com">ELGATONEGRO@GMAIL.COM</a>
             </p>
           </address>
         </div>
       </div>
 
       <div class="abajo">
-        <p>© 2026 Lorem ipsum lorem Todos los derechos reservados.</p>
+        <p>© 2026 El Gato Negro web design Luz&amp;Yimen. Todos los derechos reservados.</p>
         <a class="volver" href="#inicio">VOLVER ARRIBA</a>
       </div>
     </footer>

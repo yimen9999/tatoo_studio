@@ -8,6 +8,7 @@
       content="Conoce el estudio de El Gato Negro: un espacio de tatuaje en el centro de Madrid pensado para la calma, la luz y el detalle."
     />
     <title>El estudio | El Gato Negro</title>
+    <link rel="icon" type="image/png" href="IMG/favicon.png" />
 
     <!-- fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,8 +48,10 @@
     </header>
 
     <main>
+      <!-- CAPAS: el vídeo se queda fijo y la banda de foto sube encima -->
+      <div class="capas">
       <!-- HERO: vídeo + título + tarjeta de texto -->
-      <section class="st-hero">
+      <section class="st-hero capa-fija">
         <video
           poster="IMG/studio/mesa-diseno.jpg"
           autoplay
@@ -83,7 +86,7 @@
       </section>
 
       <!-- BANDA DE IMAGEN -->
-      <section class="st-banda">
+      <section class="st-banda capa-sube">
         <img
           src="IMG/studio/mesa-diseno.jpg"
           alt="Mesa de diseño del estudio con bocetos de tatuajes"
@@ -91,6 +94,7 @@
           height="768"
         />
       </section>
+      </div>
 
       <!-- FRASES -->
       <section class="st-frases">
@@ -319,14 +323,14 @@
           <address>
             <p><a href="tel:+34654786284">+34 654 786 284</a></p>
             <p>
-              <a href="mailto:loremipsum@gmail.com">LOREMIPSUM@GMAIL.COM</a>
+              <a href="mailto:elgatonegro@gmail.com">ELGATONEGRO@GMAIL.COM</a>
             </p>
           </address>
         </div>
       </div>
 
       <div class="abajo">
-        <p>© 2026 Lorem ipsum lorem Todos los derechos reservados.</p>
+        <p>© 2026 El Gato Negro web design Luz&amp;Yimen. Todos los derechos reservados.</p>
         <a class="volver" href="#inicio">VOLVER ARRIBA</a>
       </div>
     </footer>

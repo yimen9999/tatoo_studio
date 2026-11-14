@@ -236,12 +236,47 @@ header .menu a.activo::after {
 }
 
 /* =====================================================
+   CAPAS (todas las páginas)
+   La primera pantalla (.capa-fija) se queda fija con sticky
+   y la sección siguiente (.capa-sube) sube por encima hasta
+   taparla. El efecto de encoger, oscurecer y las esquinas
+   lo controla script.js (apartado 1b).
+   Se usa ".capas > " delante para ganar a reglas como
+   .st-hero { position: relative }
+   ===================================================== */
+.capas {
+  position: relative;
+}
+
+.capas > .capa-fija {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  transform-origin: center top;
+}
+
+.capa-fija video {
+  transform-origin: center top;
+}
+
+.capas > .capa-sube {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  /* esquinas redondeadas que se ponen rectas al llegar arriba */
+  border-radius: var(--esquinas, 28px) var(--esquinas, 28px) 0 0;
+}
+
+/* =====================================================
    HERO + ESTUDIO
    ===================================================== */
+/* La portada de la home usa las capas: el vídeo (.hero) se
+   queda fijo y el panel de textos (#estudio) sube encima */
 .hero {
   /* la imagen/vídeo ocupa toda la pantalla */
   height: 100vh;
   height: 100svh;
+  overflow: hidden;
   background: var(--negro);
 }
 
@@ -251,60 +286,79 @@ header .menu a.activo::after {
   object-fit: cover;
 }
 
+/* panel que sube: ocupa una pantalla y tapa el vídeo.
+   Composición (Figma, mesa HOME): arriba "¿QUIÉNES SOMOS?" en
+   grande a la izquierda y su texto a la derecha; debajo VISIÓN
+   y VALORES en dos columnas. Mismos márgenes que ARTISTAS:
+   8vw a cada lado y 2.4vw entre columnas */
 #estudio {
-  position: relative;
-  padding-bottom: clamp(60px, 6.2vw, 90px);
+  display: grid;
+  /* minmax(0, 1fr): las dos columnas miden siempre la mitad */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-content: center;
+  row-gap: clamp(40px, min(8.6vw, 13.8vh), 124px);
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: calc(var(--alto-menu) + 20px) 8vw 6vh;
+  column-gap: 2.4vw;
+  background: var(--gris);
 }
 
+/* títulos de VISIÓN y VALORES: DM Sans ExtraLight 24px */
 #estudio h3 {
+  margin-bottom: clamp(10px, 2.6vh, 20px);
   font-family: var(--textos);
-  font-weight: 700;
-  font-size: clamp(14px, 1.15vw, 16px);
+  font-weight: 200;
+  font-size: clamp(16px, min(1.67vw, 2.9vh), 24px);
   text-transform: uppercase;
 }
 
+/* textos: DM Sans Light 20px */
 #estudio p {
-  font-size: clamp(13px, 0.95vw, 14px);
+  font-weight: 300;
+  font-size: clamp(14px, min(1.39vw, 2.4vh), 20px);
   line-height: 1.3;
 }
 
+/* ¿QUIÉNES SOMOS?: título a la izquierda y texto a la derecha */
 .quienes {
-  position: relative;
-  width: min(40vw, 560px);
-  /* sube encima de la foto, abajo a la izquierda */
-  margin: calc(-1 * min(19vw, 270px)) 0 0 6vw;
-  padding: 18px 14px 22px;
-  background: var(--negro);
-  border-radius: 5px;
+  grid-column: 1 / 3;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 2.4vw;
+  align-items: center;
 }
 
-.quienes h3 {
-  margin-bottom: 19px;
-  color: #e0e0e0;
+#estudio .quienes h3 {
+  grid-row: 1 / 3;
+  margin: 0;
+  font-family: var(--titulos);
+  font-weight: 900;
+  font-size: min(8.6vw, 15vh);
+  line-height: 0.9;
+  /* la caja mide lo que "¿QUIÉNES": empieza en la misma línea que
+     VISIÓN y "SOMOS?" queda alineado a su final, como en Figma */
+  justify-self: start;
+  width: min-content;
+  text-align: right;
 }
 
-.quienes p {
+#estudio .quienes p {
+  grid-column: 2;
   font-weight: 400;
-  color: #e0e0e0;
 }
 
+/* línea en blanco entre los dos párrafos, como en el diseño */
 .quienes p + p {
   margin-top: 1.3em;
 }
 
 .vision {
-  width: min(38vw, 500px);
-  margin: clamp(44px, 6vw, 84px) 0 0 7vw;
+  grid-column: 1;
 }
 
 .valores {
-  width: min(34vw, 500px);
-  margin: clamp(36px, 5vw, 70px) 0 0 63%;
-}
-
-.vision h3,
-.valores h3 {
-  margin-bottom: 19px;
+  grid-column: 2;
 }
 
 /* =====================================================
@@ -404,6 +458,8 @@ header .menu a.activo::after {
   box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.6);
   transform-origin: center top;
   will-change: transform;
+  /* toda la tarjeta lleva a su página (script.js) */
+  cursor: pointer;
 }
 
 .estilo:last-of-type {
@@ -741,7 +797,22 @@ header .menu a.activo::after {
 .campo textarea {
   height: 160px;
   padding: 15px;
-  resize: vertical;
+  /* no se puede estirar; si hay mucho texto, scroll dentro */
+  resize: none;
+  overflow-y: auto;
+}
+
+/* contador de palabras del textarea (lo crea script.js) */
+.contador {
+  align-self: flex-end;
+  margin-top: -2px;
+  font-size: 13px;
+  color: var(--gris-texto);
+}
+
+.contador.lleno {
+  color: var(--negro);
+  font-weight: 600;
 }
 
 .campo textarea::placeholder {
@@ -964,15 +1035,37 @@ footer .volver:hover {
     font-size: 18px;
   }
 
-  .quienes {
-    width: auto;
-    margin: -70px 20px 0;
+  /* en tablet y móvil los tres textos van uno debajo de otro */
+  #estudio {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    row-gap: 32px;
+    padding: calc(var(--alto-menu) + 28px) 20px 48px;
   }
 
+  .quienes,
   .vision,
   .valores {
-    width: auto;
-    margin: 56px 20px 0;
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 0;
+  }
+
+  /* el título grande va encima de su texto */
+  .quienes {
+    grid-template-columns: 1fr;
+  }
+
+  #estudio .quienes h3 {
+    grid-row: auto;
+    margin-bottom: 20px;
+    padding-right: 0;
+    font-size: clamp(44px, 13vw, 90px);
+    text-align: left;
+  }
+
+  #estudio .quienes p {
+    grid-column: 1;
   }
 
   .grid-artistas {
@@ -1606,30 +1699,16 @@ header .menu a[aria-current="page"]::after {
   aspect-ratio: 366 / 368;
 }
 
-/* ---------- Frase ---------- */
-.frase-estilo {
-  padding: clamp(70px, 15.8vw, 227px) 20px clamp(50px, 9vw, 130px);
-  text-align: center;
-}
-
-.frase-estilo p {
-  font-family: var(--titulos);
-  font-weight: 300;
-  font-size: clamp(28px, 4.45vw, 64px);
-  letter-spacing: -0.05em;
-  line-height: 1.1;
-}
-
 /* ---------- Artistas del estilo (Flexbox) ---------- */
 /* La sección mide una pantalla: las 3 tarjetas arriba y
-   "ARTISTAS" abajo, de lado a lado. Como "ARTISTAS" siempre
-   ocupa todo el ancho, son las tarjetas las que se hacen más
-   pequeñas en pantallas bajas para que todo quepa. */
+   "ARTISTAS" abajo (12vw, a la izquierda). Las tarjetas son lo más
+   grandes posible, pero en pantallas bajas se hacen más
+   pequeñas para que todo quepa. */
 .equipo {
   /* ancho máximo de una tarjeta para que quepa en la pantalla:
-     alto de pantalla - huecos - "ARTISTAS" (15.5vw) - textos (80px),
+     alto de pantalla - huecos - "ARTISTAS" (11vw) - textos (80px),
      dividido entre 1.69 (la foto más alta mide 558/331 = 1.69) */
-  --ancho-max: calc((88vh - 15.5vw - 80px) / 1.69);
+  --ancho-max: calc((88vh - 11vw - 80px) / 1.69);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -1638,6 +1717,8 @@ header .menu a[aria-current="page"]::after {
   gap: 4vh clamp(10px, 1.15vw, 16px);
   min-height: 100vh;
   min-height: 100svh;
+  /* espacio entre el collage de fotos y esta sección */
+  margin-top: clamp(90px, 14vw, 200px);
   padding-top: 5.6vh;
   /* al dejar de hacer scroll cerca, la página se coloca
      para que la sección se vea entera (ver scroll-snap abajo) */
@@ -1651,13 +1732,13 @@ html {
 }
 
 .persona {
-  width: min(22.9vw, var(--ancho-max));
+  width: min(27vw, var(--ancho-max));
 }
 
 /* la primera foto de realismo y fine line es más estrecha (269px) */
 .realismo .persona:first-child,
 .fine-line .persona:first-child {
-  width: min(18.6vw, var(--ancho-max) * 0.81);
+  width: min(22vw, var(--ancho-max) * 0.81);
 }
 
 .persona img {
@@ -1678,16 +1759,37 @@ html {
   font-size: clamp(13px, min(1.1vw, 1.6vh), 16px);
 }
 
-.titulo-artistas {
+/* cabecera: "ARTISTAS" a la izquierda y la frase a la derecha,
+   alineados por la base de las letras */
+.cabecera-artistas {
   flex-basis: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2vw;
+  padding: 0 4.4vw 0 1.6vw;
+  /* título y frase separados del borde de abajo (3vw) */
+  margin-bottom: calc(3vw - 0.16 * 12vw);
+}
+
+.titulo-artistas {
   font-family: var(--titulos);
   font-weight: 900;
-  font-size: 21.8vw;
+  font-size: 12vw;
   line-height: 0.82;
-  text-align: center;
   white-space: nowrap;
-  /* mismo espacio abajo que a los lados, como el título de arriba */
-  margin-bottom: calc(0.75vw - 0.16em);
+}
+
+/* la frase, pequeña y fina, al lado del título */
+.frase-estilo {
+  font-family: var(--titulos);
+  font-weight: 300;
+  font-size: clamp(14px, 1.8vw, 30px);
+  letter-spacing: -0.03em;
+  /* la parte de arriba de la frase (sube 0.69em) queda a la misma
+     altura que la de ARTISTAS (sube 0.68 x 12vw) */
+  position: relative;
+  top: calc(0.69em - 0.68 * 12vw);
 }
 
 /* el formulario queda más separado del título, como en Figma */
@@ -1777,6 +1879,12 @@ body.sin-scroll {
     padding: 5.6vh 20px 0;
   }
 
+  /* la frase en una sola línea al lado de ARTISTAS */
+  .frase-estilo {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
   .visor {
     padding: 60px 16px;
   }
@@ -1853,20 +1961,24 @@ body.sin-scroll {
     font-size: 14px;
   }
 
-  .titulo-artistas {
-    margin-top: 10px;
-    font-size: 21.8vw;
-  }
-}
-
-@media (max-width: 600px) {
   /* en columna el flex-basis sería la altura: lo quitamos.
-     Ocupa todo el ancho (quitando los 20px de padding de
-     .equipo) para que la palabra quede centrada en la pantalla */
-  .titulo-artistas {
+     La frase pasa debajo de ARTISTAS */
+  .cabecera-artistas {
     flex-basis: auto;
-    width: calc(100% + 40px);
-    margin-left: -20px;
-    margin-right: -20px;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 10px 0 0;
+    padding: 0;
+  }
+
+  .titulo-artistas {
+    font-size: 18vw;
+  }
+
+  .frase-estilo {
+    top: 0;
+    font-size: 16px;
   }
 }

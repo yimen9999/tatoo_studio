@@ -8,6 +8,7 @@
       content="Tatuajes de estilo Japanese en El Gato Negro, estudio de tatuaje en el centro de Madrid."
     />
     <title>Japanese | El Gato Negro</title>
+    <link rel="icon" type="image/png" href="IMG/favicon.png" />
 
     <!-- fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,16 +48,18 @@
     </header>
 
     <main>
+      <!-- CAPAS: la portada se queda fija y el collage sube encima -->
+      <div class="capas">
       <!-- PORTADA: texto + nombre del estilo -->
-      <section class="portada">
-        <p class="intro" data-aos="fade-up" data-aos-duration="900">
+      <section class="portada capa-fija">
+        <p class="intro">
           El estilo japonés nace del tatuaje tradicional irezumi y está lleno de historia. Dragones, carpas koi, flores de cerezo, olas y máscaras se combinan en piezas grandes con mucho movimiento. Diseñamos cada tatuaje pensando en el cuerpo entero, para que fluya con la forma del tu cuerpo. Respetamos la simbología original y la adaptamos a tu propia historia. También tatuamos personajes y escenas de anime y manga, cuidando cada detalle: las líneas, los colores y la expresión, para que se reconozcan al instante y conserven el estilo del dibujo original.
         </p>
         <h1 class="nombre-estilo">JAPANESE</h1>
       </section>
 
       <!-- COLLAGE DE FOTOS (al pinchar se abren en grande) -->
-      <section class="collage" aria-label="Trabajos de Japanese">
+      <section class="collage capa-sube" aria-label="Trabajos de Japanese">
         <h2 class="oculto">Trabajos de Japanese</h2>
         <button class="foto arriba-izq" type="button" aria-label="Ver foto 1 en grande">
           <img
@@ -130,16 +133,11 @@
         </button>
       </section>
 
-      <!-- FRASE -->
-      <section class="frase-estilo">
-        <p data-aos="fade-up" data-aos-duration="1000">
-          Donde las ideas cobran vida en la piel
-        </p>
-      </section>
+      </div>
 
       <!-- ARTISTAS DE ESTE ESTILO -->
       <section class="equipo" aria-labelledby="titulo-artistas">
-        <article class="persona" data-aos="fade-up" data-aos-delay="0">
+        <article class="persona">
           <img
             src="IMG/japones/A1.png"
             alt="Mei Ochoa"
@@ -150,7 +148,7 @@
           <h3>Mei Ochoa</h3>
           <p>Brazos completos de estilo irezumi</p>
         </article>
-        <article class="persona" data-aos="fade-up" data-aos-delay="150">
+        <article class="persona">
           <img
             src="IMG/japones/A3.png"
             alt="Nora Valcárcel"
@@ -161,7 +159,7 @@
           <h3>Nora Valcárcel</h3>
           <p>Flores, olas y carpas koi</p>
         </article>
-        <article class="persona" data-aos="fade-up" data-aos-delay="300">
+        <article class="persona">
           <img
             src="IMG/japones/A2.png"
             alt="Hugo Sarmiento"
@@ -172,7 +170,11 @@
           <h3>Hugo Sarmiento</h3>
           <p>Dragones y máscaras tradicionales</p>
         </article>
-        <h2 class="titulo-artistas" id="titulo-artistas">ARTISTAS</h2>
+        <!-- título a la izquierda y la frase a la derecha -->
+        <div class="cabecera-artistas">
+          <h2 class="titulo-artistas" id="titulo-artistas">ARTISTAS</h2>
+          <p class="frase-estilo">Donde las ideas cobran vida en la piel</p>
+        </div>
       </section>
 
       <!-- RESERVA -->
@@ -328,14 +330,14 @@
           <address>
             <p><a href="tel:+34654786284">+34 654 786 284</a></p>
             <p>
-              <a href="mailto:loremipsum@gmail.com">LOREMIPSUM@GMAIL.COM</a>
+              <a href="mailto:elgatonegro@gmail.com">ELGATONEGRO@GMAIL.COM</a>
             </p>
           </address>
         </div>
       </div>
 
       <div class="abajo">
-        <p>© 2026 Lorem ipsum lorem Todos los derechos reservados.</p>
+        <p>© 2026 El Gato Negro web design Luz&amp;Yimen. Todos los derechos reservados.</p>
         <a class="volver" href="#inicio">VOLVER ARRIBA</a>
       </div>
     </footer>

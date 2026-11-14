@@ -17,6 +17,15 @@ $(function () {
   /* ---------------------------------------------
        1. AOS · textos sobre el estudio
     --------------------------------------------- */
+  // En móvil y tablet los textos de #estudio van uno debajo de otro y no
+  // caben en una pantalla: cada uno se anima cuando entra (sin esperar
+  // al panel), quitando el anchor que usan en escritorio
+  if (window.innerWidth <= 900) {
+    $("#estudio article").removeAttr(
+      "data-aos-anchor data-aos-anchor-placement data-aos-offset data-aos-delay",
+    );
+  }
+
   if (window.AOS) {
     AOS.init({
       // se repite cada vez que el texto entra en pantalla,
@@ -26,6 +35,63 @@ $(function () {
       offset: 80,
       easing: "ease-out-cubic",
     });
+  }
+
+  /* ---------------------------------------------
+       1b. CAPAS · la primera pantalla se queda fija y
+       la siguiente sección sube por encima hasta taparla
+       Se usa en todas las páginas con estas clases:
+         .capas      → contenedor de las dos secciones
+         .capa-fija  → la primera pantalla (sticky en el CSS)
+         .capa-sube  → la sección que sube y la tapa
+       Según cuánto ha subido (progreso de 0 a 1):
+       - lo de abajo se hace un poco más pequeño y oscuro
+         (el vídeo si hay vídeo, si no la sección entera)
+       - las esquinas de la capa que sube pasan de redondas a rectas
+    --------------------------------------------- */
+  var capas = [];
+
+  $(".capas").each(function () {
+    var $fija = $(this).children(".capa-fija");
+    var $sube = $(this).children(".capa-sube");
+    var $efecto = $fija.find("video").first();
+    if (!$efecto.length) {
+      $efecto = $fija;
+    }
+    if ($fija.length && $sube.length) {
+      capas.push({ fija: $fija.get(0), sube: $sube.get(0), efecto: $efecto });
+    }
+  });
+
+  var capasPendiente = false;
+
+  function animarCapas() {
+    capasPendiente = false;
+
+    $.each(capas, function (i, capa) {
+      var alto = capa.fija.offsetHeight;
+      var arriba = capa.sube.getBoundingClientRect().top;
+      var progreso = Math.min(1, Math.max(0, 1 - arriba / alto));
+
+      capa.efecto.css({
+        transform: "scale(" + (1 - 0.1 * progreso).toFixed(3) + ")",
+        filter: "brightness(" + (1 - 0.6 * progreso).toFixed(3) + ")",
+      });
+      capa.sube.style.setProperty(
+        "--esquinas",
+        (28 * (1 - progreso)).toFixed(1) + "px",
+      );
+    });
+  }
+
+  if (capas.length) {
+    $ventana.on("scroll resize", function () {
+      if (!capasPendiente) {
+        capasPendiente = true;
+        window.requestAnimationFrame(animarCapas);
+      }
+    });
+    animarCapas();
   }
 
   /* ---------------------------------------------
@@ -108,8 +174,9 @@ $(function () {
   var imagenesArtistas = document.querySelectorAll(".artista img");
   if (window.simpleParallax && imagenesArtistas.length) {
     new simpleParallax(imagenesArtistas, {
-      scale: 1.25,
-      delay: 0.5,
+      // scale más grande = la foto tiene más recorrido = se nota más
+      scale: 1.6,
+      delay: 0.6,
       transition: "cubic-bezier(0,0,0,1)",
       orientation: "up",
       overflow: false,
@@ -124,6 +191,16 @@ $(function () {
     --------------------------------------------- */
   var $tarjetas = $(".estilo");
   var tarjetasPendientes = false;
+
+  // al pinchar en cualquier parte de la tarjeta se va a la página del
+  // estilo (la misma que su "LEER MÁS"); si se pincha en el propio
+  // enlace, ya funciona solo
+  $tarjetas.on("click", function (e) {
+    if ($(e.target).closest("a").length) {
+      return;
+    }
+    window.location.href = $(this).find(".leer-mas").attr("href");
+  });
 
   function limitar(n, min, max) {
     return Math.min(max, Math.max(min, n));
@@ -513,6 +590,35 @@ $(function () {
       $control.attr("aria-describedby", id);
     });
 
+    /* Máximo de 150 palabras en "Escríbenos la idea de tu tattoo".
+       Un contador debajo y, si se pasa, el texto se corta en la
+       palabra 150 (también si se pega un texto largo) */
+    var MAX_PALABRAS = 150;
+    var $idea = $form.find("#idea");
+    var $contador = $('<span class="contador" aria-live="polite"></span>');
+    $idea.after($contador);
+
+    function contarPalabras(texto) {
+      var palabras = $.trim(texto).split(/\s+/);
+      return palabras[0] === "" ? 0 : palabras.length;
+    }
+
+    function limitarPalabras() {
+      var texto = $idea.val();
+      if (contarPalabras(texto) > MAX_PALABRAS) {
+        // se queda con el texto hasta el final de la palabra 150
+        var corte = texto.match(new RegExp("^\\s*(\\S+\\s+){" + (MAX_PALABRAS - 1) + "}\\S+"));
+        $idea.val(corte[0]);
+      }
+      var total = contarPalabras($idea.val());
+      $contador
+        .text(total + " / " + MAX_PALABRAS + " palabras")
+        .toggleClass("lleno", total >= MAX_PALABRAS);
+    }
+
+    $idea.on("input", limitarPalabras);
+    limitarPalabras();
+
     function validar($control) {
       var nombre = $control.attr("name");
       var regla = reglas[nombre];
@@ -570,6 +676,7 @@ $(function () {
           .removeClass("invalido")
           .attr("aria-invalid", "false");
         $form.find(".error").text("");
+        limitarPalabras(); // el contador vuelve a 0
         $enviar.prop("disabled", false);
         $mensaje
           .addClass("ok")
