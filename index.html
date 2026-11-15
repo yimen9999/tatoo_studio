@@ -70,24 +70,37 @@
       <section id="estudio" class="capa-sube">
         <h2 class="oculto">El estudio</h2>
 
-        <!-- AOS: suben cuando el panel #estudio ya casi cubre la
-             pantalla (anchor top-top, 100px antes) y uno detrás de otro -->
-        <article
-          class="quienes"
-          id="quienes"
-          data-aos="fade-up"
-          data-aos-duration="1200"
-          data-aos-anchor="#estudio"
-          data-aos-anchor-placement="top-top"
-          data-aos-offset="-100"
-        >
-          <h3>¿QUIÉNES SOMOS?</h3>
-          <p>
+        <!-- AOS en 4 pasos, uno por cada scroll. El panel se queda
+             fijo y los .paso (espacio vacío de abajo) pasan por la
+             pantalla: cada uno dispara su texto (data-aos-anchor).
+             1 ¿QUIÉNES SOMOS?  2 su texto  3 VISIÓN  4 VALORES -->
+        <article class="quienes" id="quienes">
+          <h3
+            data-aos="fade-up"
+            data-aos-duration="1400"
+            data-aos-offset="0"
+          >
+            ¿QUIÉNES SOMOS?
+          </h3>
+          <p
+            data-aos="fade-up"
+            data-aos-duration="1400"
+            data-aos-anchor="#paso-texto"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-offset="0"
+          >
             Somos un estudio de tatuajes independiente en el corazón de Madrid.
             Un espacio donde el arte, la creatividad y la cultura urbana se
             encuentran para dar forma a piezas únicas.
           </p>
-          <p>
+          <p
+            data-aos="fade-up"
+            data-aos-duration="1400"
+            data-aos-delay="250"
+            data-aos-anchor="#paso-texto"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-offset="0"
+          >
             Trabajamos con artistas de diferentes estilos y personalidades,
             apostando por el trato cercano, la libertad creativa y una visión
             contemporánea del tatuaje. Creemos en los espacios con identidad, en
@@ -101,11 +114,10 @@
           class="vision"
           id="vision"
           data-aos="fade-up"
-          data-aos-duration="1200"
-          data-aos-delay="300"
-          data-aos-anchor="#estudio"
-          data-aos-anchor-placement="top-top"
-          data-aos-offset="-100"
+          data-aos-duration="1400"
+          data-aos-anchor="#paso-vision"
+          data-aos-anchor-placement="top-bottom"
+          data-aos-offset="0"
         >
           <h3>VISIÓN</h3>
           <p>
@@ -123,11 +135,10 @@
           class="valores"
           id="valores"
           data-aos="fade-up"
-          data-aos-duration="1200"
-          data-aos-delay="500"
-          data-aos-anchor="#estudio"
-          data-aos-anchor-placement="top-top"
-          data-aos-offset="-100"
+          data-aos-duration="1400"
+          data-aos-anchor="#paso-valores"
+          data-aos-anchor-placement="top-bottom"
+          data-aos-offset="0"
         >
           <h3>VALORES</h3>
           <p>
@@ -141,6 +152,13 @@
           </p>
         </article>
       </section>
+
+      <!-- espacio de scroll mientras el panel está fijo (escritorio) -->
+      <div class="pasos" aria-hidden="true">
+        <span id="paso-texto"></span>
+        <span id="paso-vision"></span>
+        <span id="paso-valores"></span>
+      </div>
       </div>
 
       <!-- ARTISTAS -->

@@ -362,6 +362,35 @@ header .menu a.activo::after {
 }
 
 /* =====================================================
+   PASOS DE SCROLL (home, solo escritorio)
+   El panel #estudio se queda fijo arriba tapando el vídeo y
+   los .paso (huecos vacíos de debajo) pasan por la pantalla.
+   Cada uno hace salir un texto con AOS (data-aos-anchor):
+   1 ¿QUIÉNES SOMOS?, 2 su texto, 3 VISIÓN, 4 VALORES.
+   ===================================================== */
+.pasos {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .capas > #estudio.capa-sube {
+    position: sticky;
+    top: 0;
+  }
+
+  .pasos {
+    display: block;
+  }
+
+  /* cada .paso es un trozo de scroll (el alto marca cuánto hay
+     que bajar entre un texto y el siguiente) */
+  .pasos span {
+    display: block;
+    height: 35vh;
+  }
+}
+
+/* =====================================================
    ARTISTAS
    ===================================================== */
 #artistas {
@@ -1227,7 +1256,7 @@ header .menu a[aria-current="page"]::after {
   position: relative;
   height: calc(1022 * var(--st-u));
   overflow: hidden;
-  background: var(--gris);
+  background: var(--negro);
 }
 
 .st-hero video {
@@ -1243,7 +1272,7 @@ header .menu a[aria-current="page"]::after {
    ===================================================== */
 .st-intro {
   --margen: max(0px, (100vw - 1440 * var(--st-u)) / 2);
-  height: calc(1045 * var(--st-u));
+  height: calc(712 * var(--st-u));
   background: var(--gris);
 }
 
@@ -1258,14 +1287,14 @@ header .menu a[aria-current="page"]::after {
   width: calc(792 * var(--st-u));
   font-family: var(--titulos);
   font-weight: 900;
-  font-size: calc(96 * var(--st-u));
-  line-height: 1.2;
+  font-size: calc(64 * var(--st-u));
+  line-height: 0.92;
   text-transform: uppercase;
 }
 
 .st-intro-b {
-  top: calc(460 * var(--st-u));
-  right: calc((1440 - 1324) * var(--st-u) + var(--margen));
+  top: calc(239 * var(--st-u));
+  right: calc((1440 - 1312) * var(--st-u) + var(--margen));
   width: calc(464 * var(--st-u));
   text-align: right;
   font-weight: 400;
@@ -1274,12 +1303,13 @@ header .menu a[aria-current="page"]::after {
 }
 
 .st-intro-c {
-  top: calc(734 * var(--st-u));
-  right: calc((1440 - 1332) * var(--st-u) + var(--margen));
-  width: calc(1158 * var(--st-u));
+  top: calc(495 * var(--st-u));
+  right: calc((1440 - 1305) * var(--st-u) + var(--margen));
+  width: calc(975 * var(--st-u));
   text-align: right;
-  font-weight: 400;
-  font-size: calc(64 * var(--st-u));
+  font-weight: 300;
+  font-style: italic;
+  font-size: calc(48 * var(--st-u));
   line-height: 1.1;
 }
 
@@ -1350,7 +1380,7 @@ header .menu a[aria-current="page"]::after {
 .st-galeria {
   position: relative;
   width: calc(1440 * var(--st-u));
-  height: calc(1606 * var(--st-u));
+  height: calc(1484 * var(--st-u));
   margin: 0 auto;
 }
 
@@ -1370,8 +1400,8 @@ header .menu a[aria-current="page"]::after {
 .st-img-1 { left: calc(89 * var(--st-u)); top: 0; width: calc(634 * var(--st-u)); height: calc(725 * var(--st-u)); }
 .st-img-1 img { object-position: 57% center; }
 .st-img-2 { left: calc(799 * var(--st-u)); top: 0; width: calc(559 * var(--st-u)); height: calc(301 * var(--st-u)); }
-.st-img-3 { left: calc(805 * var(--st-u)); top: calc(725 * var(--st-u)); width: calc(409 * var(--st-u)); height: calc(400 * var(--st-u)); }
-.st-img-4 { left: calc(72 * var(--st-u)); top: calc(1206 * var(--st-u)); width: calc(818 * var(--st-u)); height: calc(400 * var(--st-u)); }
+.st-img-3 { left: calc(805 * var(--st-u)); top: calc(554 * var(--st-u)); width: calc(409 * var(--st-u)); height: calc(400 * var(--st-u)); }
+.st-img-4 { left: calc(41 * var(--st-u)); top: calc(1084 * var(--st-u)); width: calc(818 * var(--st-u)); height: calc(400 * var(--st-u)); }
 .st-img-4 img { object-fit: cover; }
 
 /* =====================================================

@@ -21,8 +21,8 @@ $(function () {
   // caben en una pantalla: cada uno se anima cuando entra (sin esperar
   // al panel), quitando el anchor que usan en escritorio
   if (window.innerWidth <= 900) {
-    $("#estudio article").removeAttr(
-      "data-aos-anchor data-aos-anchor-placement data-aos-offset data-aos-delay",
+    $("#estudio [data-aos-anchor]").removeAttr(
+      "data-aos-anchor data-aos-anchor-placement data-aos-offset",
     );
   }
 
@@ -34,6 +34,12 @@ $(function () {
       mirror: true,
       offset: 80,
       easing: "ease-out-cubic",
+    });
+
+    // al terminar de cargar (vídeo, fuentes, imágenes) la página cambia de
+    // altura: se recalculan las posiciones para que cada paso salga a tiempo
+    $(window).on("load", function () {
+      AOS.refreshHard();
     });
   }
 
@@ -59,7 +65,14 @@ $(function () {
       $efecto = $fija;
     }
     if ($fija.length && $sube.length) {
-      capas.push({ fija: $fija.get(0), sube: $sube.get(0), efecto: $efecto });
+      capas.push({
+        fija: $fija.get(0),
+        sube: $sube.get(0),
+        efecto: $efecto,
+        // data-sin-encoger: el vídeo no se hace más pequeño (no deja
+        // huecos a los lados), solo se oscurece
+        encoger: $(this).is("[data-sin-encoger]") ? 0 : 0.1,
+      });
     }
   });
 
@@ -74,7 +87,7 @@ $(function () {
       var progreso = Math.min(1, Math.max(0, 1 - arriba / alto));
 
       capa.efecto.css({
-        transform: "scale(" + (1 - 0.1 * progreso).toFixed(3) + ")",
+        transform: "scale(" + (1 - capa.encoger * progreso).toFixed(3) + ")",
         filter: "brightness(" + (1 - 0.6 * progreso).toFixed(3) + ")",
       });
       capa.sube.style.setProperty(
