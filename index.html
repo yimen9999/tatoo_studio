@@ -10,7 +10,6 @@
     <title>El Gato Negro | Estudio de tatuaje en Madrid</title>
     <link rel="icon" type="image/png" href="IMG/favicon.png" />
 
-    <!-- fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,7 +17,6 @@
       rel="stylesheet"
     />
 
-    <!-- AOS (animaciones al hacer scroll) -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
@@ -27,7 +25,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body id="inicio" class="home">
-    <!-- MENU -->
+    <!-- menu -->
     <header>
       <nav>
         <a class="logo" href="#inicio">EL GATO NEGRO</a>
@@ -48,13 +46,10 @@
     </header>
 
     <main>
-      <!-- PORTADA: el vídeo se queda fijo y el panel de textos
-           (#estudio) sube por encima hasta cubrirlo -->
       <div class="capas">
-      <!-- HERO -->
-      <section class="hero capa-fija">
+      <!-- hero -->
+      <section class="hero capafija">
         <h1 class="oculto">El Gato Negro, estudio de tatuaje en Madrid</h1>
-        <!-- vídeo en silencio y en bucle; la imagen se ve mientras carga -->
         <video
           autoplay
           muted
@@ -66,14 +61,10 @@
         </video>
       </section>
 
-      <!-- ESTUDIO -->
-      <section id="estudio" class="capa-sube">
+      <!-- estudio -->
+      <section id="estudio" class="capasube">
         <h2 class="oculto">El estudio</h2>
 
-        <!-- AOS en 4 pasos, uno por cada scroll. El panel se queda
-             fijo y los .paso (espacio vacío de abajo) pasan por la
-             pantalla: cada uno dispara su texto (data-aos-anchor).
-             1 ¿QUIÉNES SOMOS?  2 su texto  3 VISIÓN  4 VALORES -->
         <article class="quienes" id="quienes">
           <h3
             data-aos="fade-up"
@@ -85,7 +76,7 @@
           <p
             data-aos="fade-up"
             data-aos-duration="1400"
-            data-aos-anchor="#paso-texto"
+            data-aos-anchor="#pasotexto"
             data-aos-anchor-placement="top-bottom"
             data-aos-offset="0"
           >
@@ -97,7 +88,7 @@
             data-aos="fade-up"
             data-aos-duration="1400"
             data-aos-delay="250"
-            data-aos-anchor="#paso-texto"
+            data-aos-anchor="#pasotexto"
             data-aos-anchor-placement="top-bottom"
             data-aos-offset="0"
           >
@@ -115,7 +106,7 @@
           id="vision"
           data-aos="fade-up"
           data-aos-duration="1400"
-          data-aos-anchor="#paso-vision"
+          data-aos-anchor="#pasovision"
           data-aos-anchor-placement="top-bottom"
           data-aos-offset="0"
         >
@@ -136,7 +127,7 @@
           id="valores"
           data-aos="fade-up"
           data-aos-duration="1400"
-          data-aos-anchor="#paso-valores"
+          data-aos-anchor="#pasovalores"
           data-aos-anchor-placement="top-bottom"
           data-aos-offset="0"
         >
@@ -153,20 +144,19 @@
         </article>
       </section>
 
-      <!-- espacio de scroll mientras el panel está fijo (escritorio) -->
       <div class="pasos" aria-hidden="true">
-        <span id="paso-texto"></span>
-        <span id="paso-vision"></span>
-        <span id="paso-valores"></span>
+        <span id="pasotexto"></span>
+        <span id="pasovision"></span>
+        <span id="pasovalores"></span>
       </div>
       </div>
 
-      <!-- ARTISTAS -->
+      <!-- artistas -->
       <section id="artistas">
         <h2 class="titulo">ARTISTAS</h2>
-        <div class="grid-artistas">
+        <div class="gridartistas">
           <article class="artista">
-            <a class="foto-artista" href="tomas.html"><img
+            <a class="fotoartista" href="tomas.html"><img
               src="IMG/Artistas/A1.jpg"
               alt="Tomás Arrieta"
               width="1104"
@@ -174,13 +164,13 @@
             /></a>
             <h3>Tomás Arrieta</h3>
             <p class="rol">Founder</p>
-            <a class="ver-artista" href="tomas.html">
+            <a class="verartista" href="tomas.html">
               Descubre a Tomás
             </a>
           </article>
 
           <article class="artista">
-            <a class="foto-artista" href="nora.html"><img
+            <a class="fotoartista" href="nora.html"><img
               src="IMG/Artistas/A2.jpg"
               alt="Nora Valcárcel"
               width="1104"
@@ -188,13 +178,13 @@
             /></a>
             <h3>Nora Valcárcel</h3>
             <p class="rol">Founder</p>
-            <a class="ver-artista" href="nora.html">
+            <a class="verartista" href="nora.html">
               Descubre a Nora
             </a>
           </article>
 
           <article class="artista">
-            <a class="foto-artista" href="dario.html"><img
+            <a class="fotoartista" href="dario.html"><img
               src="IMG/Artistas/A3.jpg"
               alt="Darío Mendes"
               width="1104"
@@ -202,13 +192,13 @@
             /></a>
             <h3>Darío Mendes</h3>
             <p class="rol">Head Artist</p>
-            <a class="ver-artista" href="dario.html">
+            <a class="verartista" href="dario.html">
               Descubre a Darío
             </a>
           </article>
 
           <article class="artista">
-            <a class="foto-artista" href="hugo.html"><img
+            <a class="fotoartista" href="hugo.html"><img
               src="IMG/Artistas/A4.jpg"
               alt="Hugo Sarmiento"
               width="1104"
@@ -216,13 +206,13 @@
             /></a>
             <h3>Hugo Sarmiento</h3>
             <p class="rol">Head Artist</p>
-            <a class="ver-artista" href="hugo.html">
+            <a class="verartista" href="hugo.html">
               Descubre a Hugo
             </a>
           </article>
 
           <article class="artista">
-            <a class="foto-artista" href="amara.html"><img
+            <a class="fotoartista" href="amara.html"><img
               src="IMG/Artistas/A5.jpg"
               alt="Amara Ndiaye"
               width="1104"
@@ -230,13 +220,13 @@
             /></a>
             <h3>Amara Ndiaye</h3>
             <p class="rol">Resident Artist</p>
-            <a class="ver-artista" href="amara.html">
+            <a class="verartista" href="amara.html">
               Descubre a Amara
             </a>
           </article>
 
           <article class="artista">
-            <a class="foto-artista" href="mei.html"><img
+            <a class="fotoartista" href="mei.html"><img
               src="IMG/Artistas/A6.jpg"
               alt="Mei Ochoa"
               width="1104"
@@ -244,13 +234,13 @@
             /></a>
             <h3>Mei Ochoa</h3>
             <p class="rol">Resident Artist</p>
-            <a class="ver-artista" href="mei.html">
+            <a class="verartista" href="mei.html">
               Descubre a Mei
             </a>
           </article>
 
           <article class="artista">
-            <a class="foto-artista" href="ines.html"><img
+            <a class="fotoartista" href="ines.html"><img
               src="IMG/Artistas/A7.jpg"
               alt="Inés Lorente"
               width="1104"
@@ -258,13 +248,13 @@
             /></a>
             <h3>Inés Lorente</h3>
             <p class="rol">Apprentice</p>
-            <a class="ver-artista" href="ines.html">
+            <a class="verartista" href="ines.html">
               Descubre a Inés
             </a>
           </article>
 
           <article class="artista">
-            <a class="foto-artista" href="ernesto.html"><img
+            <a class="fotoartista" href="ernesto.html"><img
               src="IMG/Artistas/A8.jpg"
               alt="Ernesto Vidal"
               width="1104"
@@ -272,14 +262,14 @@
             /></a>
             <h3>Ernesto Vidal</h3>
             <p class="rol">Guest Artist</p>
-            <a class="ver-artista" href="ernesto.html">
+            <a class="verartista" href="ernesto.html">
               Descubre a Ernesto
             </a>
           </article>
         </div>
       </section>
 
-      <!-- ESTILOS -->
+      <!-- estilos -->
       <section id="estilos">
         <h2 class="oculto">Estilos</h2>
         <article class="estilo">
@@ -295,7 +285,7 @@
               La realidad llevada a la piel. Retratos, texturas y detalles que
               parecen cobrar vida.
             </p>
-            <a class="leer-mas" href="realismo.html"
+            <a class="leermas" href="realismo.html"
               >LEER MÁS
               <img src="IMG/iconos/flecha.svg" alt="" width="12" height="12"
             /></a>
@@ -315,7 +305,7 @@
               Letras que transmiten emociones a través de la forma, el trazo y
               la personalidad.
             </p>
-            <a class="leer-mas" href="lettering.html"
+            <a class="leermas" href="lettering.html"
               >LEER MÁS
               <img src="IMG/iconos/flecha.svg" alt="" width="12" height="12"
             /></a>
@@ -336,7 +326,7 @@
               personajes, combinando color, simbolismo y composiciones llenas de
               carácter.
             </p>
-            <a class="leer-mas" href="japanese.html"
+            <a class="leermas" href="japanese.html"
               >LEER MÁS
               <img src="IMG/iconos/flecha.svg" alt="" width="12" height="12"
             /></a>
@@ -356,7 +346,7 @@
               Tatuajes que expresan grandes ideas a través de líneas delicadas,
               precisión y sutileza.
             </p>
-            <a class="leer-mas" href="fine-line.html"
+            <a class="leermas" href="fine-line.html"
               >LEER MÁS
               <img src="IMG/iconos/flecha.svg" alt="" width="12" height="12"
             /></a>
@@ -376,7 +366,7 @@
               Arte en blanco y negro que cobra vida mediante contrastes, sombras
               y profundidad.
             </p>
-            <a class="leer-mas" href="black-grey.html"
+            <a class="leermas" href="black-grey.html"
               >LEER MÁS
               <img src="IMG/iconos/flecha.svg" alt="" width="12" height="12"
             /></a>
@@ -384,7 +374,7 @@
         </article>
       </section>
 
-      <!-- RESEÑAS -->
+      <!-- reseñas -->
       <section id="resenas">
         <h2 class="titulo">LO QUE DICEN QUIENES NOS ELIGEN</h2>
         <div
@@ -392,8 +382,8 @@
           aria-roledescription="carrusel"
           aria-label="Reseñas de clientes"
         >
-          <div class="slider-ventana">
-            <div class="slider-pista">
+          <div class="sliderventana">
+            <div class="sliderpista">
               <figure class="resena">
                 <blockquote>
                   <p>
@@ -504,21 +494,21 @@
             </div>
           </div>
 
-          <div class="slider-controles">
+          <div class="slidercontroles">
             <button
-              class="slider-btn slider-prev"
+              class="sliderboton slideranterior"
               type="button"
               aria-label="Reseña anterior"
             >
               &larr;
             </button>
             <div
-              class="slider-puntos"
+              class="sliderpuntos"
               role="tablist"
               aria-label="Elegir reseña"
             ></div>
             <button
-              class="slider-btn slider-next"
+              class="sliderboton slidersiguiente"
               type="button"
               aria-label="Reseña siguiente"
             >
@@ -528,7 +518,7 @@
         </div>
       </section>
 
-      <!-- FAQ -->
+      <!-- faq -->
       <section id="faq">
         <h2 class="titulo">FAQS</h2>
         <div class="pregunta">
@@ -612,7 +602,7 @@
         </div>
       </section>
 
-      <!-- RESERVA -->
+      <!-- reserva -->
       <section id="reserva">
         <h2 class="titulo">¿TIENES UNA IDEA?</h2>
         <p class="subtitulo">RESERVA UNA CITA CON NOSOTROS</p>
@@ -670,7 +660,7 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- footer -->
     <footer>
       <div class="columnas">
         <div class="bloque">
@@ -776,7 +766,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.2/dist/simpleParallax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@7.0.0/dist/vanilla/simpleParallaxVanilla.umd.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

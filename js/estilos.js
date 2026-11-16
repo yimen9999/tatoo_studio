@@ -1,37 +1,22 @@
-/* =====================================================
-   EL GATO NEGRO · Páginas de ESTILOS
-   (realismo, lettering, japanese, fine line, black & grey)
-   - Visor de fotos: ventana modal con jQuery
-   - Japanese: la foto pasa a color al pasar el ratón (jQuery)
-   - SimpleParallax en las fotos de los artistas
-   El menú, AOS y el formulario están en script.js
-   ===================================================== */
+/* el gato negro · páginas de estilos */
 $(function () {
   "use strict";
 
   var $fotos = $(".collage .foto");
   var $visor = $(".visor");
-  var $imgVisor = $visor.find("img");
-  var $contador = $visor.find(".visor-contador");
+  var $imgvisor = $visor.find("img");
+  var $contador = $visor.find(".visorcontador");
   var actual = 0;
-  var ultimoBoton = null; // para devolver el foco al cerrar
+  var ultimoboton = null;
 
-  /* ---------------------------------------------
-       1. JAPANESE · blanco y negro → color
-       Las fotos que tienen data-color pasan poco a poco
-       a la versión en color al pasar el ratón por encima.
-       Ponemos la foto en color encima de la de blanco y
-       negro (invisible) y el CSS la hace aparecer suave.
-    --------------------------------------------- */
+  /* 1. japanese · blanco y negro → color */
   $fotos.find("img[data-color]").each(function () {
     var $img = $(this);
-    // con .attr() para que width y height sean atributos
-    // (si van en el objeto, jQuery los pone como estilo en línea)
     $("<img>")
       .attr({
         src: $img.data("color"),
         alt: "",
-        class: "foto-color",
+        class: "fotocolor",
         width: $img.attr("width"),
         height: $img.attr("height"),
       })
@@ -40,91 +25,83 @@ $(function () {
 
   $fotos
     .on("mouseenter focus", function () {
-      $(this).addClass("en-color");
+      $(this).addClass("encolor");
     })
     .on("mouseleave blur", function () {
-      $(this).removeClass("en-color");
+      $(this).removeClass("encolor");
     });
 
-  /* ---------------------------------------------
-       2. VISOR DE FOTOS (ventana modal)
-    --------------------------------------------- */
-  function rutaFoto(i) {
+  /* 2. visor de fotos */
+  function rutafoto(i) {
     var $img = $fotos.eq(i).find("img").first();
-    // en japanese el visor enseña la foto en color
     return $img.data("color") || $img.attr("src");
   }
 
-  function mostrarFoto(i) {
+  function mostrarfoto(i) {
     var total = $fotos.length;
-    actual = (i + total) % total; // da la vuelta al llegar al final
+    actual = (i + total) % total;
     var $img = $fotos.eq(actual).find("img").first();
 
-    $imgVisor.stop(true).fadeTo(150, 0, function () {
-      $imgVisor
-        .attr({ src: rutaFoto(actual), alt: $img.attr("alt") })
+    $imgvisor.stop(true).fadeTo(150, 0, function () {
+      $imgvisor
+        .attr({ src: rutafoto(actual), alt: $img.attr("alt") })
         .fadeTo(200, 1);
     });
     $contador.text(actual + 1 + " / " + total);
   }
 
-  function abrirVisor(i) {
-    ultimoBoton = $fotos.get(i);
-    mostrarFoto(i);
-    $("body").addClass("sin-scroll");
+  function abrirvisor(i) {
+    ultimoboton = $fotos.get(i);
+    mostrarfoto(i);
+    $("body").addClass("sinscroll");
     $visor.css("display", "flex").hide().fadeIn(250);
-    $visor.find(".visor-cerrar").trigger("focus");
+    $visor.find(".visorcerrar").trigger("focus");
   }
 
-  function cerrarVisor() {
+  function cerrarvisor() {
     $visor.fadeOut(200, function () {
-      $("body").removeClass("sin-scroll");
+      $("body").removeClass("sinscroll");
     });
-    if (ultimoBoton) {
-      ultimoBoton.focus();
+    if (ultimoboton) {
+      ultimoboton.focus();
     }
   }
 
   $fotos.on("click", function () {
-    abrirVisor($fotos.index(this));
+    abrirvisor($fotos.index(this));
   });
 
-  $visor.find(".visor-cerrar").on("click", cerrarVisor);
-  $visor.find(".visor-antes").on("click", function () {
-    mostrarFoto(actual - 1);
+  $visor.find(".visorcerrar").on("click", cerrarvisor);
+  $visor.find(".visorantes").on("click", function () {
+    mostrarfoto(actual - 1);
   });
-  $visor.find(".visor-despues").on("click", function () {
-    mostrarFoto(actual + 1);
+  $visor.find(".visordespues").on("click", function () {
+    mostrarfoto(actual + 1);
   });
 
-  // clic en el fondo oscuro (fuera de la foto) también cierra
   $visor.on("click", function (e) {
     if (e.target === this) {
-      cerrarVisor();
+      cerrarvisor();
     }
   });
 
-  // teclado: Escape cierra y las flechas cambian de foto
   $(document).on("keydown", function (e) {
     if (!$visor.is(":visible")) {
       return;
     }
     if (e.key === "Escape") {
-      cerrarVisor();
+      cerrarvisor();
     } else if (e.key === "ArrowLeft") {
-      mostrarFoto(actual - 1);
+      mostrarfoto(actual - 1);
     } else if (e.key === "ArrowRight") {
-      mostrarFoto(actual + 1);
+      mostrarfoto(actual + 1);
     }
   });
 
-  /* ---------------------------------------------
-       3. SIMPLEPARALLAX · fotos de los artistas
-    --------------------------------------------- */
-  var fotosArtistas = document.querySelectorAll(".persona img");
-  if (window.simpleParallax && fotosArtistas.length) {
-    new simpleParallax(fotosArtistas, {
-      // scale pequeño = la foto se mueve poco, un efecto suave
+  /* 3. simpleparallax · fotos de los artistas */
+  var fotosartistas = document.querySelectorAll(".persona img");
+  if (window.SimpleParallax && fotosartistas.length) {
+    new SimpleParallax(fotosartistas, {
       scale: 1.25,
       delay: 0.4,
       transition: "cubic-bezier(0,0,0,1)",
@@ -132,11 +109,4 @@ $(function () {
       overflow: false,
     });
   }
-
-  // AOS: recalcular posiciones cuando terminan de cargar las fotos
-  $(window).on("load", function () {
-    if (window.AOS) {
-      AOS.refresh();
-    }
-  });
 });

@@ -10,7 +10,6 @@
     <title>Japanese | El Gato Negro</title>
     <link rel="icon" type="image/png" href="IMG/favicon.png" />
 
-    <!-- fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,16 +17,10 @@
       rel="stylesheet"
     />
 
-    <!-- AOS (animaciones al hacer scroll) -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    />
-
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body id="inicio" class="pagina-estilo japanese">
-    <!-- MENU -->
+  <body id="inicio" class="paginaestilo japanese">
+    <!-- menu -->
     <header>
       <nav>
         <a class="logo" href="index.html">EL GATO NEGRO</a>
@@ -48,20 +41,19 @@
     </header>
 
     <main>
-      <!-- CAPAS: la portada se queda fija y el collage sube encima -->
       <div class="capas">
-      <!-- PORTADA: texto + nombre del estilo -->
-      <section class="portada capa-fija">
+      <!-- portada -->
+      <section class="portada capafija">
         <p class="intro">
           El estilo japonés nace del tatuaje tradicional irezumi y está lleno de historia. Dragones, carpas koi, flores de cerezo, olas y máscaras se combinan en piezas grandes con mucho movimiento. Diseñamos cada tatuaje pensando en el cuerpo entero, para que fluya con la forma del tu cuerpo. Respetamos la simbología original y la adaptamos a tu propia historia. También tatuamos personajes y escenas de anime y manga, cuidando cada detalle: las líneas, los colores y la expresión, para que se reconozcan al instante y conserven el estilo del dibujo original.
         </p>
-        <h1 class="nombre-estilo">JAPANESE</h1>
+        <h1 class="nombreestilo">JAPANESE</h1>
       </section>
 
-      <!-- COLLAGE DE FOTOS (al pinchar se abren en grande) -->
-      <section class="collage capa-sube" aria-label="Trabajos de Japanese">
+      <!-- collage de fotos -->
+      <section class="collage capasube" aria-label="Trabajos de Japanese">
         <h2 class="oculto">Trabajos de Japanese</h2>
-        <button class="foto arriba-izq" type="button" aria-label="Ver foto 1 en grande">
+        <button class="foto arribaizq" type="button" aria-label="Ver foto 1 en grande">
           <img
             src="IMG/japones/J4.png"
             data-color="IMG/japones/J4%204.png"
@@ -71,7 +63,7 @@
             loading="lazy"
           />
         </button>
-        <button class="foto arriba-der" type="button" aria-label="Ver foto 2 en grande">
+        <button class="foto arribader" type="button" aria-label="Ver foto 2 en grande">
           <img
             src="IMG/japones/J7.png"
             data-color="IMG/japones/J7%207.png"
@@ -101,7 +93,7 @@
             loading="lazy"
           />
         </button>
-        <button class="foto lado-1" type="button" aria-label="Ver foto 5 en grande">
+        <button class="foto lado1" type="button" aria-label="Ver foto 5 en grande">
           <img
             src="IMG/japones/J6.png"
             data-color="IMG/japones/J6%206.png"
@@ -111,7 +103,7 @@
             loading="lazy"
           />
         </button>
-        <button class="foto lado-2" type="button" aria-label="Ver foto 6 en grande">
+        <button class="foto lado2" type="button" aria-label="Ver foto 6 en grande">
           <img
             src="IMG/japones/J1.png"
             data-color="IMG/japones/J1%201.png"
@@ -121,7 +113,7 @@
             loading="lazy"
           />
         </button>
-        <button class="foto lado-3" type="button" aria-label="Ver foto 7 en grande">
+        <button class="foto lado3" type="button" aria-label="Ver foto 7 en grande">
           <img
             src="IMG/japones/J2.png"
             data-color="IMG/japones/J2%202.png"
@@ -135,49 +127,54 @@
 
       </div>
 
-      <!-- ARTISTAS DE ESTE ESTILO -->
-      <section class="equipo" aria-labelledby="titulo-artistas">
-        <article class="persona">
-          <img
-            src="IMG/japones/A1.png"
-            alt="Mei Ochoa"
-            width="331"
-            height="558"
-            loading="lazy"
-          />
-          <h3>Mei Ochoa</h3>
-          <p>Brazos completos de estilo irezumi</p>
-        </article>
-        <article class="persona">
-          <img
-            src="IMG/japones/A3.png"
-            alt="Nora Valcárcel"
-            width="331"
-            height="378"
-            loading="lazy"
-          />
-          <h3>Nora Valcárcel</h3>
-          <p>Flores, olas y carpas koi</p>
-        </article>
-        <article class="persona">
-          <img
-            src="IMG/japones/A2.png"
-            alt="Hugo Sarmiento"
-            width="331"
-            height="507"
-            loading="lazy"
-          />
-          <h3>Hugo Sarmiento</h3>
-          <p>Dragones y máscaras tradicionales</p>
-        </article>
-        <!-- título a la izquierda y la frase a la derecha -->
-        <div class="cabecera-artistas">
-          <h2 class="titulo-artistas" id="titulo-artistas">ARTISTAS</h2>
-          <p class="frase-estilo">Donde las ideas cobran vida en la piel</p>
+      <!-- artistas de este estilo -->
+      <section class="equipo" aria-labelledby="tituloartistas">
+        <div class="cabeceraartistas">
+          <h2 class="tituloartistas" id="tituloartistas">ARTISTAS</h2>
+          <p class="fraseestilo">Donde las ideas cobran vida en la piel</p>
         </div>
+        <article class="persona">
+          <a class="enlacepersona" href="hugo.html">
+            <img
+              src="IMG/japones/A1.png"
+              alt="Hugo Sarmiento"
+              width="331"
+              height="558"
+              loading="lazy"
+            />
+            <h3>Hugo Sarmiento</h3>
+            <p>Brazos completos de estilo irezumi</p>
+          </a>
+        </article>
+        <article class="persona">
+          <a class="enlacepersona" href="tomas.html">
+            <img
+              src="IMG/japones/A3.png"
+              alt="Tomás Arrieta"
+              width="331"
+              height="378"
+              loading="lazy"
+            />
+            <h3>Tomás Arrieta</h3>
+            <p>Flores, olas y carpas koi</p>
+          </a>
+        </article>
+        <article class="persona">
+          <a class="enlacepersona" href="nora.html">
+            <img
+              src="IMG/japones/A2.png"
+              alt="Nora Valcárcel"
+              width="331"
+              height="507"
+              loading="lazy"
+            />
+            <h3>Nora Valcárcel</h3>
+            <p>Dragones y máscaras tradicionales</p>
+          </a>
+        </article>
       </section>
 
-      <!-- RESERVA -->
+      <!-- reserva -->
       <section id="reserva">
         <h2 class="titulo">¿TIENES UNA IDEA?</h2>
         <p class="subtitulo">RESERVA UNA CITA CON NOSOTROS</p>
@@ -235,7 +232,7 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- footer -->
     <footer>
       <div class="columnas">
         <div class="bloque">
@@ -342,18 +339,17 @@
       </div>
     </footer>
 
-    <!-- VISOR DE FOTOS (ventana modal con jQuery) -->
+    <!-- visor de fotos -->
     <div class="visor" role="dialog" aria-modal="true" aria-label="Foto en grande">
-      <button class="visor-cerrar" type="button" aria-label="Cerrar">&times;</button>
-      <button class="visor-flecha visor-antes" type="button" aria-label="Foto anterior">&larr;</button>
+      <button class="visorcerrar" type="button" aria-label="Cerrar">&times;</button>
+      <button class="visorflecha visorantes" type="button" aria-label="Foto anterior">&larr;</button>
       <img src="IMG/japones/J4.png" alt="" />
-      <button class="visor-flecha visor-despues" type="button" aria-label="Foto siguiente">&rarr;</button>
-      <p class="visor-contador"></p>
+      <button class="visorflecha visordespues" type="button" aria-label="Foto siguiente">&rarr;</button>
+      <p class="visorcontador"></p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.2/dist/simpleParallax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@7.0.0/dist/vanilla/simpleParallaxVanilla.umd.js"></script>
     <script src="js/script.js"></script>
     <script src="js/estilos.js"></script>
   </body>

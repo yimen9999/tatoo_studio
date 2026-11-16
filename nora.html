@@ -10,7 +10,6 @@
     <title>Nora Valcárcel | El Gato Negro</title>
     <link rel="icon" type="image/png" href="IMG/favicon.png" />
 
-    <!-- fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,8 +19,8 @@
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body id="inicio" class="pagina-artista">
-    <!-- MENU -->
+  <body id="inicio" class="paginaartista">
+    <!-- menu -->
     <header>
       <nav>
         <a class="logo" href="index.html">EL GATO NEGRO</a>
@@ -41,27 +40,25 @@
       </nav>
     </header>
 
-
     <main>
-      <!-- CABECERA: foto, nombre, estilos y cargo -->
+      <!-- cabecera -->
       <section class="ficha">
-        <div class="ficha-caja">
+        <div class="fichacaja">
           <img
-            class="ficha-foto"
+            class="fichafoto fotonora"
             src="IMG/Artistas/A2.jpg"
             alt="Nora Valcárcel"
             width="1104"
             height="960"
-            style="object-position: 100% center"
           />
-          <h1 class="ficha-nombre">Nora Valcárcel</h1>
-          <p class="ficha-etiqueta">Estilos:</p>
-          <p class="ficha-estilos">Lettering, Fine Line, Japanese</p>
-          <p class="ficha-rol">Founder</p>
+          <h1 class="fichanombre">Nora Valcárcel</h1>
+          <p class="fichaetiqueta">Estilos:</p>
+          <p class="fichaestilos">Lettering, Fine Line, Japanese</p>
+          <p class="ficharol">Founder</p>
         </div>
       </section>
 
-      <!-- TRABAJOS 1 (al pinchar se abren en grande) -->
+      <!-- trabajos 1 -->
       <section class="obras" aria-label="Trabajos de Nora Valcárcel">
         <h2 class="oculto">Trabajos de Nora Valcárcel</h2>
         <button class="obra completa" type="button" aria-label="Ver trabajo 1 en grande">
@@ -75,14 +72,14 @@
         </button>
       </section>
 
-      <!-- SOBRE EL ARTISTA -->
+      <!-- sobre el artista -->
       <section class="sobre">
-        <h2 class="sobre-etiqueta">Sobre el artista</h2>
-        <p class="sobre-texto">Nora es tatuadora residente especializada en fine line y estilo japonés. Su obra se centra en piezas grandes y medianas cargadas de detalle. Le interesa lo íntimo y lo personal, y disfruta convirtiendo visiones e ideas concretas en tatuajes que caben en la palma de una mano.</p>
-        <p class="sobre-titulo" aria-hidden="true">Últimos trabajos</p>
+        <h2 class="sobreetiqueta">Sobre el artista</h2>
+        <p class="sobretexto">Nora es tatuadora residente especializada en fine line y estilo japonés. Su obra se centra en piezas grandes y medianas cargadas de detalle. Le interesa lo íntimo y lo personal, y disfruta convirtiendo visiones e ideas concretas en tatuajes que caben en la palma de una mano.</p>
+        <p class="sobretitulo" aria-hidden="true">Últimos trabajos</p>
       </section>
 
-      <!-- TRABAJOS 2 -->
+      <!-- trabajos 2 -->
       <section class="obras" aria-label="Más trabajos de Nora Valcárcel">
         <h2 class="oculto">Últimos trabajos</h2>
         <button class="obra completa" type="button" aria-label="Ver trabajo 4 en grande">
@@ -96,7 +93,7 @@
         </button>
       </section>
 
-      <!-- RESERVA -->
+      <!-- reserva -->
       <section id="reserva">
         <h2 class="titulo">¿TIENES UNA IDEA?</h2>
         <p class="subtitulo">RESERVA UNA CITA CON NOSOTROS</p>
@@ -154,7 +151,7 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- footer -->
     <footer>
       <div class="columnas">
         <div class="bloque">
@@ -261,13 +258,13 @@
       </div>
     </footer>
 
-    <!-- VISOR DE FOTOS (ventana modal con jQuery) -->
+    <!-- visor de fotos -->
     <div class="visor" role="dialog" aria-modal="true" aria-label="Trabajo en grande">
-      <button class="visor-cerrar" type="button" aria-label="Cerrar">&times;</button>
-      <button class="visor-flecha visor-antes" type="button" aria-label="Trabajo anterior">&larr;</button>
+      <button class="visorcerrar" type="button" aria-label="Cerrar">&times;</button>
+      <button class="visorflecha visorantes" type="button" aria-label="Trabajo anterior">&larr;</button>
       <img src="IMG/Artistas/nora/1.jpg" alt="" />
-      <button class="visor-flecha visor-despues" type="button" aria-label="Trabajo siguiente">&rarr;</button>
-      <p class="visor-contador"></p>
+      <button class="visorflecha visordespues" type="button" aria-label="Trabajo siguiente">&rarr;</button>
+      <p class="visorcontador"></p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

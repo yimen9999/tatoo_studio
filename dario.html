@@ -10,7 +10,6 @@
     <title>Darío Mendes | El Gato Negro</title>
     <link rel="icon" type="image/png" href="IMG/favicon.png" />
 
-    <!-- fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,8 +19,8 @@
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body id="inicio" class="pagina-artista">
-    <!-- MENU -->
+  <body id="inicio" class="paginaartista">
+    <!-- menu -->
     <header>
       <nav>
         <a class="logo" href="index.html">EL GATO NEGRO</a>
@@ -41,27 +40,25 @@
       </nav>
     </header>
 
-
     <main>
-      <!-- CABECERA: foto, nombre, estilos y cargo -->
+      <!-- cabecera -->
       <section class="ficha">
-        <div class="ficha-caja">
+        <div class="fichacaja">
           <img
-            class="ficha-foto"
+            class="fichafoto fotodario"
             src="IMG/Artistas/A3.jpg"
             alt="Darío Mendes"
             width="1104"
             height="960"
-            style="object-position: 80% center"
           />
-          <h1 class="ficha-nombre">Darío Mendes</h1>
-          <p class="ficha-etiqueta">Estilos:</p>
-          <p class="ficha-estilos">Realismo</p>
-          <p class="ficha-rol">Head Artist</p>
+          <h1 class="fichanombre">Darío Mendes</h1>
+          <p class="fichaetiqueta">Estilos:</p>
+          <p class="fichaestilos">Realismo</p>
+          <p class="ficharol">Head Artist</p>
         </div>
       </section>
 
-      <!-- TRABAJOS 1 (al pinchar se abren en grande) -->
+      <!-- trabajos 1 -->
       <section class="obras" aria-label="Trabajos de Darío Mendes">
         <h2 class="oculto">Trabajos de Darío Mendes</h2>
         <button class="obra completa" type="button" aria-label="Ver trabajo 1 en grande">
@@ -75,14 +72,14 @@
         </button>
       </section>
 
-      <!-- SOBRE EL ARTISTA -->
+      <!-- sobre el artista -->
       <section class="sobre">
-        <h2 class="sobre-etiqueta">Sobre el artista</h2>
-        <p class="sobre-texto">Darío es un tatuador luso-madrileño especializado en realismo. Su trabajo se centra en retratos, animales y escenas inspiradas en la fotografía, con un control del detalle y del volumen que hace que cada pieza parezca cobrar vida sobre la piel. Su estilo es preciso y paciente, y dedica tiempo a entender la historia que hay detrás de cada imagen antes de empezar a tatuar.</p>
-        <p class="sobre-titulo" aria-hidden="true">Últimos trabajos</p>
+        <h2 class="sobreetiqueta">Sobre el artista</h2>
+        <p class="sobretexto">Darío es un tatuador luso-madrileño especializado en realismo. Su trabajo se centra en retratos, animales y escenas inspiradas en la fotografía, con un control del detalle y del volumen que hace que cada pieza parezca cobrar vida sobre la piel. Su estilo es preciso y paciente, y dedica tiempo a entender la historia que hay detrás de cada imagen antes de empezar a tatuar.</p>
+        <p class="sobretitulo" aria-hidden="true">Últimos trabajos</p>
       </section>
 
-      <!-- TRABAJOS 2 -->
+      <!-- trabajos 2 -->
       <section class="obras" aria-label="Más trabajos de Darío Mendes">
         <h2 class="oculto">Últimos trabajos</h2>
         <button class="obra completa" type="button" aria-label="Ver trabajo 4 en grande">
@@ -96,7 +93,7 @@
         </button>
       </section>
 
-      <!-- RESERVA -->
+      <!-- reserva -->
       <section id="reserva">
         <h2 class="titulo">¿TIENES UNA IDEA?</h2>
         <p class="subtitulo">RESERVA UNA CITA CON NOSOTROS</p>
@@ -154,7 +151,7 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- footer -->
     <footer>
       <div class="columnas">
         <div class="bloque">
@@ -261,13 +258,13 @@
       </div>
     </footer>
 
-    <!-- VISOR DE FOTOS (ventana modal con jQuery) -->
+    <!-- visor de fotos -->
     <div class="visor" role="dialog" aria-modal="true" aria-label="Trabajo en grande">
-      <button class="visor-cerrar" type="button" aria-label="Cerrar">&times;</button>
-      <button class="visor-flecha visor-antes" type="button" aria-label="Trabajo anterior">&larr;</button>
+      <button class="visorcerrar" type="button" aria-label="Cerrar">&times;</button>
+      <button class="visorflecha visorantes" type="button" aria-label="Trabajo anterior">&larr;</button>
       <img src="IMG/Artistas/dario/1.jpg" alt="" />
-      <button class="visor-flecha visor-despues" type="button" aria-label="Trabajo siguiente">&rarr;</button>
-      <p class="visor-contador"></p>
+      <button class="visorflecha visordespues" type="button" aria-label="Trabajo siguiente">&rarr;</button>
+      <p class="visorcontador"></p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
