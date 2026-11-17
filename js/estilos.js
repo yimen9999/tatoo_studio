@@ -4,9 +4,9 @@ $(function () {
   "use strict";
 
   var $fotos = $(".collage .foto");
-  var $visor = $(".visor");
-  var $imgvisor = $visor.find("img");
-  var $contador = $visor.find(".visorcontador");
+  var $ventana = $(".ventana");
+  var $imgventana = $ventana.find("img");
+  var $contador = $ventana.find(".ventanacontador");
   var actual = 0;
   var ultimoboton = null;
 
@@ -32,7 +32,7 @@ $(function () {
       $(this).removeClass("encolor");
     });
 
-  /*VISOR DE FOTOS*/
+  /*VENTANA DE FOTOS*/
 
   function rutafoto(i) {
     var $img = $fotos.eq(i).find("img").first();
@@ -44,24 +44,24 @@ $(function () {
     actual = (i + total) % total;
     var $img = $fotos.eq(actual).find("img").first();
 
-    $imgvisor.stop(true).fadeTo(150, 0, function () {
-      $imgvisor
+    $imgventana.stop(true).fadeTo(150, 0, function () {
+      $imgventana
         .attr({ src: rutafoto(actual), alt: $img.attr("alt") })
         .fadeTo(200, 1);
     });
     $contador.text(actual + 1 + " / " + total);
   }
 
-  function abrirvisor(i) {
+  function abrirventana(i) {
     ultimoboton = $fotos.get(i);
     mostrarfoto(i);
     $("body").addClass("sinscroll");
-    $visor.css("display", "flex").hide().fadeIn(250);
-    $visor.find(".visorcerrar").trigger("focus");
+    $ventana.css("display", "flex").hide().fadeIn(250);
+    $ventana.find(".ventanacerrar").trigger("focus");
   }
 
-  function cerrarvisor() {
-    $visor.fadeOut(200, function () {
+  function cerrarventana() {
+    $ventana.fadeOut(200, function () {
       $("body").removeClass("sinscroll");
     });
     if (ultimoboton) {
@@ -70,33 +70,20 @@ $(function () {
   }
 
   $fotos.on("click", function () {
-    abrirvisor($fotos.index(this));
+    abrirventana($fotos.index(this));
   });
 
-  $visor.find(".visorcerrar").on("click", cerrarvisor);
-  $visor.find(".visorantes").on("click", function () {
+  $ventana.find(".ventanacerrar").on("click", cerrarventana);
+  $ventana.find(".ventanaantes").on("click", function () {
     mostrarfoto(actual - 1);
   });
-  $visor.find(".visordespues").on("click", function () {
+  $ventana.find(".ventanadespues").on("click", function () {
     mostrarfoto(actual + 1);
   });
 
-  $visor.on("click", function (e) {
+  $ventana.on("click", function (e) {
     if (e.target === this) {
-      cerrarvisor();
-    }
-  });
-
-  $(document).on("keydown", function (e) {
-    if (!$visor.is(":visible")) {
-      return;
-    }
-    if (e.key === "Escape") {
-      cerrarvisor();
-    } else if (e.key === "ArrowLeft") {
-      mostrarfoto(actual - 1);
-    } else if (e.key === "ArrowRight") {
-      mostrarfoto(actual + 1);
+      cerrarventana();
     }
   });
 

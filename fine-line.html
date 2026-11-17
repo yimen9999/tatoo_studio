@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Tatuajes de estilo Fine line en El Gato Negro, estudio de tatuaje en el centro de Madrid."
-    />
+      content="Tatuajes de estilo Fine line en El Gato Negro, estudio de tatuaje en el centro de Madrid."/>
     <title>Fine line | El Gato Negro</title>
     <link rel="icon" type="image/png" href="IMG/favicon.png" />
 
@@ -14,21 +13,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&amp;family=League+Spartan:wght@300;400;500;900&amp;display=swap"
+      rel="stylesheet"/>
+
+    <link
       rel="stylesheet"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
+
+    <!-- nav-->
   <body id="inicio" class="paginaestilo fineline">
-    <!-- menu -->
+
     <header>
       <nav>
         <a class="logo" href="index.html">EL GATO NEGRO</a>
 
         <button class="hamburguesa" type="button" aria-label="Abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
+          <i class="fa-solid fa-bars"></i>
         </button>
 
         <ul class="menu">
@@ -40,9 +42,11 @@
       </nav>
     </header>
 
+    <!-- portada -->
+
     <main>
       <div class="capas">
-      <!-- portada -->
+      
       <section class="portada capafija">
         <p class="intro">
           El fine line se basa en líneas muy finas y precisas para crear tatuajes delicados y minimalistas. Es perfecto para flores, pequeños símbolos, constelaciones o dibujos con mucho detalle en poco espacio. Trabajamos con agujas muy finas y a un ritmo tranquilo, porque aquí cada trazo se nota. Te aconsejamos sobre el tamaño y la zona para que las líneas se mantengan limpias con el paso del tiempo.
@@ -50,7 +54,7 @@
         <h1 class="nombreestilo">FINE LINE</h1>
       </section>
 
-      <!-- collage de fotos -->
+      <!-- collage fotos -->
       <section class="collage capasube" aria-label="Trabajos de Fine line">
         <h2 class="oculto">Trabajos de Fine line</h2>
         <button class="foto arribaizq" type="button" aria-label="Ver foto 1 en grande">
@@ -120,7 +124,7 @@
 
       </div>
 
-      <!-- artistas de este estilo -->
+      <!-- artistas estilo -->
       <section class="equipo" aria-labelledby="tituloartistas">
         <div class="cabeceraartistas">
           <h2 class="tituloartistas" id="tituloartistas">ARTISTAS</h2>
@@ -167,7 +171,7 @@
         </article>
       </section>
 
-      <!-- reserva -->
+      <!-- cita -->
       <section id="reserva">
         <h2 class="titulo">¿TIENES UNA IDEA?</h2>
         <p class="subtitulo">RESERVA UNA CITA CON NOSOTROS</p>
@@ -191,18 +195,21 @@
           </div>
           <div class="campo">
             <label for="artista">ARTISTA</label>
-            <select id="artista" name="artista">
-              <option value="">Elige un artista</option>
-              <option value="tomas">Tomás Arrieta</option>
-              <option value="nora">Nora Valcárcel</option>
-              <option value="dario">Darío Mendes</option>
-              <option value="hugo">Hugo Sarmiento</option>
-              <option value="amara">Amara Ndiaye</option>
-              <option value="mei">Mei Ochoa</option>
-              <option value="ines">Inés Lorente</option>
-              <option value="ernesto">Ernesto Vidal</option>
-              <option value="cualquiera">Sin preferencia</option>
-            </select>
+            <div class="selector">
+              <select id="artista" name="artista">
+                <option value="">Elige un artista</option>
+                <option value="tomas">Tomás Arrieta</option>
+                <option value="nora">Nora Valcárcel</option>
+                <option value="dario">Darío Mendes</option>
+                <option value="hugo">Hugo Sarmiento</option>
+                <option value="amara">Amara Ndiaye</option>
+                <option value="mei">Mei Ochoa</option>
+                <option value="ines">Inés Lorente</option>
+                <option value="ernesto">Ernesto Vidal</option>
+                <option value="cualquiera">Sin preferencia</option>
+              </select>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
           </div>
           <div class="campo">
             <label for="zona">LUGAR DEL CUERPO</label>
@@ -228,7 +235,7 @@
     <!-- footer -->
     <footer>
       <div class="columnas">
-        <div class="bloque">
+        <div>
           <h2>DESCÚBRENOS</h2>
           <ul class="enlaces">
             <li><a href="index.html#quienes">¿QUIÉNES SOMOS?</a></li>
@@ -241,7 +248,7 @@
           </ul>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>ESTILOS</h2>
           <ul class="enlaces">
             <li><a href="realismo.html">REALISMO</a></li>
@@ -252,7 +259,7 @@
           </ul>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>SÍGUENOS</h2>
           <ul class="enlaces redes">
             <li>
@@ -260,35 +267,17 @@
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noopener"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                INSTAGRAM</a
+                ><i class="fa-solid fa-arrow-right"></i>INSTAGRAM</a
               >
             </li>
             <li>
               <a href="https://www.tiktok.com/" target="_blank" rel="noopener"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                TIKTOK</a
+                ><i class="fa-solid fa-arrow-right"></i>TIKTOK</a
               >
             </li>
             <li>
               <a href="https://www.youtube.com/" target="_blank" rel="noopener"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                YOUTUBE</a
+                ><i class="fa-solid fa-arrow-right"></i>YOUTUBE</a
               >
             </li>
           </ul>
@@ -296,26 +285,21 @@
       </div>
 
       <div class="columnas">
-        <div class="bloque">
+        <div>
           <h2>DIRECCIÓN</h2>
           <address>
             <p>
-              <img
-                src="IMG/iconos/ubicacion.svg"
-                alt=""
-                width="16"
-                height="16"
-              />
+              <i class="fa-solid fa-location-dot"></i>
               C/ DEL ESPÍRITU SANTO 21, 28004 MADRID
             </p>
             <p>
-              <img src="IMG/iconos/reloj.svg" alt="" width="14" height="14" />
+              <i class="fa-regular fa-clock"></i>
               L–V 10–21 · S 9–20 · D 10–19
             </p>
           </address>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>CONTÁCTANOS</h2>
           <address>
             <p><a href="tel:+34654786284">+34 654 786 284</a></p>
@@ -332,13 +316,13 @@
       </div>
     </footer>
 
-    <!-- visor de fotos -->
-    <div class="visor" role="dialog" aria-modal="true" aria-label="Foto en grande">
-      <button class="visorcerrar" type="button" aria-label="Cerrar">&times;</button>
-      <button class="visorflecha visorantes" type="button" aria-label="Foto anterior">&larr;</button>
+    <!-- ventana flotante -->
+    <div class="ventana" role="dialog" aria-modal="true" aria-label="Foto en grande">
+      <button class="ventanacerrar" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      <button class="ventanaflecha ventanaantes" type="button" aria-label="Foto anterior"><i class="fa-solid fa-arrow-left"></i></button>
       <img src="IMG/fine%20line/F4.png" alt="" />
-      <button class="visorflecha visordespues" type="button" aria-label="Foto siguiente">&rarr;</button>
-      <p class="visorcontador"></p>
+      <button class="ventanaflecha ventanadespues" type="button" aria-label="Foto siguiente"><i class="fa-solid fa-arrow-right"></i></button>
+      <p class="ventanacontador"></p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

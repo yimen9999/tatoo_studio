@@ -1,9 +1,8 @@
-/* el gato negro · estudio de tatuaje */
 
-/* variables */
+/*Variables*/
+
 :root {
   --gris: #e0e0e0;
-  --gris-tarjeta: #d9d9d9;
   --gris-texto: #5c5c5c;
   --negro: #000;
   --error: #b3261e;
@@ -11,9 +10,11 @@
   --titulos: "League Spartan", sans-serif;
   --textos: "DM Sans", sans-serif;
   --alto-menu: 80px;
+  --i: 0;
+  --op: 0.5;
 }
 
-/* reset */
+/*Reset*/
 *,
 *::before,
 *::after {
@@ -89,7 +90,7 @@ textarea {
   line-height: 1;
 }
 
-/* menú */
+/* MENU*/
 header {
   display: contents;
 }
@@ -159,10 +160,6 @@ header .menu li:nth-child(4) {
   grid-column: 3;
   grid-row: 1;
 }
-header .menu li:nth-child(n + 5) {
-  display: none;
-}
-
 header .menu a {
   position: relative;
   display: inline-block;
@@ -201,31 +198,12 @@ header .menu a.activo::after {
   background: none;
   border: 0;
   cursor: pointer;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
 }
 
-.hamburguesa span {
-  display: block;
-  height: 2px;
-  width: 100%;
-  background: currentColor;
-  transition:
-    transform 0.3s,
-    opacity 0.3s;
-}
-
-.hamburguesa.activo span:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
-}
-.hamburguesa.activo span:nth-child(2) {
-  opacity: 0;
-}
-.hamburguesa.activo span:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
-}
-
-/* capas */
+/* CAPAS*/
 .capas {
   position: relative;
 }
@@ -248,7 +226,7 @@ header .menu a.activo::after {
   border-radius: var(--esquinas, 28px) var(--esquinas, 28px) 0 0;
 }
 
-/* hero + estudio */
+/* HERO + ESTUDIO*/
 .hero {
   height: 100vh;
   height: 100svh;
@@ -325,7 +303,7 @@ header .menu a.activo::after {
   grid-column: 2;
 }
 
-/* pasos de scroll */
+/* PASOS DE SCROLL*/
 .pasos {
   display: none;
 }
@@ -346,7 +324,7 @@ header .menu a.activo::after {
   }
 }
 
-/* artistas */
+/* ARTISTAS*/
 #artistas {
   padding: 0 0 clamp(50px, 5.5vw, 79px);
 }
@@ -357,7 +335,7 @@ header .menu a.activo::after {
   margin-bottom: clamp(24px, 3.5vw, 50px);
 }
 
-.gridartistas {
+.galeriaartistas {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 36px 2.4vw;
@@ -371,14 +349,14 @@ header .menu a.activo::after {
   object-fit: cover;
 }
 
-.gridartistas .artista:nth-child(1) img { object-position: 88% center; }
-.gridartistas .artista:nth-child(2) img { object-position: 100% center; }
-.gridartistas .artista:nth-child(3) img { object-position: 80% center; }
-.gridartistas .artista:nth-child(4) img { object-position: 100% center; }
-.gridartistas .artista:nth-child(5) img { object-position: 100% center; }
-.gridartistas .artista:nth-child(6) img { object-position: 69% center; }
-.gridartistas .artista:nth-child(7) img { object-position: 39% center; }
-.gridartistas .artista:nth-child(8) img { object-position: 95% center; }
+.fototomas { object-position: 88% center; }
+.fotonora { object-position: 100% center; }
+.fotodario { object-position: 80% center; }
+.fotohugo { object-position: 100% center; }
+.fotoamara { object-position: 100% center; }
+.fotomei { object-position: 69% center; }
+.fotoines { object-position: 39% center; }
+.fotoernesto { object-position: 95% center; }
 
 .artista .simpleParallax {
   display: block;
@@ -404,18 +382,20 @@ header .menu a.activo::after {
 }
 
 .verartista {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  text-decoration: none;
   margin: 14px 0 0 12px;
   min-width: 128px;
   height: 36px;
   padding: 0 22px;
-  background: transparent;
   border: 1px solid var(--negro);
   border-radius: 5px;
   font-family: var(--titulos);
   font-weight: 300;
   font-size: 13px;
-  cursor: pointer;
   transition:
     background 0.3s,
     color 0.3s;
@@ -427,15 +407,13 @@ header .menu a.activo::after {
   color: var(--gris);
 }
 
-/* estilos · tarjetas flotantes */
+/* ESTILOS*/
 #estilos {
   background: var(--negro);
   padding: 46px 8vw 20px;
 }
 
 .estilo {
-  --op: 0.55;
-  --i: 0;
   position: sticky;
   top: calc(96px + var(--i) * 12px);
   aspect-ratio: 1351 / 541;
@@ -529,16 +507,15 @@ header .menu a.activo::after {
   text-decoration: none;
 }
 
-.leermas img {
-  transition: transform 0.3s;
+.leermas i,
+footer .redes i {
+  font-size: 12px;
+  transform: rotate(-45deg);
 }
 
-.leermas:hover img,
-.estilo:hover .leermas img {
-  transform: translate(4px, -4px);
-}
-
-/* reseñas · carrusel jquery */
+/* =====================================================
+   RESEÑAS · carrusel jQuery
+   ===================================================== */
 #resenas {
   padding: clamp(44px, 6vw, 84px) 8vw clamp(50px, 5vw, 70px);
 }
@@ -549,13 +526,13 @@ header .menu a.activo::after {
   font-size: clamp(28px, 4.6vw, 66px);
 }
 
-.sliderventana {
+.carruselventana {
   overflow: hidden;
   margin-right: -37px;
   clip-path: inset(0 8px 0 0);
 }
 
-.sliderpista {
+.carruselpista {
   display: flex;
   align-items: stretch;
   position: relative;
@@ -598,7 +575,7 @@ header .menu a.activo::after {
   color: var(--negro);
 }
 
-.slidercontroles {
+.carruselcontroles {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -606,13 +583,13 @@ header .menu a.activo::after {
   margin-top: 48px;
 }
 
-.sliderboton {
+.carruselboton {
   width: 64px;
   height: 36px;
   background: transparent;
   border: 1px solid var(--negro);
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1;
   cursor: pointer;
   transition:
@@ -620,18 +597,18 @@ header .menu a.activo::after {
     color 0.3s;
 }
 
-.sliderboton:hover,
-.sliderboton:focus-visible {
+.carruselboton:hover,
+.carruselboton:focus-visible {
   background: var(--negro);
   color: var(--gris);
 }
 
-.sliderpuntos {
+.carruselpuntos {
   display: flex;
   gap: 10px;
 }
 
-.sliderpuntos button {
+.carruselpuntos button {
   width: 12px;
   height: 12px;
   padding: 0;
@@ -644,12 +621,13 @@ header .menu a.activo::after {
     transform 0.3s;
 }
 
-.sliderpuntos button.activo {
+.carruselpuntos button.activo {
   background: var(--negro);
   transform: scale(1.2);
 }
 
-/* faq · acordeón jquery */
+/*FAQ · acordeón jQuery*/
+
 #faq {
   padding: 0 8vw clamp(44px, 5vw, 70px);
 }
@@ -685,15 +663,9 @@ header .menu a.activo::after {
   text-transform: uppercase;
 }
 
-.pregunta h3 button img {
+.pregunta h3 button i {
   flex: none;
-  width: clamp(16px, 1.8vw, 26px);
-  height: auto;
-  transition: transform 0.35s;
-}
-
-.pregunta.abierta h3 button img {
-  transform: rotate(180deg);
+  font-size: clamp(16px, 1.8vw, 26px);
 }
 
 .respuesta {
@@ -708,7 +680,8 @@ header .menu a.activo::after {
   line-height: 1.25;
 }
 
-/* formulario de cita */
+/* FORMULARIO pedir CITA*/
+
 #reserva {
   padding: clamp(44px, 6vw, 84px) 8vw clamp(50px, 6vw, 84px);
 }
@@ -768,11 +741,21 @@ header .menu a.activo::after {
 .campo select {
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='10' viewBox='0 0 18 10' fill='none' stroke='black' stroke-width='1.6'><path d='M1 1l8 8 8-8'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
   padding-right: 44px;
   cursor: pointer;
+}
+
+.selector {
+  position: relative;
+}
+
+.selector i {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
 }
 
 .campo textarea {
@@ -859,7 +842,9 @@ header .menu a.activo::after {
   cursor: wait;
 }
 
-/* footer */
+/* FOOTER*/
+
+
 footer {
   background: var(--negro);
   color: var(--gris);
@@ -898,9 +883,11 @@ footer a:focus-visible {
 }
 
 footer .redes a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: inline-block;
+}
+
+footer .redes i {
+  margin-right: 8px;
 }
 
 footer address {
@@ -914,8 +901,11 @@ footer address p {
   margin-bottom: 6px;
 }
 
-footer address img {
+footer address i {
   flex: none;
+  width: 16px;
+  font-size: 14px;
+  text-align: center;
 }
 
 footer .abajo {
@@ -949,7 +939,7 @@ footer .volver:hover {
   text-decoration: none;
 }
 
-/* tablet */
+/* RESPONSIVE*/
 @media (max-width: 1100px) {
   header nav {
     padding: 28px 32px 0;
@@ -961,7 +951,6 @@ footer .volver:hover {
   }
 }
 
-/* tablet */
 @media (max-width: 900px) {
   :root {
     --alto-menu: 56px;
@@ -995,14 +984,6 @@ footer .volver:hover {
     left: 0;
     width: 100%;
     padding: 12px 20px 24px;
-    background: transparent;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  header .menu li:nth-child(n) {
-    grid-column: auto;
-    grid-row: auto;
   }
 
   header .menu a {
@@ -1012,7 +993,6 @@ footer .volver:hover {
 
   #estudio {
     grid-template-columns: 1fr;
-    grid-template-rows: none;
     row-gap: 32px;
     padding: calc(var(--alto-menu) + 28px) 20px 48px;
   }
@@ -1021,8 +1001,6 @@ footer .volver:hover {
   .vision,
   .valores {
     grid-column: 1;
-    grid-row: auto;
-    margin-top: 0;
   }
 
   .quienes {
@@ -1032,7 +1010,6 @@ footer .volver:hover {
   #estudio .quienes h3 {
     grid-row: auto;
     margin-bottom: 20px;
-    padding-right: 0;
     font-size: clamp(44px, 13vw, 90px);
     text-align: left;
   }
@@ -1041,7 +1018,7 @@ footer .volver:hover {
     grid-column: 1;
   }
 
-  .gridartistas {
+  .galeriaartistas {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px 20px;
     padding: 0 20px;
@@ -1056,7 +1033,6 @@ footer .volver:hover {
   }
 
   .estilo {
-    --alto: 340px;
     aspect-ratio: auto;
     height: clamp(300px, 62vw, 420px);
     top: calc(84px + var(--i) * 10px);
@@ -1075,21 +1051,18 @@ footer .volver:hover {
   }
 }
 
-/* móvil */
 @media (max-width: 700px) {
   .resena {
     flex-basis: 100%;
-  }
-
-  .sliderventana {
-    margin-right: 0;
-  }
-
-  .resena {
     padding-right: 0;
   }
 
-  .slidercontroles {
+  .carruselventana {
+    margin-right: 0;
+  }
+
+
+  .carruselcontroles {
     justify-content: space-between;
   }
 
@@ -1108,9 +1081,8 @@ footer .volver:hover {
   }
 }
 
-/* móvil */
 @media (max-width: 560px) {
-  .gridartistas {
+  .galeriaartistas {
     gap: 32px 14px;
   }
 
@@ -1122,7 +1094,6 @@ footer .volver:hover {
   .verartista {
     margin-left: 0;
     min-width: 0;
-    width: 100%;
     padding: 0 8px;
     font-size: 14px;
   }
@@ -1140,12 +1111,6 @@ footer .volver:hover {
     width: 100%;
   }
 
-  .estilo .info p {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1161,7 +1126,7 @@ footer .volver:hover {
   }
 }
 
-/* página studio */
+/* PÁGINA STUDIO */
 
 :root {
   --st-u: calc(min(100vw, 1160px) / 1440);
@@ -1170,9 +1135,8 @@ footer .volver:hover {
 header .menu a[aria-current="page"]::after {
   transform: scaleX(1);
 }
-/* hero */
+/*HERO*/
 .studiohero {
-  position: relative;
   height: calc(1022 * var(--st-u));
   overflow: hidden;
   background: var(--negro);
@@ -1186,7 +1150,7 @@ header .menu a[aria-current="page"]::after {
   object-fit: cover;
 }
 
-/* textos */
+/* TEXTOSinfo*/
 .studiointro {
   --margen: max(0px, (100vw - 1440 * var(--st-u)) / 2);
   height: calc(712 * var(--st-u));
@@ -1195,7 +1159,6 @@ header .menu a[aria-current="page"]::after {
 
 .studiointro p {
   position: absolute;
-  color: var(--negro);
 }
 
 .studiointro1 {
@@ -1230,7 +1193,7 @@ header .menu a[aria-current="page"]::after {
   line-height: 1.1;
 }
 
-/* banda de imagen */
+/* bandaIMAGEN*/
 .studiobanda {
   position: relative;
   z-index: 1;
@@ -1245,7 +1208,7 @@ header .menu a[aria-current="page"]::after {
   object-fit: cover;
 }
 
-/* frases */
+/* FRASES*/
 .studiofrases {
   position: relative;
   width: calc(1440 * var(--st-u));
@@ -1287,7 +1250,7 @@ header .menu a[aria-current="page"]::after {
   text-align: right;
 }
 
-/* imágenes */
+/* IMg*/
 .studiogaleria {
   position: relative;
   width: calc(1440 * var(--st-u));
@@ -1300,6 +1263,13 @@ header .menu a[aria-current="page"]::after {
   overflow: hidden;
   border-radius: 5px;
   background: var(--negro);
+  padding: 0;
+  border: 0;
+  cursor: zoom-in;
+}
+
+.studioimg:focus-visible {
+  outline-offset: -4px;
 }
 
 .studioimg img {
@@ -1313,9 +1283,8 @@ header .menu a[aria-current="page"]::after {
 .studioimg2 { left: calc(799 * var(--st-u)); top: 0; width: calc(559 * var(--st-u)); height: calc(301 * var(--st-u)); }
 .studioimg3 { left: calc(805 * var(--st-u)); top: calc(554 * var(--st-u)); width: calc(409 * var(--st-u)); height: calc(400 * var(--st-u)); }
 .studioimg4 { left: calc(41 * var(--st-u)); top: calc(1084 * var(--st-u)); width: calc(818 * var(--st-u)); height: calc(400 * var(--st-u)); }
-.studioimg4 img { object-fit: cover; }
 
-/* visítanos */
+/* VISITANOS*/
 .studiovisitanos {
   position: relative;
   width: calc(1440 * var(--st-u));
@@ -1390,11 +1359,8 @@ header .menu a[aria-current="page"]::after {
   transform: scale(1.05);
 }
 
-.studiovisitanos {
-  overflow: visible;
-}
 
-/* tablet */
+/*RESPONSIVE*/
 @media (max-width: 900px) {
   .studiohero {
     height: 70vh;
@@ -1516,16 +1482,21 @@ header .menu a[aria-current="page"]::after {
   }
 }
 
-/* móvil */
 @media (max-width: 560px) {
-  .studiogaleria {
-    grid-template-columns: 1fr;
+  .studioimg1,
+  .studioimg2,
+  .studioimg3,
+  .studioimg4 {
+    grid-column: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
   }
 }
 
-/* páginas de estilos */
+/* PÁGINAS DE ESTILOS*/
 
-/* portada */
+/*Portada*/
 .portada {
   display: flex;
   flex-direction: column;
@@ -1573,7 +1544,7 @@ header .menu a[aria-current="page"]::after {
   letter-spacing: -0.05em;
 }
 
-/* collage de fotos */
+/* ---------- Collage de fotos ---------- */
 .collage {
   display: grid;
   grid-template-columns: 723fr 351fr 366fr;
@@ -1594,6 +1565,7 @@ header .menu a[aria-current="page"]::after {
 }
 
 .foto img {
+  grid-area: 1 / 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1611,9 +1583,6 @@ header .menu a[aria-current="page"]::after {
   outline-offset: -4px;
 }
 
-.foto img {
-  grid-area: 1 / 1;
-}
 
 .foto .fotocolor {
   opacity: 0;
@@ -1652,17 +1621,15 @@ header .menu a[aria-current="page"]::after {
   aspect-ratio: 366 / 368;
 }
 
-/* artistas del estilo */
+/*Artistas del estilo */
 .equipo {
   --ancho-max: calc((88vh - 11vw - 80px) / 1.69);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  align-content: space-between;
-  gap: 4vh clamp(10px, 1.15vw, 16px);
-  min-height: 100vh;
-  min-height: 100svh;
+  align-content: flex-start;
+  gap: clamp(24px, 3.8vw, 55px) clamp(10px, 1.15vw, 16px);
   margin-top: clamp(90px, 14vw, 200px);
   padding-top: 5.6vh;
   scroll-snap-align: end;
@@ -1688,13 +1655,7 @@ html {
 
 .enlacepersona {
   display: block;
-  color: inherit;
   text-decoration: none;
-}
-
-.enlacepersona:hover h3,
-.enlacepersona:focus-visible h3 {
-  text-decoration: underline;
 }
 
 .persona h3 {
@@ -1742,8 +1703,8 @@ html {
   padding-top: clamp(60px, 14vw, 200px);
 }
 
-/* visor de fotos */
-.visor {
+/* Ventana de fotos*/
+.ventana {
   display: none;
   position: fixed;
   inset: 0;
@@ -1754,42 +1715,42 @@ html {
   background: rgba(0, 0, 0, 0.92);
 }
 
-.visor img {
+.ventana img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   border-radius: 5px;
 }
 
-.visor button {
+.ventana button {
   position: absolute;
   padding: 0;
   border: 0;
   background: none;
   color: var(--gris);
-  font-size: 40px;
+  font-size: 28px;
   line-height: 1;
   cursor: pointer;
 }
 
-.visorcerrar {
+.ventanacerrar {
   top: 16px;
   right: 24px;
 }
 
-.visorantes {
+.ventanaantes {
   left: 24px;
 }
 
-.visordespues {
+.ventanadespues {
   right: 24px;
 }
 
-.visor button:hover {
+.ventana button:hover {
   opacity: 0.6;
 }
 
-.visorcontador {
+.ventanacontador {
   position: absolute;
   bottom: 20px;
   left: 0;
@@ -1797,13 +1758,14 @@ html {
   color: var(--gris);
   font-size: 14px;
   text-align: center;
+  pointer-events: none;
 }
 
 body.sinscroll {
   overflow: hidden;
 }
 
-/* tablet */
+/* responsive */
 @media (max-width: 900px) {
   .intro {
     width: auto;
@@ -1833,25 +1795,24 @@ body.sinscroll {
     white-space: nowrap;
   }
 
-  .visor {
+  .ventana {
     padding: 60px 16px;
   }
 
-  .visorflecha {
-    top: auto;
+  .ventanaflecha {
     bottom: 10px;
   }
 
-  .visorantes {
+  .ventanaantes {
     left: 20px;
   }
 
-  .visordespues {
+  .ventanadespues {
     right: 20px;
   }
 }
 
-/* móvil */
+/* responsive*/
 @media (max-width: 600px) {
   .collage {
     grid-template-columns: 1fr 1fr;
@@ -1888,7 +1849,6 @@ body.sinscroll {
     flex-direction: column;
     align-items: center;
     gap: 36px;
-    min-height: 0;
     scroll-snap-align: none;
   }
 
@@ -1926,12 +1886,12 @@ body.sinscroll {
   }
 }
 
-/* páginas de artista */
+/* PÁGINAS DE ARTISTA*/
 .paginaartista {
   --ar-u: calc(min(100vw, 1440px) / 1440);
 }
 
-/* cabecera de la ficha */
+/* ficha*/
 .ficha {
   height: min(calc(780 * var(--ar-u)), 100svh);
   min-height: calc(700 * var(--ar-u));
@@ -1954,15 +1914,6 @@ body.sinscroll {
   object-fit: cover;
   filter: grayscale(1);
 }
-
-.fototomas { object-position: 88% center; }
-.fotonora { object-position: 100% center; }
-.fotodario { object-position: 80% center; }
-.fotohugo { object-position: 100% center; }
-.fotoamara { object-position: 100% center; }
-.fotomei { object-position: 69% center; }
-.fotoines { object-position: 39% center; }
-.fotoernesto { object-position: 95% center; }
 
 .fichanombre {
   position: absolute;
@@ -2003,7 +1954,7 @@ body.sinscroll {
   right: calc(76 * var(--ar-u));
 }
 
-/* fotos de trabajos */
+/* fotos*/
 .obras {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2046,7 +1997,7 @@ body.sinscroll {
   outline-offset: -4px;
 }
 
-/* sobre el artista */
+/* sobre artista */
 .sobre {
   position: relative;
   width: calc(1440 * var(--ar-u));
@@ -2088,11 +2039,8 @@ body.sinscroll {
   padding-top: clamp(60px, 7.5vw, 108px);
 }
 
-.paginaartista .menu a[aria-current="page"] {
-  opacity: 1;
-}
 
-/* tablet */
+/* responsive */
 @media (max-width: 900px) {
   .paginaartista {
     --ar-u: calc(100vw / 720);
@@ -2173,7 +2121,6 @@ body.sinscroll {
   }
 }
 
-/* móvil */
 @media (max-width: 600px) {
   .obra.mitad {
     aspect-ratio: 1 / 1.3;
@@ -2184,20 +2131,11 @@ body.sinscroll {
   }
 }
 
-a.verartista {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  text-decoration: none;
-}
-
 .fotoartista {
   display: block;
-  cursor: pointer;
 }
 
-/* transición entre páginas */
+/* TRANSICIÓN ENTRE PÁGINAS*/
 @view-transition {
   navigation: auto;
 }

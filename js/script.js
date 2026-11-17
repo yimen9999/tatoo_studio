@@ -24,7 +24,7 @@ $(function () {
     });
   }
 
-  /*  CAPAS*/
+  /*  sube segunda pagina al hero*/
   var capas = [];
 
   $(".capas").each(function () {
@@ -89,6 +89,7 @@ $(function () {
     $boton
       .removeClass("activo")
       .attr({ "aria-expanded": "false", "aria-label": "Abrir menú" });
+    $boton.find("i").removeClass("fa-xmark").addClass("fa-bars");
     $header.removeClass("abierto");
     if (esmovil()) {
       $menu.stop(true, true).slideUp(250);
@@ -103,24 +104,19 @@ $(function () {
         "aria-expanded": String(abrir),
         "aria-label": abrir ? "Cerrar menú" : "Abrir menú",
       });
+    $boton.find("i").toggleClass("fa-bars", !abrir).toggleClass("fa-xmark", abrir);
     $header.toggleClass("abierto", abrir);
     $menu.stop(true, true).slideToggle(250);
   });
 
   $menu.find("a").on("click", cerrarmenu);
 
-  $(document).on("keydown", function (e) {
-    if (e.key === "Escape" && $boton.hasClass("activo")) {
-      cerrarmenu();
-      $boton.trigger("focus");
-    }
-  });
-
   $ventana.on("resize", function () {
     if (!esmovil()) {
       $menu.removeAttr("style");
       $header.removeClass("abierto");
       $boton.removeClass("activo").attr("aria-expanded", "false");
+      $boton.find("i").removeClass("fa-xmark").addClass("fa-bars");
     }
   });
 
@@ -128,8 +124,6 @@ $(function () {
   var $enlacesmenu = $menu.find("a");
 
   function marcarmenu() {
-    $header.toggleClass("scroll", $ventana.scrollTop() > 40);
-
     var marca = $ventana.scrollTop() + window.innerHeight * 0.35;
     var actual = "";
     $secciones.each(function () {
@@ -224,15 +218,15 @@ $(function () {
 
   /* CARRUSEL DE RESEÑAS*/
   (function carrusel() {
-    var $slider = $(".slider");
-    if (!$slider.length) {
+    var $carrusel = $(".carrusel");
+    if (!$carrusel.length) {
       return;
     }
 
-    var $ventanaslider = $slider.find(".sliderventana");
-    var $pista = $slider.find(".sliderpista");
+    var $ventanacarrusel = $carrusel.find(".carruselventana");
+    var $pista = $carrusel.find(".carruselpista");
     var $items = $pista.children(".resena");
-    var $puntos = $slider.find(".sliderpuntos");
+    var $puntos = $carrusel.find(".carruselpuntos");
     var total = $items.length;
 
     var velocidad = 45;
@@ -327,10 +321,10 @@ $(function () {
       ira(actual + direccion);
     }
 
-    $slider.on("click", ".slidersiguiente", function () {
+    $carrusel.on("click", ".carruselsiguiente", function () {
       moveruna(1);
     });
-    $slider.on("click", ".slideranterior", function () {
+    $carrusel.on("click", ".carruselanterior", function () {
       moveruna(-1);
     });
     $puntos.on("click", "button", function () {
@@ -351,10 +345,10 @@ $(function () {
       }
     }
 
-    $ventanaslider.on("mouseenter", pausar).on("mouseleave", seguir);
+    $ventanacarrusel.on("mouseenter", pausar).on("mouseleave", seguir);
 
     var iniciox = null;
-    $ventanaslider
+    $ventanacarrusel
       .on("touchstart", function (e) {
         iniciox = e.originalEvent.touches[0].clientX;
         pausar();
@@ -368,15 +362,6 @@ $(function () {
           seguir();
         }
       });
-
-    $slider.on("keydown", function (e) {
-      if (e.key === "ArrowRight") {
-        moveruna(1);
-      }
-      if (e.key === "ArrowLeft") {
-        moveruna(-1);
-      }
-    });
 
     var anchoantes = anchoitem();
     $ventana.on("resize", function () {
@@ -422,6 +407,10 @@ $(function () {
         .find("h3 button")
         .attr("aria-expanded", "true")
         .end()
+        .find("h3 button i")
+        .removeClass("fa-angle-down")
+        .addClass("fa-angle-up")
+        .end()
         .find(".respuesta")
         .stop(true, true)
         .slideDown(300);
@@ -431,6 +420,10 @@ $(function () {
       $p.removeClass("abierta")
         .find("h3 button")
         .attr("aria-expanded", "false")
+        .end()
+        .find("h3 button i")
+        .removeClass("fa-angle-up")
+        .addClass("fa-angle-down")
         .end()
         .find(".respuesta")
         .stop(true, true)
@@ -535,6 +528,16 @@ $(function () {
         .appendTo($campo);
       $control.attr("aria-describedby", id);
     });
+
+    /* flecha del desplegable de artista */
+    $form
+      .find(".selector select")
+      .on("focus", function () {
+        $(this).next("i").removeClass("fa-angle-down").addClass("fa-angle-up");
+      })
+      .on("blur change", function () {
+        $(this).next("i").removeClass("fa-angle-up").addClass("fa-angle-down");
+      });
 
     var maxpalabras = 150;
     var $idea = $form.find("#idea");
