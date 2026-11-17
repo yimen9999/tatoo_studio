@@ -1,25 +1,10 @@
-/* =====================================================
-   EL GATO NEGRO · Estudio de tatuaje
-   Interacciones de la HOME
-   - Menú responsive (jQuery)
-   - Animaciones AOS (textos del estudio)
-   - SimpleParallax (galería de artistas)
-   - Tarjetas flotantes de estilos (sticky + scroll)
-   - Carrusel de reseñas (jQuery)
-   - Acordeón FAQ (jQuery)
-   - Validación del formulario de citas (jQuery)
-   ===================================================== */
+
 $(function () {
   "use strict";
 
   var $ventana = $(window);
 
-  /* ---------------------------------------------
-       1. AOS · textos sobre el estudio
-    --------------------------------------------- */
-  // En móvil y tablet los textos de #estudio van uno debajo de otro y no
-  // caben en una pantalla: cada uno se anima cuando entra (sin esperar
-  // al panel), quitando el anchor que usan en escritorio
+  /* AOS textos estudio */
   if (window.innerWidth <= 900) {
     $("#estudio [data-aos-anchor]").removeAttr(
       "data-aos-anchor data-aos-anchor-placement data-aos-offset",
@@ -28,38 +13,23 @@ $(function () {
 
   if (window.AOS) {
     AOS.init({
-      // se repite cada vez que el texto entra en pantalla,
-      // tanto bajando como subiendo
       once: false,
       mirror: true,
       offset: 80,
       easing: "ease-out-cubic",
     });
 
-    // al terminar de cargar (vídeo, fuentes, imágenes) la página cambia de
-    // altura: se recalculan las posiciones para que cada paso salga a tiempo
     $(window).on("load", function () {
       AOS.refreshHard();
     });
   }
 
-  /* ---------------------------------------------
-       1b. CAPAS · la primera pantalla se queda fija y
-       la siguiente sección sube por encima hasta taparla
-       Se usa en todas las páginas con estas clases:
-         .capas      → contenedor de las dos secciones
-         .capa-fija  → la primera pantalla (sticky en el CSS)
-         .capa-sube  → la sección que sube y la tapa
-       Según cuánto ha subido (progreso de 0 a 1):
-       - lo de abajo se hace un poco más pequeño y oscuro
-         (el vídeo si hay vídeo, si no la sección entera)
-       - las esquinas de la capa que sube pasan de redondas a rectas
-    --------------------------------------------- */
+  /*  sube segunda pagina al hero*/
   var capas = [];
 
   $(".capas").each(function () {
-    var $fija = $(this).children(".capa-fija");
-    var $sube = $(this).children(".capa-sube");
+    var $fija = $(this).children(".capafija");
+    var $sube = $(this).children(".capasube");
     var $efecto = $fija.find("video").first();
     if (!$efecto.length) {
       $efecto = $fija;
@@ -69,17 +39,15 @@ $(function () {
         fija: $fija.get(0),
         sube: $sube.get(0),
         efecto: $efecto,
-        // data-sin-encoger: el vídeo no se hace más pequeño (no deja
-        // huecos a los lados), solo se oscurece
         encoger: $(this).is("[data-sin-encoger]") ? 0 : 0.1,
       });
     }
   });
 
-  var capasPendiente = false;
+  var capaspendiente = false;
 
-  function animarCapas() {
-    capasPendiente = false;
+  function animarcapas() {
+    capaspendiente = false;
 
     $.each(capas, function (i, capa) {
       var alto = capa.fija.offsetHeight;
@@ -99,32 +67,31 @@ $(function () {
 
   if (capas.length) {
     $ventana.on("scroll resize", function () {
-      if (!capasPendiente) {
-        capasPendiente = true;
-        window.requestAnimationFrame(animarCapas);
+      if (!capaspendiente) {
+        capaspendiente = true;
+        window.requestAnimationFrame(animarcapas);
       }
     });
-    animarCapas();
+    animarcapas();
   }
 
-  /* ---------------------------------------------
-       2. MENÚ RESPONSIVE
-    --------------------------------------------- */
+  /*   2. MENUBURGER RESPONSIVE */
   var $header = $("header");
   var $boton = $(".hamburguesa");
   var $menu = $(".menu");
-  var ANCHO_MOVIL = 900;
+  var anchomovil = 900;
 
-  function esMovil() {
-    return window.innerWidth <= ANCHO_MOVIL;
+  function esmovil() {
+    return window.innerWidth <= anchomovil;
   }
 
-  function cerrarMenu() {
+  function cerrarmenu() {
     $boton
       .removeClass("activo")
       .attr({ "aria-expanded": "false", "aria-label": "Abrir menú" });
+    $boton.find("i").removeClass("fa-xmark").addClass("fa-bars");
     $header.removeClass("abierto");
-    if (esMovil()) {
+    if (esmovil()) {
       $menu.stop(true, true).slideUp(250);
     }
   }
@@ -137,37 +104,26 @@ $(function () {
         "aria-expanded": String(abrir),
         "aria-label": abrir ? "Cerrar menú" : "Abrir menú",
       });
+    $boton.find("i").toggleClass("fa-bars", !abrir).toggleClass("fa-xmark", abrir);
     $header.toggleClass("abierto", abrir);
     $menu.stop(true, true).slideToggle(250);
   });
 
-  // al elegir una opción se cierra el menú móvil
-  $menu.find("a").on("click", cerrarMenu);
+  $menu.find("a").on("click", cerrarmenu);
 
-  // Escape cierra el menú
-  $(document).on("keydown", function (e) {
-    if (e.key === "Escape" && $boton.hasClass("activo")) {
-      cerrarMenu();
-      $boton.trigger("focus");
-    }
-  });
-
-  // al volver a escritorio se limpian los estilos en línea de jQuery
   $ventana.on("resize", function () {
-    if (!esMovil()) {
+    if (!esmovil()) {
       $menu.removeAttr("style");
       $header.removeClass("abierto");
       $boton.removeClass("activo").attr("aria-expanded", "false");
+      $boton.find("i").removeClass("fa-xmark").addClass("fa-bars");
     }
   });
 
-  // cabecera más opaca al hacer scroll + enlace de la sección activa
   var $secciones = $("#estudio, #artistas, #estilos, #resenas, #faq, #reserva");
-  var $enlacesMenu = $menu.find("a");
+  var $enlacesmenu = $menu.find("a");
 
-  function marcarMenu() {
-    $header.toggleClass("scrolled", $ventana.scrollTop() > 40);
-
+  function marcarmenu() {
     var marca = $ventana.scrollTop() + window.innerHeight * 0.35;
     var actual = "";
     $secciones.each(function () {
@@ -175,19 +131,16 @@ $(function () {
         actual = "#" + this.id;
       }
     });
-    // el menú agrupa "ESTUDIO" bajo STUDIO
-    $enlacesMenu.each(function () {
+    $enlacesmenu.each(function () {
       $(this).toggleClass("activo", $(this).attr("href") === actual);
     });
   }
 
-  /* ---------------------------------------------
-       3. SIMPLEPARALLAX · galería de artistas
-    --------------------------------------------- */
-  var imagenesArtistas = document.querySelectorAll(".artista img");
-  if (window.simpleParallax && imagenesArtistas.length) {
-    new simpleParallax(imagenesArtistas, {
-      // scale más grande = la foto tiene más recorrido = se nota más
+  /*SIMPLEPARALLAX galería artistas*/
+
+  var imagenesartistas = document.querySelectorAll(".artista img");
+  if (window.SimpleParallax && imagenesartistas.length) {
+    new SimpleParallax(imagenesartistas, {
       scale: 1.6,
       delay: 0.6,
       transition: "cubic-bezier(0,0,0,1)",
@@ -196,51 +149,43 @@ $(function () {
     });
   }
 
-  /* ---------------------------------------------
-       4. TARJETAS FLOTANTES · estilos de tatuaje
-       Cada tarjeta se queda pegada (sticky) y la
-       siguiente la va tapando; la anterior se
-       encoge y se oscurece levemente.
-    --------------------------------------------- */
+  /*TARJETAS FLOTANTES estilos*/
+  
   var $tarjetas = $(".estilo");
-  var tarjetasPendientes = false;
+  var tarjetaspendientes = false;
 
-  // al pinchar en cualquier parte de la tarjeta se va a la página del
-  // estilo (la misma que su "LEER MÁS"); si se pincha en el propio
-  // enlace, ya funciona solo
   $tarjetas.on("click", function (e) {
     if ($(e.target).closest("a").length) {
       return;
     }
-    window.location.href = $(this).find(".leer-mas").attr("href");
+    window.location.href = $(this).find(".leermas").attr("href");
   });
 
   function limitar(n, min, max) {
     return Math.min(max, Math.max(min, n));
   }
 
-  function animarTarjetas() {
-    tarjetasPendientes = false;
+  function animartarjetas() {
+    tarjetaspendientes = false;
 
     $tarjetas.each(function (i) {
       var siguiente = $tarjetas.get(i + 1);
       if (!siguiente) {
-        return; // la última no se encoge
+        return;
       }
 
       var tarjeta = this;
-      var topPegada = parseFloat(window.getComputedStyle(tarjeta).top) || 0;
-      var topSiguientePegada =
+      var toppegada = parseFloat(window.getComputedStyle(tarjeta).top) || 0;
+      var topsiguientepegada =
         parseFloat(window.getComputedStyle(siguiente).top) || 0;
       var alto = tarjeta.offsetHeight;
       var hueco =
         parseFloat(window.getComputedStyle(tarjeta).marginBottom) || 0;
 
-      // distancia entre el borde superior de esta tarjeta (pegada) y el de la siguiente
-      var distancia = siguiente.getBoundingClientRect().top - topPegada;
-      var recorrido = alto + hueco - (topSiguientePegada - topPegada);
+      var distancia = siguiente.getBoundingClientRect().top - toppegada;
+      var recorrido = alto + hueco - (topsiguientepegada - toppegada);
       var progreso = limitar(
-        1 - (distancia - (topSiguientePegada - topPegada)) / recorrido,
+        1 - (distancia - (topsiguientepegada - toppegada)) / recorrido,
         0,
         1,
       );
@@ -255,214 +200,191 @@ $(function () {
     });
   }
 
-  function pedirAnimacionTarjetas() {
-    if (!tarjetasPendientes) {
-      tarjetasPendientes = true;
-      window.requestAnimationFrame(animarTarjetas);
+  function pediranimaciontarjetas() {
+    if (!tarjetaspendientes) {
+      tarjetaspendientes = true;
+      window.requestAnimationFrame(animartarjetas);
     }
   }
 
-  /* ---------------------------------------------
-       Scroll / resize (un solo listener)
-    --------------------------------------------- */
-  $ventana.on("scroll resize", function () {
-    marcarMenu();
-    pedirAnimacionTarjetas();
-  });
-  marcarMenu();
-  animarTarjetas();
+  /*   Scroll*/
 
-  /* ---------------------------------------------
-       5. CARRUSEL DE RESEÑAS (jQuery)
-    --------------------------------------------- */
+  $ventana.on("scroll resize", function () {
+    marcarmenu();
+    pediranimaciontarjetas();
+  });
+  marcarmenu();
+  animartarjetas();
+
+  /* CARRUSEL DE RESEÑAS*/
   (function carrusel() {
-    var $slider = $(".slider");
-    if (!$slider.length) {
+    var $carrusel = $(".carrusel");
+    if (!$carrusel.length) {
       return;
     }
 
-    var $ventanaSlider = $slider.find(".slider-ventana");
-    var $pista = $slider.find(".slider-pista");
+    var $ventanacarrusel = $carrusel.find(".carruselventana");
+    var $pista = $carrusel.find(".carruselpista");
     var $items = $pista.children(".resena");
-    var $puntos = $slider.find(".slider-puntos");
+    var $puntos = $carrusel.find(".carruselpuntos");
     var total = $items.length;
-    var porVista = 3;
 
-    var VELOCIDAD = 45; // px por segundo del desplazamiento continuo
-    var DURACION_SALTO = 600; // ms que tarda en moverse al usar flechas/puntos
+    var velocidad = 45;
+    var duracionsalto = 600;
 
-    var posicion = 0; // px desplazados hacia la izquierda
-    var pausado = false;
-    var salto = null; // {desde, hasta, inicio} mientras dura un salto
-    var ultimoTiempo = null;
+    var encima = false;
+    var destino = null;
 
-    // Copia de las reseñas al final: así, cuando se acaba la primera
-    // tanda, la pista vuelve a 0 sin que se note y el pase es infinito.
     $items
       .clone()
       .attr("aria-hidden", "true")
-      .addClass("resena-copia")
+      .addClass("resenacopia")
       .appendTo($pista);
 
-    // el movimiento lo hace JS, no la transición de CSS
-    $pista.css("transition", "none");
-
-    function calcularPorVista() {
-      var ancho = window.innerWidth;
-      if (ancho <= 700) {
-        return 1;
-      }
-      if (ancho <= 1100) {
-        return 2;
-      }
-      return 3;
-    }
-
-    function anchoItem() {
+    function anchoitem() {
       return $items.first().outerWidth() || 1;
     }
 
-    function anchoTanda() {
-      return anchoItem() * total;
+    function anchotanda() {
+      return anchoitem() * total;
     }
 
-    function crearPuntos() {
-      $puntos.empty();
-      for (var i = 0; i < total; i++) {
-        $('<button type="button" role="tab"></button>')
-          .attr("aria-label", "Ir a la reseña " + (i + 1))
-          .data("indice", i)
-          .appendTo($puntos);
+    function posicion() {
+      return -parseFloat($pista.css("left")) || 0;
+    }
+
+    for (var i = 0; i < total; i++) {
+      $('<button type="button" role="tab"></button>')
+        .attr("aria-label", "Ir a la reseña " + (i + 1))
+        .data("indice", i)
+        .appendTo($puntos);
+    }
+
+    function marcarpunto() {
+      var actual = Math.round(posicion() / anchoitem()) % total;
+      $puntos
+        .children()
+        .removeClass("activo")
+        .attr("aria-selected", "false")
+        .eq(actual)
+        .addClass("activo")
+        .attr("aria-selected", "true");
+    }
+
+    function avanzar() {
+      var falta = anchotanda() - posicion();
+      $pista.animate(
+        { left: -anchotanda() },
+        {
+          duration: (falta / velocidad) * 1000,
+          easing: "linear",
+          step: marcarpunto,
+          complete: function () {
+            $pista.css("left", 0);
+            avanzar();
+          },
+        },
+      );
+    }
+
+    function ira(indice) {
+      $pista.stop(true);
+
+      if (posicion() >= anchotanda()) {
+        $pista.css("left", -(posicion() - anchotanda()));
+        indice -= total;
       }
-    }
+      if (indice < 0) {
+        $pista.css("left", -(posicion() + anchotanda()));
+        indice += total;
+      }
 
-    function pintar() {
-      var tanda = anchoTanda();
-      posicion = ((posicion % tanda) + tanda) % tanda;
-      $pista.css("transform", "translateX(" + -posicion + "px)");
-
-      var actual = Math.round(posicion / anchoItem()) % total;
-      $puntos.children().each(function (i) {
-        $(this)
-          .toggleClass("activo", i === actual)
-          .attr("aria-selected", String(i === actual));
+      destino = indice;
+      $pista.animate({ left: -indice * anchoitem() }, duracionsalto, function () {
+        destino = null;
+        marcarpunto();
+        if (!encima) {
+          avanzar();
+        }
       });
     }
 
-    function suavizar(t) {
-      return 1 - Math.pow(1 - t, 3);
-    }
-
-    // flechas: avanza o retrocede una reseña con un salto suave
-    function moverUna(direccion) {
-      var ancho = anchoItem();
-      var base = salto ? salto.hasta : posicion;
-      // si una reseña acaba de pasar (menos de un 30 %),
-      // "anterior" vuelve a la de antes y no solo unos píxeles
-      var actual =
-        direccion > 0
-          ? Math.floor(base / ancho + 0.01)
-          : Math.ceil(base / ancho - 0.3);
-      var destino = actual + direccion;
-      if (destino < 0) {
-        posicion += anchoTanda();
-        destino += total;
+    function moveruna(direccion) {
+      var actual;
+      if (destino !== null) {
+        actual = destino;
+      } else if (direccion > 0) {
+        actual = Math.floor(posicion() / anchoitem() + 0.01);
+      } else {
+        actual = Math.ceil(posicion() / anchoitem() - 0.3);
       }
-      salto = { desde: posicion, hasta: destino * ancho, inicio: null };
+      ira(actual + direccion);
     }
 
-    function bucle(tiempo) {
-      if (ultimoTiempo === null) {
-        ultimoTiempo = tiempo;
-      }
-      var dt = Math.min(tiempo - ultimoTiempo, 100) / 1000;
-      ultimoTiempo = tiempo;
-
-      if (salto) {
-        if (salto.inicio === null) {
-          salto.inicio = tiempo;
-        }
-        var t = Math.min((tiempo - salto.inicio) / DURACION_SALTO, 1);
-        posicion = salto.desde + (salto.hasta - salto.desde) * suavizar(t);
-        if (t === 1) {
-          salto = null;
-        }
-      } else if (!pausado && !document.hidden) {
-        posicion += VELOCIDAD * dt;
-      }
-
-      pintar();
-      window.requestAnimationFrame(bucle);
-    }
-
-    function maquetar() {
-      porVista = calcularPorVista();
-      $pista.children().css("flex-basis", 100 / porVista + "%");
-      pintar();
-    }
-
-    $slider.on("click", ".slider-next", function () {
-      moverUna(1);
+    $carrusel.on("click", ".carruselsiguiente", function () {
+      moveruna(1);
     });
-    $slider.on("click", ".slider-prev", function () {
-      moverUna(-1);
+    $carrusel.on("click", ".carruselanterior", function () {
+      moveruna(-1);
     });
     $puntos.on("click", "button", function () {
-      salto = {
-        desde: posicion,
-        hasta: $(this).data("indice") * anchoItem(),
-        inicio: null,
-      };
+      ira($(this).data("indice"));
     });
 
-    // se para solo mientras el ratón está encima de las reseñas
-    $ventanaSlider
-      .on("mouseenter", function () {
-        pausado = true;
-      })
-      .on("mouseleave", function () {
-        pausado = false;
-      });
+    function pausar() {
+      encima = true;
+      if (destino === null) {
+        $pista.stop(true);
+      }
+    }
 
-    // gesto táctil: deslizar mueve una reseña
-    var inicioX = null;
-    $ventanaSlider
+    function seguir() {
+      encima = false;
+      if (destino === null) {
+        avanzar();
+      }
+    }
+
+    $ventanacarrusel.on("mouseenter", pausar).on("mouseleave", seguir);
+
+    var iniciox = null;
+    $ventanacarrusel
       .on("touchstart", function (e) {
-        inicioX = e.originalEvent.touches[0].clientX;
-        pausado = true;
+        iniciox = e.originalEvent.touches[0].clientX;
+        pausar();
       })
       .on("touchend", function (e) {
-        pausado = false;
-        if (inicioX === null) {
-          return;
-        }
-        var dx = e.originalEvent.changedTouches[0].clientX - inicioX;
+        var dx = e.originalEvent.changedTouches[0].clientX - iniciox;
+        encima = false;
         if (Math.abs(dx) > 40) {
-          moverUna(dx < 0 ? 1 : -1);
+          moveruna(dx < 0 ? 1 : -1);
+        } else {
+          seguir();
         }
-        inicioX = null;
       });
 
-    // flechas de teclado
-    $slider.on("keydown", function (e) {
-      if (e.key === "ArrowRight") {
-        moverUna(1);
+    var anchoantes = anchoitem();
+    $ventana.on("resize", function () {
+      var ancho = anchoitem();
+      if (ancho === anchoantes) {
+        return;
       }
-      if (e.key === "ArrowLeft") {
-        moverUna(-1);
+      $pista.stop(true);
+      $pista.css("left", (-posicion() / anchoantes) * ancho);
+      anchoantes = ancho;
+      destino = null;
+      marcarpunto();
+      if (!encima) {
+        avanzar();
       }
     });
 
-    $ventana.on("resize", maquetar);
-
-    crearPuntos();
-    maquetar();
-    window.requestAnimationFrame(bucle);
+    marcarpunto();
+    avanzar();
   })();
 
-  /* ---------------------------------------------
-       6. ACORDEÓN FAQ (jQuery)
-    --------------------------------------------- */
+  /* ACORDEÓN FAQ*/
+
   (function acordeon() {
     var $preguntas = $("#faq .pregunta");
     if (!$preguntas.length) {
@@ -473,7 +395,7 @@ $(function () {
       var $p = $(this);
       var $boton = $p.find("h3 button");
       var $respuesta = $p.find(".respuesta");
-      var id = "faq-respuesta-" + (i + 1);
+      var id = "faqrespuesta" + (i + 1);
 
       $respuesta.attr({ id: id, role: "region" });
       $boton.attr({ "aria-controls": id, "aria-expanded": "false" });
@@ -485,6 +407,10 @@ $(function () {
         .find("h3 button")
         .attr("aria-expanded", "true")
         .end()
+        .find("h3 button i")
+        .removeClass("fa-angle-down")
+        .addClass("fa-angle-up")
+        .end()
         .find(".respuesta")
         .stop(true, true)
         .slideDown(300);
@@ -495,6 +421,10 @@ $(function () {
         .find("h3 button")
         .attr("aria-expanded", "false")
         .end()
+        .find("h3 button i")
+        .removeClass("fa-angle-up")
+        .addClass("fa-angle-down")
+        .end()
         .find(".respuesta")
         .stop(true, true)
         .slideUp(300);
@@ -502,22 +432,20 @@ $(function () {
 
     $preguntas.find("h3 button").on("click", function () {
       var $p = $(this).closest(".pregunta");
-      var estabaAbierta = $p.hasClass("abierta");
+      var estabaabierta = $p.hasClass("abierta");
 
-      cerrar($preguntas.not($p)); // solo una abierta a la vez
-      if (estabaAbierta) {
+      cerrar($preguntas.not($p));
+      if (estabaabierta) {
         cerrar($p);
       } else {
         abrir($p);
       }
     });
 
-    // todas empiezan cerradas
   })();
 
-  /* ---------------------------------------------
-       7. VALIDACIÓN DEL FORMULARIO DE CITAS (jQuery)
-    --------------------------------------------- */
+  /*VALIDACIÓN DEL FORMULARIO DE CITAS*/
+  
   (function formulario() {
     var $form = $("#formulario");
     if (!$form.length) {
@@ -527,17 +455,16 @@ $(function () {
     var $mensaje = $form
       .find(".mensaje")
       .attr({ role: "status", "aria-live": "polite" });
-    var reNombre = /^[A-Za-zÀ-ÿñÑ][A-Za-zÀ-ÿñÑ' .-]{1,}$/;
-    var reEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    var reTelefono = /^(\+34|0034)?[6789]\d{8}$/;
+    var renombre = /^[A-Za-zÀ-ÿñÑ][A-Za-zÀ-ÿñÑ' .-]{1,}$/;
+    var reemail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    var retelefono = /^(\+34|0034)?[6789]\d{8}$/;
 
-    // cada regla devuelve un texto de error o '' si es válido
     var reglas = {
       nombre: function (v) {
         if (!v) {
           return "Escribe tu nombre.";
         }
-        if (!reNombre.test(v)) {
+        if (!renombre.test(v)) {
           return "Introduce un nombre válido (solo letras, mínimo 2).";
         }
         return "";
@@ -546,7 +473,7 @@ $(function () {
         if (!v) {
           return "Escribe tus apellidos.";
         }
-        if (!reNombre.test(v)) {
+        if (!renombre.test(v)) {
           return "Introduce unos apellidos válidos.";
         }
         return "";
@@ -555,7 +482,7 @@ $(function () {
         if (!v) {
           return "Escribe tu número de teléfono.";
         }
-        if (!reTelefono.test(v.replace(/[\s.-]/g, ""))) {
+        if (!retelefono.test(v.replace(/[\s.-]/g, ""))) {
           return "Introduce un teléfono válido (9 cifras, ej. 654 786 284).";
         }
         return "";
@@ -564,7 +491,7 @@ $(function () {
         if (!v) {
           return "Escribe tu correo electrónico.";
         }
-        if (!reEmail.test(v)) {
+        if (!reemail.test(v)) {
           return "Introduce un correo válido (ej. nombre@gmail.com).";
         }
         return "";
@@ -592,45 +519,50 @@ $(function () {
       },
     };
 
-    // un hueco de error bajo cada campo
     $form.find(".campo").each(function () {
       var $campo = $(this);
       var $control = $campo.find("input, select, textarea");
-      var id = $control.attr("id") + "-error";
+      var id = $control.attr("id") + "error";
       $('<span class="error" role="alert"></span>')
         .attr("id", id)
         .appendTo($campo);
       $control.attr("aria-describedby", id);
     });
 
-    /* Máximo de 150 palabras en "Escríbenos la idea de tu tattoo".
-       Un contador debajo y, si se pasa, el texto se corta en la
-       palabra 150 (también si se pega un texto largo) */
-    var MAX_PALABRAS = 150;
+    /* flecha del desplegable de artista */
+    $form
+      .find(".selector select")
+      .on("focus", function () {
+        $(this).next("i").removeClass("fa-angle-down").addClass("fa-angle-up");
+      })
+      .on("blur change", function () {
+        $(this).next("i").removeClass("fa-angle-up").addClass("fa-angle-down");
+      });
+
+    var maxpalabras = 150;
     var $idea = $form.find("#idea");
     var $contador = $('<span class="contador" aria-live="polite"></span>');
     $idea.after($contador);
 
-    function contarPalabras(texto) {
+    function contarpalabras(texto) {
       var palabras = $.trim(texto).split(/\s+/);
       return palabras[0] === "" ? 0 : palabras.length;
     }
 
-    function limitarPalabras() {
+    function limitarpalabras() {
       var texto = $idea.val();
-      if (contarPalabras(texto) > MAX_PALABRAS) {
-        // se queda con el texto hasta el final de la palabra 150
-        var corte = texto.match(new RegExp("^\\s*(\\S+\\s+){" + (MAX_PALABRAS - 1) + "}\\S+"));
+      if (contarpalabras(texto) > maxpalabras) {
+        var corte = texto.match(new RegExp("^\\s*(\\S+\\s+){" + (maxpalabras - 1) + "}\\S+"));
         $idea.val(corte[0]);
       }
-      var total = contarPalabras($idea.val());
+      var total = contarpalabras($idea.val());
       $contador
-        .text(total + " / " + MAX_PALABRAS + " palabras")
-        .toggleClass("lleno", total >= MAX_PALABRAS);
+        .text(total + " / " + maxpalabras + " palabras")
+        .toggleClass("lleno", total >= maxpalabras);
     }
 
-    $idea.on("input", limitarPalabras);
-    limitarPalabras();
+    $idea.on("input", limitarpalabras);
+    limitarpalabras();
 
     function validar($control) {
       var nombre = $control.attr("name");
@@ -650,7 +582,6 @@ $(function () {
       return !error;
     }
 
-    // al salir del campo y al escribir (si ya tenía error)
     $form.on("blur", "input, select, textarea", function () {
       validar($(this));
     });
@@ -679,7 +610,6 @@ $(function () {
         return;
       }
 
-      // aquí iría el envío real (fetch/AJAX); en la maqueta lo simulamos
       var $enviar = $form.find(".enviar").prop("disabled", true);
       window.setTimeout(function () {
         var nombre = $.trim($form.find("#nombre").val());
@@ -689,7 +619,7 @@ $(function () {
           .removeClass("invalido")
           .attr("aria-invalid", "false");
         $form.find(".error").text("");
-        limitarPalabras(); // el contador vuelve a 0
+        limitarpalabras();
         $enviar.prop("disabled", false);
         $mensaje
           .addClass("ok")

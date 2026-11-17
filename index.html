@@ -5,37 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Estudio de tatuaje en el centro de Madrid: realismo, lettering, japanese, fine line y black & grey."
-    />
+      content="Estudio de tatuaje en el centro de Madrid: realismo, lettering, japanese, fine line y black & grey."/>
+
     <title>El Gato Negro | Estudio de tatuaje en Madrid</title>
     <link rel="icon" type="image/png" href="IMG/favicon.png" />
 
-    <!-- fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&amp;family=League+Spartan:wght@300;400;500;900&amp;display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
 
-    <!-- AOS (animaciones al hacer scroll) -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body id="inicio" class="home">
-    <!-- MENU -->
+
+   <!-- NAV -->
+
+  <body id="inicio">
+   
     <header>
       <nav>
         <a class="logo" href="#inicio">EL GATO NEGRO</a>
 
         <button class="hamburguesa" type="button" aria-label="Abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
+          <i class="fa-solid fa-bars"></i>
         </button>
 
         <ul class="menu">
@@ -47,14 +48,13 @@
       </nav>
     </header>
 
+     <!-- hero -->
+
     <main>
-      <!-- PORTADA: el vídeo se queda fijo y el panel de textos
-           (#estudio) sube por encima hasta cubrirlo -->
       <div class="capas">
-      <!-- HERO -->
-      <section class="hero capa-fija">
+     
+      <section class="hero capafija">
         <h1 class="oculto">El Gato Negro, estudio de tatuaje en Madrid</h1>
-        <!-- vídeo en silencio y en bucle; la imagen se ve mientras carga -->
         <video
           autoplay
           muted
@@ -66,14 +66,10 @@
         </video>
       </section>
 
-      <!-- ESTUDIO -->
-      <section id="estudio" class="capa-sube">
+      <!-- estudio -->
+      <section id="estudio" class="capasube">
         <h2 class="oculto">El estudio</h2>
 
-        <!-- AOS en 4 pasos, uno por cada scroll. El panel se queda
-             fijo y los .paso (espacio vacío de abajo) pasan por la
-             pantalla: cada uno dispara su texto (data-aos-anchor).
-             1 ¿QUIÉNES SOMOS?  2 su texto  3 VISIÓN  4 VALORES -->
         <article class="quienes" id="quienes">
           <h3
             data-aos="fade-up"
@@ -85,7 +81,7 @@
           <p
             data-aos="fade-up"
             data-aos-duration="1400"
-            data-aos-anchor="#paso-texto"
+            data-aos-anchor="#pasotexto"
             data-aos-anchor-placement="top-bottom"
             data-aos-offset="0"
           >
@@ -97,7 +93,7 @@
             data-aos="fade-up"
             data-aos-duration="1400"
             data-aos-delay="250"
-            data-aos-anchor="#paso-texto"
+            data-aos-anchor="#pasotexto"
             data-aos-anchor-placement="top-bottom"
             data-aos-offset="0"
           >
@@ -112,10 +108,9 @@
 
         <article
           class="vision"
-          id="vision"
           data-aos="fade-up"
           data-aos-duration="1400"
-          data-aos-anchor="#paso-vision"
+          data-aos-anchor="#pasovision"
           data-aos-anchor-placement="top-bottom"
           data-aos-offset="0"
         >
@@ -133,10 +128,9 @@
 
         <article
           class="valores"
-          id="valores"
           data-aos="fade-up"
           data-aos-duration="1400"
-          data-aos-anchor="#paso-valores"
+          data-aos-anchor="#pasovalores"
           data-aos-anchor-placement="top-bottom"
           data-aos-offset="0"
         >
@@ -153,133 +147,156 @@
         </article>
       </section>
 
-      <!-- espacio de scroll mientras el panel está fijo (escritorio) -->
       <div class="pasos" aria-hidden="true">
-        <span id="paso-texto"></span>
-        <span id="paso-vision"></span>
-        <span id="paso-valores"></span>
+        <span id="pasotexto"></span>
+        <span id="pasovision"></span>
+        <span id="pasovalores"></span>
       </div>
       </div>
 
-      <!-- ARTISTAS -->
+      <!-- artistas -->
       <section id="artistas">
         <h2 class="titulo">ARTISTAS</h2>
-        <div class="grid-artistas">
-          <article class="artista">
-            <a class="foto-artista" href="tomas.html"><img
+        <div class="galeriaartistas">
+          <figure class="artista">
+            <a class="fotoartista" href="tomas.html"><img
+              class="fototomas"
               src="IMG/Artistas/A1.jpg"
               alt="Tomás Arrieta"
               width="1104"
               height="960"
             /></a>
-            <h3>Tomás Arrieta</h3>
-            <p class="rol">Founder</p>
-            <a class="ver-artista" href="tomas.html">
-              Descubre a Tomás
-            </a>
-          </article>
+            <figcaption>
+              <h3>Tomás Arrieta</h3>
+              <p class="rol">Founder</p>
+              <a class="verartista" href="tomas.html">
+                Descubre a Tomás
+              </a>
+            </figcaption>
+          </figure>
 
-          <article class="artista">
-            <a class="foto-artista" href="nora.html"><img
+          <figure class="artista">
+            <a class="fotoartista" href="nora.html"><img
+              class="fotonora"
               src="IMG/Artistas/A2.jpg"
               alt="Nora Valcárcel"
               width="1104"
               height="960"
             /></a>
-            <h3>Nora Valcárcel</h3>
-            <p class="rol">Founder</p>
-            <a class="ver-artista" href="nora.html">
-              Descubre a Nora
-            </a>
-          </article>
+            <figcaption>
+              <h3>Nora Valcárcel</h3>
+              <p class="rol">Founder</p>
+              <a class="verartista" href="nora.html">
+                Descubre a Nora
+              </a>
+            </figcaption>
+          </figure>
 
-          <article class="artista">
-            <a class="foto-artista" href="dario.html"><img
+          <figure class="artista">
+            <a class="fotoartista" href="dario.html"><img
+              class="fotodario"
               src="IMG/Artistas/A3.jpg"
               alt="Darío Mendes"
               width="1104"
               height="960"
             /></a>
-            <h3>Darío Mendes</h3>
-            <p class="rol">Head Artist</p>
-            <a class="ver-artista" href="dario.html">
-              Descubre a Darío
-            </a>
-          </article>
+            <figcaption>
+              <h3>Darío Mendes</h3>
+              <p class="rol">Head Artist</p>
+              <a class="verartista" href="dario.html">
+                Descubre a Darío
+              </a>
+            </figcaption>
+          </figure>
 
-          <article class="artista">
-            <a class="foto-artista" href="hugo.html"><img
+          <figure class="artista">
+            <a class="fotoartista" href="hugo.html"><img
+              class="fotohugo"
               src="IMG/Artistas/A4.jpg"
               alt="Hugo Sarmiento"
               width="1104"
               height="960"
             /></a>
-            <h3>Hugo Sarmiento</h3>
-            <p class="rol">Head Artist</p>
-            <a class="ver-artista" href="hugo.html">
-              Descubre a Hugo
-            </a>
-          </article>
+            <figcaption>
+              <h3>Hugo Sarmiento</h3>
+              <p class="rol">Head Artist</p>
+              <a class="verartista" href="hugo.html">
+                Descubre a Hugo
+              </a>
+            </figcaption>
+          </figure>
 
-          <article class="artista">
-            <a class="foto-artista" href="amara.html"><img
+          <figure class="artista">
+            <a class="fotoartista" href="amara.html"><img
+              class="fotoamara"
               src="IMG/Artistas/A5.jpg"
               alt="Amara Ndiaye"
               width="1104"
               height="960"
             /></a>
-            <h3>Amara Ndiaye</h3>
-            <p class="rol">Resident Artist</p>
-            <a class="ver-artista" href="amara.html">
-              Descubre a Amara
-            </a>
-          </article>
+            <figcaption>
+              <h3>Amara Ndiaye</h3>
+              <p class="rol">Resident Artist</p>
+              <a class="verartista" href="amara.html">
+                Descubre a Amara
+              </a>
+            </figcaption>
+          </figure>
 
-          <article class="artista">
-            <a class="foto-artista" href="mei.html"><img
+          <figure class="artista">
+            <a class="fotoartista" href="mei.html"><img
+              class="fotomei"
               src="IMG/Artistas/A6.jpg"
               alt="Mei Ochoa"
               width="1104"
               height="960"
             /></a>
-            <h3>Mei Ochoa</h3>
-            <p class="rol">Resident Artist</p>
-            <a class="ver-artista" href="mei.html">
-              Descubre a Mei
-            </a>
-          </article>
+            <figcaption>
+              <h3>Mei Ochoa</h3>
+              <p class="rol">Resident Artist</p>
+              <a class="verartista" href="mei.html">
+                Descubre a Mei
+              </a>
+            </figcaption>
+          </figure>
 
-          <article class="artista">
-            <a class="foto-artista" href="ines.html"><img
+          <figure class="artista">
+            <a class="fotoartista" href="ines.html"><img
+              class="fotoines"
               src="IMG/Artistas/A7.jpg"
               alt="Inés Lorente"
               width="1104"
               height="960"
             /></a>
-            <h3>Inés Lorente</h3>
-            <p class="rol">Apprentice</p>
-            <a class="ver-artista" href="ines.html">
-              Descubre a Inés
-            </a>
-          </article>
+            <figcaption>
+              <h3>Inés Lorente</h3>
+              <p class="rol">Apprentice</p>
+              <a class="verartista" href="ines.html">
+                Descubre a Inés
+              </a>
+            </figcaption>
+          </figure>
 
-          <article class="artista">
-            <a class="foto-artista" href="ernesto.html"><img
+          <figure class="artista">
+            <a class="fotoartista" href="ernesto.html"><img
+              class="fotoernesto"
               src="IMG/Artistas/A8.jpg"
               alt="Ernesto Vidal"
               width="1104"
               height="960"
             /></a>
-            <h3>Ernesto Vidal</h3>
-            <p class="rol">Guest Artist</p>
-            <a class="ver-artista" href="ernesto.html">
-              Descubre a Ernesto
-            </a>
-          </article>
+            <figcaption>
+              <h3>Ernesto Vidal</h3>
+              <p class="rol">Guest Artist</p>
+              <a class="verartista" href="ernesto.html">
+                Descubre a Ernesto
+              </a>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
-      <!-- ESTILOS -->
+      <!-- estilos -->
       <section id="estilos">
         <h2 class="oculto">Estilos</h2>
         <article class="estilo">
@@ -295,10 +312,9 @@
               La realidad llevada a la piel. Retratos, texturas y detalles que
               parecen cobrar vida.
             </p>
-            <a class="leer-mas" href="realismo.html"
+            <a class="leermas" href="realismo.html"
               >LEER MÁS
-              <img src="IMG/iconos/flecha.svg" alt="" width="12" height="12"
-            /></a>
+              <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -315,10 +331,9 @@
               Letras que transmiten emociones a través de la forma, el trazo y
               la personalidad.
             </p>
-            <a class="leer-mas" href="lettering.html"
+            <a class="leermas" href="lettering.html"
               >LEER MÁS
-              <img src="IMG/iconos/flecha.svg" alt="" width="12" height="12"
-            /></a>
+              <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -336,10 +351,9 @@
               personajes, combinando color, simbolismo y composiciones llenas de
               carácter.
             </p>
-            <a class="leer-mas" href="japanese.html"
+            <a class="leermas" href="japanese.html"
               >LEER MÁS
-              <img src="IMG/iconos/flecha.svg" alt="" width="12" height="12"
-            /></a>
+              <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -356,10 +370,9 @@
               Tatuajes que expresan grandes ideas a través de líneas delicadas,
               precisión y sutileza.
             </p>
-            <a class="leer-mas" href="fine-line.html"
+            <a class="leermas" href="fine-line.html"
               >LEER MÁS
-              <img src="IMG/iconos/flecha.svg" alt="" width="12" height="12"
-            /></a>
+              <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </article>
 
@@ -376,24 +389,23 @@
               Arte en blanco y negro que cobra vida mediante contrastes, sombras
               y profundidad.
             </p>
-            <a class="leer-mas" href="black-grey.html"
+            <a class="leermas" href="black-grey.html"
               >LEER MÁS
-              <img src="IMG/iconos/flecha.svg" alt="" width="12" height="12"
-            /></a>
+              <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </article>
       </section>
 
-      <!-- RESEÑAS -->
+      <!-- CARRUSELreseñas -->
       <section id="resenas">
         <h2 class="titulo">LO QUE DICEN QUIENES NOS ELIGEN</h2>
         <div
-          class="slider"
+          class="carrusel"
           aria-roledescription="carrusel"
           aria-label="Reseñas de clientes"
         >
-          <div class="slider-ventana">
-            <div class="slider-pista">
+          <div class="carruselventana">
+            <div class="carruselpista">
               <figure class="resena">
                 <blockquote>
                   <p>
@@ -504,38 +516,38 @@
             </div>
           </div>
 
-          <div class="slider-controles">
+          <div class="carruselcontroles">
             <button
-              class="slider-btn slider-prev"
+              class="carruselboton carruselanterior"
               type="button"
               aria-label="Reseña anterior"
             >
-              &larr;
+              <i class="fa-solid fa-arrow-left"></i>
             </button>
             <div
-              class="slider-puntos"
+              class="carruselpuntos"
               role="tablist"
               aria-label="Elegir reseña"
             ></div>
             <button
-              class="slider-btn slider-next"
+              class="carruselboton carruselsiguiente"
               type="button"
               aria-label="Reseña siguiente"
             >
-              &rarr;
+              <i class="fa-solid fa-arrow-right"></i>
             </button>
           </div>
         </div>
       </section>
 
-      <!-- FAQ -->
+      <!-- faq -->
       <section id="faq">
         <h2 class="titulo">FAQS</h2>
         <div class="pregunta">
           <h3>
             <button type="button">
               ¿Cuánto cuesta un tatuaje?
-              <img src="IMG/iconos/chevron.svg" alt="" width="77" height="62" />
+              <i class="fa-solid fa-angle-down"></i>
             </button>
           </h3>
           <div class="respuesta">
@@ -552,7 +564,7 @@
           <h3>
             <button type="button">
               ¿Tengo que dejar un depósito para reservar?
-              <img src="IMG/iconos/chevron.svg" alt="" width="77" height="62" />
+              <i class="fa-solid fa-angle-down"></i>
             </button>
           </h3>
           <div class="respuesta">
@@ -568,7 +580,7 @@
           <h3>
             <button type="button">
               ¿Qué debo hacer antes de la cita?
-              <img src="IMG/iconos/chevron.svg" alt="" width="77" height="62" />
+              <i class="fa-solid fa-angle-down"></i>
             </button>
           </h3>
           <div class="respuesta">
@@ -584,7 +596,7 @@
           <h3>
             <button type="button">
               ¿Puedo ir acompañado a la sesión?
-              <img src="IMG/iconos/chevron.svg" alt="" width="77" height="62" />
+              <i class="fa-solid fa-angle-down"></i>
             </button>
           </h3>
           <div class="respuesta">
@@ -600,7 +612,7 @@
           <h3>
             <button type="button">
               ¿Hace falta ser mayor de edad?
-              <img src="IMG/iconos/chevron.svg" alt="" width="77" height="62" />
+              <i class="fa-solid fa-angle-down"></i>
             </button>
           </h3>
           <div class="respuesta">
@@ -612,7 +624,7 @@
         </div>
       </section>
 
-      <!-- RESERVA -->
+      <!-- CITA -->
       <section id="reserva">
         <h2 class="titulo">¿TIENES UNA IDEA?</h2>
         <p class="subtitulo">RESERVA UNA CITA CON NOSOTROS</p>
@@ -636,18 +648,21 @@
           </div>
           <div class="campo">
             <label for="artista">ARTISTA</label>
-            <select id="artista" name="artista">
-              <option value="">Elige un artista</option>
-              <option value="tomas">Tomás Arrieta</option>
-              <option value="nora">Nora Valcárcel</option>
-              <option value="dario">Darío Mendes</option>
-              <option value="hugo">Hugo Sarmiento</option>
-              <option value="amara">Amara Ndiaye</option>
-              <option value="mei">Mei Ochoa</option>
-              <option value="ines">Inés Lorente</option>
-              <option value="ernesto">Ernesto Vidal</option>
-              <option value="cualquiera">Sin preferencia</option>
-            </select>
+            <div class="selector">
+              <select id="artista" name="artista">
+                <option value="">Elige un artista</option>
+                <option value="tomas">Tomás Arrieta</option>
+                <option value="nora">Nora Valcárcel</option>
+                <option value="dario">Darío Mendes</option>
+                <option value="hugo">Hugo Sarmiento</option>
+                <option value="amara">Amara Ndiaye</option>
+                <option value="mei">Mei Ochoa</option>
+                <option value="ines">Inés Lorente</option>
+                <option value="ernesto">Ernesto Vidal</option>
+                <option value="cualquiera">Sin preferencia</option>
+              </select>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
           </div>
           <div class="campo">
             <label for="zona">LUGAR DEL CUERPO</label>
@@ -670,10 +685,10 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- footer -->
     <footer>
       <div class="columnas">
-        <div class="bloque">
+        <div>
           <h2>DESCÚBRENOS</h2>
           <ul class="enlaces">
             <li><a href="#quienes">¿QUIÉNES SOMOS?</a></li>
@@ -686,7 +701,7 @@
           </ul>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>ESTILOS</h2>
           <ul class="enlaces">
             <li><a href="realismo.html">REALISMO</a></li>
@@ -697,40 +712,22 @@
           </ul>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>SÍGUENOS</h2>
           <ul class="enlaces redes">
             <li>
               <a href="https://www.instagram.com/" target="_blank"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                INSTAGRAM</a
+                ><i class="fa-solid fa-arrow-right"></i>INSTAGRAM</a
               >
             </li>
             <li>
               <a href="https://www.tiktok.com/" target="_blank"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                TIKTOK</a
+                ><i class="fa-solid fa-arrow-right"></i>TIKTOK</a
               >
             </li>
             <li>
               <a href="https://www.youtube.com/" target="_blank"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                YOUTUBE</a
+                ><i class="fa-solid fa-arrow-right"></i>YOUTUBE</a
               >
             </li>
           </ul>
@@ -738,26 +735,21 @@
       </div>
 
       <div class="columnas">
-        <div class="bloque">
+        <div>
           <h2>DIRECCIÓN</h2>
           <address>
             <p>
-              <img
-                src="IMG/iconos/ubicacion.svg"
-                alt=""
-                width="16"
-                height="16"
-              />
-              <a href="https://www.google.com/maps/place/C.+del+Esp%C3%ADritu+Santo,+21,+Centro,+28004+Madrid/@40.4254117,-3.7071054,17z/data=!3m1!4b1!4m6!3m5!1s0xd422862f664e7ad:0xa2b58b1fc3310ff6!8m2!3d40.4254117!4d-3.7045305!16s%2Fg%2F11cnd8j7w0?entry=ttu&amp;g_ep=EgoyMDI2MTEwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">C/ DEL ESPÍRITU SANTO 21, 28004 MADRID</a>
+              <i class="fa-solid fa-location-dot"></i>
+             C/ DEL ESPÍRITU SANTO 21, 28004 MADRID
             </p>
             <p>
-              <img src="IMG/iconos/reloj.svg" alt="" width="14" height="14" />
+              <i class="fa-regular fa-clock"></i>
               L–V 10–21 · S 9–20 · D 10–19
             </p>
           </address>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>CONTÁCTANOS</h2>
           <address>
             <p><a href="tel:+34654786284">+34 654 786 284</a></p>
@@ -776,7 +768,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.2/dist/simpleParallax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@7.0.0/dist/vanilla/simpleParallaxVanilla.umd.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

@@ -5,37 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Conoce el estudio de El Gato Negro: un espacio de tatuaje en el centro de Madrid pensado para la calma, la luz y el detalle."
-    />
+      content="Conoce el estudio de El Gato Negro: un espacio de tatuaje en el centro de Madrid pensado para la calma, la luz y el detalle."/>
     <title>El estudio | El Gato Negro</title>
     <link rel="icon" type="image/png" href="IMG/favicon.png" />
 
-    <!-- fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,300&amp;family=League+Spartan:wght@300;400;500;900&amp;display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
 
-    <!-- AOS (animaciones al hacer scroll) -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body id="inicio" class="studio">
-    <!-- MENU -->
+
+    <!-- NAV -->
+
+  <body id="inicio">
+  
     <header>
       <nav>
         <a class="logo" href="index.html">EL GATO NEGRO</a>
 
         <button class="hamburguesa" type="button" aria-label="Abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
+          <i class="fa-solid fa-bars"></i>
         </button>
 
         <ul class="menu">
@@ -47,11 +47,13 @@
       </nav>
     </header>
 
+      <!-- hero -->
+
+
     <main>
-      <!-- CAPAS: el vídeo se queda fijo y la banda de foto sube encima -->
       <div class="capas" data-sin-encoger>
-      <!-- HERO: vídeo + título + tarjeta de texto -->
-      <section class="st-hero capa-fija">
+  
+      <section class="studiohero capafija">
         <video
           poster="IMG/studio/mesa-diseno.jpg"
           autoplay
@@ -65,13 +67,14 @@
         <h1 class="oculto">El estudio de El Gato Negro</h1>
       </section>
 
-      <!-- TEXTOS: este panel sube por encima del vídeo -->
-      <section class="st-intro capa-sube">
-        <p class="st-intro-a" data-aos="fade-up" data-aos-duration="1000">
+      <!-- textos -->
+      <section class="studiointro capasube">
+        <h2 class="oculto">Nuestro estudio</h2>
+        <p class="studiointro1" data-aos="fade-up" data-aos-duration="1000">
           Nuestro estudio en pleno centro de Madrid.
         </p>
         <p
-          class="st-intro-b"
+          class="studiointro2"
           data-aos="fade-left"
           data-aos-duration="1000"
           data-aos-delay="150"
@@ -80,7 +83,7 @@
           desde que entras hasta que sales con tu pieza terminada
         </p>
         <p
-          class="st-intro-c"
+          class="studiointro3"
           data-aos="fade-left"
           data-aos-duration="1000"
           data-aos-delay="300"
@@ -90,8 +93,9 @@
       </section>
       </div>
 
-      <!-- BANDA DE IMAGEN -->
-      <section class="st-banda">
+      <!-- imagenSTUDIO -->
+      <section class="studiobanda">
+        <h2 class="oculto">Mesa de diseño</h2>
         <img
           src="IMG/studio/mesa-diseno.jpg"
           alt="Mesa de diseño del estudio con bocetos de tatuajes"
@@ -100,39 +104,39 @@
         />
       </section>
 
-      <!-- FRASES -->
-      <section class="st-frases">
-        <h2 class="st-grande">La mala suerte es no venir.</h2>
-        <p class="st-ligera st-izq">Cuero, nogal y arte en las paredes.</p>
-        <p class="st-ligera st-der">Diseñado para crear sin prisas.</p>
+      <!-- frases -->
+      <section class="studiofrases">
+        <h2 class="studiogrande">La mala suerte es no venir.</h2>
+        <p class="studioligera studioizq">Cuero, nogal y arte en las paredes.</p>
+        <p class="studioligera studioder">Diseñado para crear sin prisas.</p>
       </section>
 
-      <!-- IMÁGENES -->
-      <section class="st-galeria" aria-label="Galería del estudio">
-        <figure class="st-img st-img-1">
+      <!-- fotos -->
+      <section class="studiogaleria" aria-label="Galería del estudio">
+        <button class="studioimg studioimg1" type="button" aria-label="Ver foto 1 en grande">
           <img
             src="IMG/studio/recepcion.jpg"
             alt="Zona de recepción con sofá de cuero y plantas"
           />
-        </figure>
-        <figure class="st-img st-img-2">
+        </button>
+        <button class="studioimg studioimg2" type="button" aria-label="Ver foto 2 en grande">
           <img
             src="IMG/studio/mostrador.jpg"
             alt="Mostrador negro con el gato del estudio"
           />
-        </figure>
-        <figure class="st-img st-img-3">
+        </button>
+        <button class="studioimg studioimg3" type="button" aria-label="Ver foto 3 en grande">
           <img
             src="IMG/studio/cabina-2.jpg"
             alt="Cabina de tatuaje con camilla"
           />
-        </figure>
-        <figure class="st-img st-img-4">
+        </button>
+        <button class="studioimg studioimg4" type="button" aria-label="Ver foto 4 en grande">
           <img
             src="IMG/studio/plano.png"
             alt="Plano de la planta del estudio con sus cabinas y zonas comunes"
           />
-        </figure>
+        </button>
       </section>
 
       <section id="reserva">
@@ -158,18 +162,21 @@
           </div>
           <div class="campo">
             <label for="artista">ARTISTA</label>
-            <select id="artista" name="artista">
-              <option value="">Elige un artista</option>
-              <option value="tomas">Tomás Arrieta</option>
-              <option value="nora">Nora Valcárcel</option>
-              <option value="dario">Darío Mendes</option>
-              <option value="hugo">Hugo Sarmiento</option>
-              <option value="amara">Amara Ndiaye</option>
-              <option value="mei">Mei Ochoa</option>
-              <option value="ines">Inés Lorente</option>
-              <option value="ernesto">Ernesto Vidal</option>
-              <option value="cualquiera">Sin preferencia</option>
-            </select>
+            <div class="selector">
+              <select id="artista" name="artista">
+                <option value="">Elige un artista</option>
+                <option value="tomas">Tomás Arrieta</option>
+                <option value="nora">Nora Valcárcel</option>
+                <option value="dario">Darío Mendes</option>
+                <option value="hugo">Hugo Sarmiento</option>
+                <option value="amara">Amara Ndiaye</option>
+                <option value="mei">Mei Ochoa</option>
+                <option value="ines">Inés Lorente</option>
+                <option value="ernesto">Ernesto Vidal</option>
+                <option value="cualquiera">Sin preferencia</option>
+              </select>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
           </div>
           <div class="campo">
             <label for="zona">LUGAR DEL CUERPO</label>
@@ -191,12 +198,10 @@
         </form>
       </section>
 
-      <!-- DÓNDE ESTAMOS -->
-
-      <!-- VISÍTANOS -->
-      <section class="st-visitanos" id="donde">
+      <!-- visitanos -->
+      <section class="studiovisitanos">
         <div
-          class="st-visita-texto"
+          class="studiovisitatexto"
           data-aos="fade-right"
           data-aos-duration="900"
         >
@@ -206,8 +211,7 @@
             Tribunal / Noviciado
           </p>
           <a
-            class="st-boton-mapa"
-            id="ver-mapa"
+            class="studiobotonmapa"
             href="https://www.google.com/maps/place/C.+del+Esp%C3%ADritu+Santo,+21,+Centro,+28004+Madrid/@40.4254117,-3.7071054,17z/data=!3m1!4b1!4m6!3m5!1s0xd422862f664e7ad:0xa2b58b1fc3310ff6!8m2!3d40.4254117!4d-3.7045305!16s%2Fg%2F11cnd8j7w0?entry=ttu&g_ep=EgoyMDI2MTEwOC4wIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
@@ -216,7 +220,7 @@
         </div>
 
         <a
-          class="st-mapa"
+          class="studiomapa"
           href="https://www.google.com/maps/place/C.+del+Esp%C3%ADritu+Santo,+21,+Centro,+28004+Madrid/@40.4254117,-3.7071054,17z/data=!3m1!4b1!4m6!3m5!1s0xd422862f664e7ad:0xa2b58b1fc3310ff6!8m2!3d40.4254117!4d-3.7045305!16s%2Fg%2F11cnd8j7w0?entry=ttu&g_ep=EgoyMDI2MTEwOC4wIKXMDSoASAFQAw%3D%3D"
           target="_blank"
           rel="noopener noreferrer"
@@ -232,10 +236,10 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- footer -->
     <footer>
       <div class="columnas">
-        <div class="bloque">
+        <div>
           <h2>DESCÚBRENOS</h2>
           <ul class="enlaces">
             <li><a href="index.html#quienes">¿QUIÉNES SOMOS?</a></li>
@@ -248,7 +252,7 @@
           </ul>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>ESTILOS</h2>
           <ul class="enlaces">
             <li><a href="realismo.html">REALISMO</a></li>
@@ -259,7 +263,7 @@
           </ul>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>SÍGUENOS</h2>
           <ul class="enlaces redes">
             <li>
@@ -267,35 +271,17 @@
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noopener"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                INSTAGRAM</a
+                ><i class="fa-solid fa-arrow-right"></i>INSTAGRAM</a
               >
             </li>
             <li>
               <a href="https://www.tiktok.com/" target="_blank" rel="noopener"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                TIKTOK</a
+                ><i class="fa-solid fa-arrow-right"></i>TIKTOK</a
               >
             </li>
             <li>
               <a href="https://www.youtube.com/" target="_blank" rel="noopener"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                YOUTUBE</a
+                ><i class="fa-solid fa-arrow-right"></i>YOUTUBE</a
               >
             </li>
           </ul>
@@ -303,26 +289,21 @@
       </div>
 
       <div class="columnas">
-        <div class="bloque">
+        <div>
           <h2>DIRECCIÓN</h2>
           <address>
             <p>
-              <img
-                src="IMG/iconos/ubicacion.svg"
-                alt=""
-                width="16"
-                height="16"
-              />
-              <a href="https://www.google.com/maps/place/C.+del+Esp%C3%ADritu+Santo,+21,+Centro,+28004+Madrid/@40.4254117,-3.7071054,17z/data=!3m1!4b1!4m6!3m5!1s0xd422862f664e7ad:0xa2b58b1fc3310ff6!8m2!3d40.4254117!4d-3.7045305!16s%2Fg%2F11cnd8j7w0?entry=ttu&amp;g_ep=EgoyMDI2MTEwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">C/ DEL ESPÍRITU SANTO 21, 28004 MADRID</a>
+              <i class="fa-solid fa-location-dot"></i>
+              C/ DEL ESPÍRITU SANTO 21, 28004 MADRID
             </p>
             <p>
-              <img src="IMG/iconos/reloj.svg" alt="" width="14" height="14" />
+              <i class="fa-regular fa-clock"></i>
               L–V 10–21 · S 9–20 · D 10–19
             </p>
           </address>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>CONTÁCTANOS</h2>
           <address>
             <p><a href="tel:+34654786284">+34 654 786 284</a></p>
@@ -339,10 +320,18 @@
       </div>
     </footer>
 
+    <!-- ventana de fotos -->
+    <div class="ventana" role="dialog" aria-modal="true" aria-label="Foto en grande">
+      <button class="ventanacerrar" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      <button class="ventanaflecha ventanaantes" type="button" aria-label="Foto anterior"><i class="fa-solid fa-arrow-left"></i></button>
+      <img src="IMG/studio/recepcion.jpg" alt="" />
+      <button class="ventanaflecha ventanadespues" type="button" aria-label="Foto siguiente"><i class="fa-solid fa-arrow-right"></i></button>
+      <p class="ventanacontador"></p>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/studio.js"></script>
+    <script src="js/artista.js"></script>
   </body>
 </html>
-<!-- prueba -->

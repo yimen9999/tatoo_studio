@@ -1,12 +1,8 @@
-/* =====================================================
-   EL GATO NEGRO · Estudio de tatuaje
-   Hoja de estilos única de toda la web (home + studio)
-   ===================================================== */
 
-/* ---------- Variables ---------- */
+/*Variables*/
+
 :root {
   --gris: #e0e0e0;
-  --gris-tarjeta: #d9d9d9;
   --gris-texto: #5c5c5c;
   --negro: #000;
   --error: #b3261e;
@@ -14,9 +10,11 @@
   --titulos: "League Spartan", sans-serif;
   --textos: "DM Sans", sans-serif;
   --alto-menu: 80px;
+  --i: 0;
+  --op: 0.5;
 }
 
-/* ---------- Reset ---------- */
+/*Reset*/
 *,
 *::before,
 *::after {
@@ -92,12 +90,7 @@ textarea {
   line-height: 1;
 }
 
-/* =====================================================
-   MENÚ
-   ===================================================== */
-/* El header no crea contexto propio: la capa de blur y el nav son
-   hermanos fijos, así el nav (mix-blend-mode) se mezcla con la página
-   y con el blur que hay justo detrás. */
+/* MENU*/
 header {
   display: contents;
 }
@@ -167,11 +160,6 @@ header .menu li:nth-child(4) {
   grid-column: 3;
   grid-row: 1;
 }
-/* enlaces repetidos de las otras páginas */
-header .menu li:nth-child(n + 5) {
-  display: none;
-}
-
 header .menu a {
   position: relative;
   display: inline-block;
@@ -202,7 +190,6 @@ header .menu a.activo::after {
   transform: scaleX(1);
 }
 
-/* botón hamburguesa (solo móvil) */
 .hamburguesa {
   display: none;
   width: 44px;
@@ -211,69 +198,36 @@ header .menu a.activo::after {
   background: none;
   border: 0;
   cursor: pointer;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
 }
 
-.hamburguesa span {
-  display: block;
-  height: 2px;
-  width: 100%;
-  background: currentColor;
-  transition:
-    transform 0.3s,
-    opacity 0.3s;
-}
-
-.hamburguesa.activo span:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
-}
-.hamburguesa.activo span:nth-child(2) {
-  opacity: 0;
-}
-.hamburguesa.activo span:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
-}
-
-/* =====================================================
-   CAPAS (todas las páginas)
-   La primera pantalla (.capa-fija) se queda fija con sticky
-   y la sección siguiente (.capa-sube) sube por encima hasta
-   taparla. El efecto de encoger, oscurecer y las esquinas
-   lo controla script.js (apartado 1b).
-   Se usa ".capas > " delante para ganar a reglas como
-   .st-hero { position: relative }
-   ===================================================== */
+/* CAPAS*/
 .capas {
   position: relative;
 }
 
-.capas > .capa-fija {
+.capas > .capafija {
   position: sticky;
   top: 0;
   z-index: 0;
   transform-origin: center top;
 }
 
-.capa-fija video {
+.capafija video {
   transform-origin: center top;
 }
 
-.capas > .capa-sube {
+.capas > .capasube {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  /* esquinas redondeadas que se ponen rectas al llegar arriba */
   border-radius: var(--esquinas, 28px) var(--esquinas, 28px) 0 0;
 }
 
-/* =====================================================
-   HERO + ESTUDIO
-   ===================================================== */
-/* La portada de la home usa las capas: el vídeo (.hero) se
-   queda fijo y el panel de textos (#estudio) sube encima */
+/* HERO + ESTUDIO*/
 .hero {
-  /* la imagen/vídeo ocupa toda la pantalla */
   height: 100vh;
   height: 100svh;
   overflow: hidden;
@@ -286,14 +240,8 @@ header .menu a.activo::after {
   object-fit: cover;
 }
 
-/* panel que sube: ocupa una pantalla y tapa el vídeo.
-   Composición (Figma, mesa HOME): arriba "¿QUIÉNES SOMOS?" en
-   grande a la izquierda y su texto a la derecha; debajo VISIÓN
-   y VALORES en dos columnas. Mismos márgenes que ARTISTAS:
-   8vw a cada lado y 2.4vw entre columnas */
 #estudio {
   display: grid;
-  /* minmax(0, 1fr): las dos columnas miden siempre la mitad */
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-content: center;
   row-gap: clamp(40px, min(8.6vw, 13.8vh), 124px);
@@ -304,7 +252,6 @@ header .menu a.activo::after {
   background: var(--gris);
 }
 
-/* títulos de VISIÓN y VALORES: DM Sans ExtraLight 24px */
 #estudio h3 {
   margin-bottom: clamp(10px, 2.6vh, 20px);
   font-family: var(--textos);
@@ -313,14 +260,12 @@ header .menu a.activo::after {
   text-transform: uppercase;
 }
 
-/* textos: DM Sans Light 20px */
 #estudio p {
   font-weight: 300;
   font-size: clamp(14px, min(1.39vw, 2.4vh), 20px);
   line-height: 1.3;
 }
 
-/* ¿QUIÉNES SOMOS?: título a la izquierda y texto a la derecha */
 .quienes {
   grid-column: 1 / 3;
   display: grid;
@@ -336,8 +281,6 @@ header .menu a.activo::after {
   font-weight: 900;
   font-size: min(8.6vw, 15vh);
   line-height: 0.9;
-  /* la caja mide lo que "¿QUIÉNES": empieza en la misma línea que
-     VISIÓN y "SOMOS?" queda alineado a su final, como en Figma */
   justify-self: start;
   width: min-content;
   text-align: right;
@@ -348,7 +291,6 @@ header .menu a.activo::after {
   font-weight: 400;
 }
 
-/* línea en blanco entre los dos párrafos, como en el diseño */
 .quienes p + p {
   margin-top: 1.3em;
 }
@@ -361,19 +303,13 @@ header .menu a.activo::after {
   grid-column: 2;
 }
 
-/* =====================================================
-   PASOS DE SCROLL (home, solo escritorio)
-   El panel #estudio se queda fijo arriba tapando el vídeo y
-   los .paso (huecos vacíos de debajo) pasan por la pantalla.
-   Cada uno hace salir un texto con AOS (data-aos-anchor):
-   1 ¿QUIÉNES SOMOS?, 2 su texto, 3 VISIÓN, 4 VALORES.
-   ===================================================== */
+/* PASOS DE SCROLL*/
 .pasos {
   display: none;
 }
 
 @media (min-width: 901px) {
-  .capas > #estudio.capa-sube {
+  .capas > #estudio.capasube {
     position: sticky;
     top: 0;
   }
@@ -382,17 +318,13 @@ header .menu a.activo::after {
     display: block;
   }
 
-  /* cada .paso es un trozo de scroll (el alto marca cuánto hay
-     que bajar entre un texto y el siguiente) */
   .pasos span {
     display: block;
     height: 35vh;
   }
 }
 
-/* =====================================================
-   ARTISTAS
-   ===================================================== */
+/* ARTISTAS*/
 #artistas {
   padding: 0 0 clamp(50px, 5.5vw, 79px);
 }
@@ -403,7 +335,7 @@ header .menu a.activo::after {
   margin-bottom: clamp(24px, 3.5vw, 50px);
 }
 
-.grid-artistas {
+.galeriaartistas {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 36px 2.4vw;
@@ -417,17 +349,15 @@ header .menu a.activo::after {
   object-fit: cover;
 }
 
-/* las fotos son horizontales: se encuadra a cada artista en el recorte vertical */
-.grid-artistas .artista:nth-child(1) img { object-position: 88% center; }
-.grid-artistas .artista:nth-child(2) img { object-position: 100% center; }
-.grid-artistas .artista:nth-child(3) img { object-position: 80% center; }
-.grid-artistas .artista:nth-child(4) img { object-position: 100% center; }
-.grid-artistas .artista:nth-child(5) img { object-position: 100% center; }
-.grid-artistas .artista:nth-child(6) img { object-position: 69% center; }
-.grid-artistas .artista:nth-child(7) img { object-position: 39% center; }
-.grid-artistas .artista:nth-child(8) img { object-position: 95% center; }
+.fototomas { object-position: 88% center; }
+.fotonora { object-position: 100% center; }
+.fotodario { object-position: 80% center; }
+.fotohugo { object-position: 100% center; }
+.fotoamara { object-position: 100% center; }
+.fotomei { object-position: 69% center; }
+.fotoines { object-position: 39% center; }
+.fotoernesto { object-position: 95% center; }
 
-/* contenedor que crea simpleParallax */
 .artista .simpleParallax {
   display: block;
   width: 100%;
@@ -451,41 +381,39 @@ header .menu a.activo::after {
   line-height: 1.2;
 }
 
-.ver-artista {
-  display: block;
+.verartista {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  text-decoration: none;
   margin: 14px 0 0 12px;
   min-width: 128px;
   height: 36px;
   padding: 0 22px;
-  background: transparent;
   border: 1px solid var(--negro);
   border-radius: 5px;
   font-family: var(--titulos);
   font-weight: 300;
   font-size: 13px;
-  cursor: pointer;
   transition:
     background 0.3s,
     color 0.3s;
 }
 
-.ver-artista:hover,
-.ver-artista:focus-visible {
+.verartista:hover,
+.verartista:focus-visible {
   background: var(--negro);
   color: var(--gris);
 }
 
-/* =====================================================
-   ESTILOS · tarjetas flotantes (apiladas con sticky)
-   ===================================================== */
+/* ESTILOS*/
 #estilos {
   background: var(--negro);
   padding: 46px 8vw 20px;
 }
 
 .estilo {
-  --op: 0.55;
-  --i: 0;
   position: sticky;
   top: calc(96px + var(--i) * 12px);
   aspect-ratio: 1351 / 541;
@@ -497,7 +425,6 @@ header .menu a.activo::after {
   box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.6);
   transform-origin: center top;
   will-change: transform;
-  /* toda la tarjeta lleva a su página (script.js) */
   cursor: pointer;
 }
 
@@ -570,7 +497,7 @@ header .menu a.activo::after {
   max-width: 540px;
 }
 
-.leer-mas {
+.leermas {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -580,13 +507,10 @@ header .menu a.activo::after {
   text-decoration: none;
 }
 
-.leer-mas img {
-  transition: transform 0.3s;
-}
-
-.leer-mas:hover img,
-.estilo:hover .leer-mas img {
-  transform: translate(4px, -4px);
+.leermas i,
+footer .redes i {
+  font-size: 12px;
+  transform: rotate(-45deg);
 }
 
 /* =====================================================
@@ -602,18 +526,17 @@ header .menu a.activo::after {
   font-size: clamp(28px, 4.6vw, 66px);
 }
 
-.slider-ventana {
+.carruselventana {
   overflow: hidden;
   margin-right: -37px;
-  /* recorta unos px para que no asome el borde de la siguiente reseña */
   clip-path: inset(0 8px 0 0);
 }
 
-.slider-pista {
+.carruselpista {
   display: flex;
   align-items: stretch;
-  /* sin transición: el movimiento continuo lo hace script.js */
-  will-change: transform;
+  position: relative;
+  left: 0;
 }
 
 .resena {
@@ -652,7 +575,7 @@ header .menu a.activo::after {
   color: var(--negro);
 }
 
-.slider-controles {
+.carruselcontroles {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -660,13 +583,13 @@ header .menu a.activo::after {
   margin-top: 48px;
 }
 
-.slider-btn {
+.carruselboton {
   width: 64px;
   height: 36px;
   background: transparent;
   border: 1px solid var(--negro);
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1;
   cursor: pointer;
   transition:
@@ -674,18 +597,18 @@ header .menu a.activo::after {
     color 0.3s;
 }
 
-.slider-btn:hover,
-.slider-btn:focus-visible {
+.carruselboton:hover,
+.carruselboton:focus-visible {
   background: var(--negro);
   color: var(--gris);
 }
 
-.slider-puntos {
+.carruselpuntos {
   display: flex;
   gap: 10px;
 }
 
-.slider-puntos button {
+.carruselpuntos button {
   width: 12px;
   height: 12px;
   padding: 0;
@@ -698,14 +621,13 @@ header .menu a.activo::after {
     transform 0.3s;
 }
 
-.slider-puntos button.activo {
+.carruselpuntos button.activo {
   background: var(--negro);
   transform: scale(1.2);
 }
 
-/* =====================================================
-   FAQ · acordeón jQuery
-   ===================================================== */
+/*FAQ · acordeón jQuery*/
+
 #faq {
   padding: 0 8vw clamp(44px, 5vw, 70px);
 }
@@ -741,15 +663,9 @@ header .menu a.activo::after {
   text-transform: uppercase;
 }
 
-.pregunta h3 button img {
+.pregunta h3 button i {
   flex: none;
-  width: clamp(16px, 1.8vw, 26px);
-  height: auto;
-  transition: transform 0.35s;
-}
-
-.pregunta.abierta h3 button img {
-  transform: rotate(180deg);
+  font-size: clamp(16px, 1.8vw, 26px);
 }
 
 .respuesta {
@@ -764,9 +680,8 @@ header .menu a.activo::after {
   line-height: 1.25;
 }
 
-/* =====================================================
-   FORMULARIO DE CITA
-   ===================================================== */
+/* FORMULARIO pedir CITA*/
+
 #reserva {
   padding: clamp(44px, 6vw, 84px) 8vw clamp(50px, 6vw, 84px);
 }
@@ -826,22 +741,30 @@ header .menu a.activo::after {
 .campo select {
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='10' viewBox='0 0 18 10' fill='none' stroke='black' stroke-width='1.6'><path d='M1 1l8 8 8-8'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
   padding-right: 44px;
   cursor: pointer;
+}
+
+.selector {
+  position: relative;
+}
+
+.selector i {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
 }
 
 .campo textarea {
   height: 160px;
   padding: 15px;
-  /* no se puede estirar; si hay mucho texto, scroll dentro */
   resize: none;
   overflow-y: auto;
 }
 
-/* contador de palabras del textarea (lo crea script.js) */
 .contador {
   align-self: flex-end;
   margin-top: -2px;
@@ -919,9 +842,9 @@ header .menu a.activo::after {
   cursor: wait;
 }
 
-/* =====================================================
-   FOOTER
-   ===================================================== */
+/* FOOTER*/
+
+
 footer {
   background: var(--negro);
   color: var(--gris);
@@ -960,9 +883,11 @@ footer a:focus-visible {
 }
 
 footer .redes a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: inline-block;
+}
+
+footer .redes i {
+  margin-right: 8px;
 }
 
 footer address {
@@ -976,8 +901,11 @@ footer address p {
   margin-bottom: 6px;
 }
 
-footer address img {
+footer address i {
   flex: none;
+  width: 16px;
+  font-size: 14px;
+  text-align: center;
 }
 
 footer .abajo {
@@ -1011,9 +939,7 @@ footer .volver:hover {
   text-decoration: none;
 }
 
-/* =====================================================
-   RESPONSIVE
-   ===================================================== */
+/* RESPONSIVE*/
 @media (max-width: 1100px) {
   header nav {
     padding: 28px 32px 0;
@@ -1034,7 +960,6 @@ footer .volver:hover {
     scroll-padding-top: 76px;
   }
 
-  /* con el menú abierto la capa de blur cubre toda la pantalla */
   header.abierto::before {
     height: 100vh;
     background: rgba(0, 0, 0, 0.55);
@@ -1059,14 +984,6 @@ footer .volver:hover {
     left: 0;
     width: 100%;
     padding: 12px 20px 24px;
-    background: transparent;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  header .menu li:nth-child(n) {
-    grid-column: auto;
-    grid-row: auto;
   }
 
   header .menu a {
@@ -1074,10 +991,8 @@ footer .volver:hover {
     font-size: 18px;
   }
 
-  /* en tablet y móvil los tres textos van uno debajo de otro */
   #estudio {
     grid-template-columns: 1fr;
-    grid-template-rows: none;
     row-gap: 32px;
     padding: calc(var(--alto-menu) + 28px) 20px 48px;
   }
@@ -1086,11 +1001,8 @@ footer .volver:hover {
   .vision,
   .valores {
     grid-column: 1;
-    grid-row: auto;
-    margin-top: 0;
   }
 
-  /* el título grande va encima de su texto */
   .quienes {
     grid-template-columns: 1fr;
   }
@@ -1098,7 +1010,6 @@ footer .volver:hover {
   #estudio .quienes h3 {
     grid-row: auto;
     margin-bottom: 20px;
-    padding-right: 0;
     font-size: clamp(44px, 13vw, 90px);
     text-align: left;
   }
@@ -1107,7 +1018,7 @@ footer .volver:hover {
     grid-column: 1;
   }
 
-  .grid-artistas {
+  .galeriaartistas {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px 20px;
     padding: 0 20px;
@@ -1122,7 +1033,6 @@ footer .volver:hover {
   }
 
   .estilo {
-    --alto: 340px;
     aspect-ratio: auto;
     height: clamp(300px, 62vw, 420px);
     top: calc(84px + var(--i) * 10px);
@@ -1144,17 +1054,15 @@ footer .volver:hover {
 @media (max-width: 700px) {
   .resena {
     flex-basis: 100%;
-  }
-
-  .slider-ventana {
-    margin-right: 0;
-  }
-
-  .resena {
     padding-right: 0;
   }
 
-  .slider-controles {
+  .carruselventana {
+    margin-right: 0;
+  }
+
+
+  .carruselcontroles {
     justify-content: space-between;
   }
 
@@ -1174,7 +1082,7 @@ footer .volver:hover {
 }
 
 @media (max-width: 560px) {
-  .grid-artistas {
+  .galeriaartistas {
     gap: 32px 14px;
   }
 
@@ -1183,10 +1091,9 @@ footer .volver:hover {
     padding-left: 0;
   }
 
-  .ver-artista {
+  .verartista {
     margin-left: 0;
     min-width: 0;
-    width: 100%;
     padding: 0 8px;
     font-size: 14px;
   }
@@ -1204,15 +1111,8 @@ footer .volver:hover {
     width: 100%;
   }
 
-  .estilo .info p {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
 }
 
-/* Accesibilidad: sin animaciones si el usuario lo pide */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1224,42 +1124,25 @@ footer .volver:hover {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
-
-  /* el carrusel de reseñas lo mueve JS fotograma a fotograma */
-  .slider-pista {
-    transition: none !important;
-  }
 }
 
-
-
-
-
-
 /* PÁGINA STUDIO */
-
 
 :root {
   --st-u: calc(min(100vw, 1160px) / 1440);
 }
 
-/* enlace activo del menú */
 header .menu a[aria-current="page"]::after {
   transform: scaleX(1);
 }
-/* =====================================================
-   HERO: solo el vídeo (0 – 1022 px de diseño).
-   Es la capa fija: se queda quieto y el panel de textos
-   (.st-intro) sube por encima (efecto CAPAS, script.js)
-   ===================================================== */
-.st-hero {
-  position: relative;
+/*HERO*/
+.studiohero {
   height: calc(1022 * var(--st-u));
   overflow: hidden;
   background: var(--negro);
 }
 
-.st-hero video {
+.studiohero video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -1267,21 +1150,18 @@ header .menu a[aria-current="page"]::after {
   object-fit: cover;
 }
 
-/* =====================================================
-   TEXTOS (1022 – 2067): panel gris que sube sobre el vídeo
-   ===================================================== */
-.st-intro {
+/* TEXTOSinfo*/
+.studiointro {
   --margen: max(0px, (100vw - 1440 * var(--st-u)) / 2);
   height: calc(712 * var(--st-u));
   background: var(--gris);
 }
 
-.st-intro p {
+.studiointro p {
   position: absolute;
-  color: var(--negro);
 }
 
-.st-intro-a {
+.studiointro1 {
   top: calc(76 * var(--st-u));
   left: calc(110 * var(--st-u) + var(--margen));
   width: calc(792 * var(--st-u));
@@ -1292,7 +1172,7 @@ header .menu a[aria-current="page"]::after {
   text-transform: uppercase;
 }
 
-.st-intro-b {
+.studiointro2 {
   top: calc(239 * var(--st-u));
   right: calc((1440 - 1312) * var(--st-u) + var(--margen));
   width: calc(464 * var(--st-u));
@@ -1302,7 +1182,7 @@ header .menu a[aria-current="page"]::after {
   line-height: 1.25;
 }
 
-.st-intro-c {
+.studiointro3 {
   top: calc(495 * var(--st-u));
   right: calc((1440 - 1305) * var(--st-u) + var(--margen));
   width: calc(975 * var(--st-u));
@@ -1313,10 +1193,8 @@ header .menu a[aria-current="page"]::after {
   line-height: 1.1;
 }
 
-/* =====================================================
-   BANDA DE IMAGEN (2067 – 2751)
-   ===================================================== */
-.st-banda {
+/* bandaIMAGEN*/
+.studiobanda {
   position: relative;
   z-index: 1;
   height: calc(684 * var(--st-u));
@@ -1324,16 +1202,14 @@ header .menu a[aria-current="page"]::after {
   background: var(--negro);
 }
 
-.st-banda img {
+.studiobanda img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* =====================================================
-   FRASES (2751 – 3606)
-   ===================================================== */
-.st-frases {
+/* FRASES*/
+.studiofrases {
   position: relative;
   width: calc(1440 * var(--st-u));
   height: calc(855 * var(--st-u));
@@ -1341,11 +1217,11 @@ header .menu a[aria-current="page"]::after {
   font-family: var(--titulos);
 }
 
-.st-frases > * {
+.studiofrases > * {
   position: absolute;
 }
 
-.st-grande {
+.studiogrande {
   top: calc(147 * var(--st-u));
   right: calc((1440 - 1305) * var(--st-u));
   width: calc(590 * var(--st-u));
@@ -1355,59 +1231,61 @@ header .menu a[aria-current="page"]::after {
   line-height: 1.08;
 }
 
-.st-ligera {
+.studioligera {
   font-weight: 300;
   font-size: calc(44 * var(--st-u));
   line-height: 1.1;
 }
 
-.st-izq {
+.studioizq {
   top: calc(372 * var(--st-u));
   left: calc(72 * var(--st-u));
   width: calc(413 * var(--st-u));
 }
 
-.st-der {
+.studioder {
   top: calc(573 * var(--st-u));
   right: calc((1440 - 1286) * var(--st-u));
   width: calc(438 * var(--st-u));
   text-align: right;
 }
 
-/* =====================================================
-   IMÁGENES (3606 – 5212)
-   ===================================================== */
-.st-galeria {
+/* IMg*/
+.studiogaleria {
   position: relative;
   width: calc(1440 * var(--st-u));
   height: calc(1484 * var(--st-u));
   margin: 0 auto;
 }
 
-.st-img {
+.studioimg {
   position: absolute;
   overflow: hidden;
   border-radius: 5px;
   background: var(--negro);
+  padding: 0;
+  border: 0;
+  cursor: zoom-in;
 }
 
-.st-img img {
+.studioimg:focus-visible {
+  outline-offset: -4px;
+}
+
+.studioimg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.st-img-1 { left: calc(89 * var(--st-u)); top: 0; width: calc(634 * var(--st-u)); height: calc(725 * var(--st-u)); }
-.st-img-1 img { object-position: 57% center; }
-.st-img-2 { left: calc(799 * var(--st-u)); top: 0; width: calc(559 * var(--st-u)); height: calc(301 * var(--st-u)); }
-.st-img-3 { left: calc(805 * var(--st-u)); top: calc(554 * var(--st-u)); width: calc(409 * var(--st-u)); height: calc(400 * var(--st-u)); }
-.st-img-4 { left: calc(41 * var(--st-u)); top: calc(1084 * var(--st-u)); width: calc(818 * var(--st-u)); height: calc(400 * var(--st-u)); }
-.st-img-4 img { object-fit: cover; }
+.studioimg1 { left: calc(89 * var(--st-u)); top: 0; width: calc(634 * var(--st-u)); height: calc(725 * var(--st-u)); }
+.studioimg1 img { object-position: 57% center; }
+.studioimg2 { left: calc(799 * var(--st-u)); top: 0; width: calc(559 * var(--st-u)); height: calc(301 * var(--st-u)); }
+.studioimg3 { left: calc(805 * var(--st-u)); top: calc(554 * var(--st-u)); width: calc(409 * var(--st-u)); height: calc(400 * var(--st-u)); }
+.studioimg4 { left: calc(41 * var(--st-u)); top: calc(1084 * var(--st-u)); width: calc(818 * var(--st-u)); height: calc(400 * var(--st-u)); }
 
-/* =====================================================
-   VISÍTANOS
-   ===================================================== */
-.st-visitanos {
+/* VISITANOS*/
+.studiovisitanos {
   position: relative;
   width: calc(1440 * var(--st-u));
   --vis-alto: min(calc(640 * var(--st-u)), calc(100svh - 110px));
@@ -1415,21 +1293,21 @@ header .menu a[aria-current="page"]::after {
   margin: 0 auto calc(120 * var(--st-u));
 }
 
-.st-visita-texto {
+.studiovisitatexto {
   position: absolute;
   top: 0;
   left: calc(37 * var(--st-u));
   width: calc(440 * var(--st-u));
 }
 
-.st-visita-texto h2 {
+.studiovisitatexto h2 {
   font-family: var(--titulos);
   font-weight: 400;
   font-size: calc(48 * var(--st-u));
   line-height: 1.1;
 }
 
-.st-visita-texto p {
+.studiovisitatexto p {
   margin-top: calc(20 * var(--st-u));
   font-family: var(--titulos);
   font-weight: 300;
@@ -1437,7 +1315,7 @@ header .menu a[aria-current="page"]::after {
   line-height: 1.2;
 }
 
-.st-boton-mapa {
+.studiobotonmapa {
   display: inline-flex;
   align-items: center;
   height: calc(58 * var(--st-u));
@@ -1454,14 +1332,13 @@ header .menu a[aria-current="page"]::after {
   transition: background 0.3s, color 0.3s;
 }
 
-.st-boton-mapa:hover,
-.st-boton-mapa:focus-visible {
+.studiobotonmapa:hover,
+.studiobotonmapa:focus-visible {
   background: var(--negro);
   color: var(--gris);
 }
 
-/* el mapa sale por la derecha de la pantalla (como en Figma) */
-.st-mapa {
+.studiomapa {
   position: absolute;
   top: 0;
   left: calc(505 * var(--st-u));
@@ -1471,33 +1348,27 @@ header .menu a[aria-current="page"]::after {
   border-radius: 5px 0 0 5px;
 }
 
-.st-mapa img {
+.studiomapa img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.st-mapa:hover img {
+.studiomapa:hover img {
   transform: scale(1.05);
 }
 
-/* si la pantalla es más ancha que el diseño, el mapa no se corta raro */
-.st-visitanos {
-  overflow: visible;
-}
 
-/* =====================================================
-   RESPONSIVE: debajo de 900px todo pasa a una columna
-   ===================================================== */
+/*RESPONSIVE*/
 @media (max-width: 900px) {
-  .st-hero {
+  .studiohero {
     height: 70vh;
     height: 70svh;
     min-height: 320px;
   }
 
-  .st-intro {
+  .studiointro {
     height: auto;
     padding: 56px 20px 64px;
     display: flex;
@@ -1505,105 +1376,105 @@ header .menu a[aria-current="page"]::after {
     gap: 28px;
   }
 
-  .st-intro p {
+  .studiointro p {
     position: static;
     width: auto;
     text-align: left;
   }
 
-  .st-intro-a {
+  .studiointro1 {
     font-size: clamp(34px, 10vw, 64px);
     line-height: 1.1;
   }
 
-  .st-intro-b {
+  .studiointro2 {
     font-size: 17px;
     max-width: 420px;
   }
 
-  .st-intro-c {
+  .studiointro3 {
     font-size: clamp(24px, 7vw, 40px);
   }
 
-  .st-frases,
-  .st-galeria,
-  .st-visitanos {
+  .studiofrases,
+  .studiogaleria,
+  .studiovisitanos {
     width: auto;
     height: auto;
     margin: 0;
     padding: 0 20px;
   }
 
-  .st-frases > *,
-  .st-img,
-  .st-visita-texto,
-  .st-mapa {
+  .studiofrases > *,
+  .studioimg,
+  .studiovisitatexto,
+  .studiomapa {
     position: static;
     width: auto;
   }
 
-  .st-banda {
+  .studiobanda {
     height: 55vw;
   }
 
-  .st-frases {
+  .studiofrases {
     display: grid;
     gap: 28px;
     padding: 56px 20px;
   }
 
-  .st-grande {
+  .studiogrande {
     font-size: clamp(28px, 8vw, 48px);
     text-align: left;
   }
 
-  .st-ligera {
+  .studioligera {
     font-size: clamp(20px, 5.5vw, 32px);
   }
 
-  .st-der {
+  .studioder {
     text-align: left;
   }
 
-  .st-galeria {
+  .studiogaleria {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
     padding-bottom: 56px;
   }
 
-  .st-img {
+  .studioimg {
     aspect-ratio: 4 / 3;
   }
 
-  .st-img-1,
-  .st-img-4 {
+  .studioimg1,
+  .studioimg4 {
     grid-column: 1 / -1;
     aspect-ratio: 16 / 11;
   }
 
-  .st-visitanos {
+  .studiovisitanos {
     display: grid;
     gap: 28px;
     padding-bottom: 60px;
   }
 
-  .st-visita-texto h2 {
+  .studiovisitatexto h2 {
     font-size: clamp(32px, 9vw, 48px);
   }
 
-  .st-visita-texto p {
+  .studiovisitatexto p {
     font-size: 18px;
   }
 
-  .st-boton-mapa {
+  .studiobotonmapa {
     height: 40px;
     margin-top: 24px;
     font-size: 14px;
     padding: 0 22px;
   }
 
-  .st-mapa {
+  .studiomapa {
     display: block;
     height: auto;
     aspect-ratio: 4 / 3;
@@ -1612,22 +1483,20 @@ header .menu a[aria-current="page"]::after {
 }
 
 @media (max-width: 560px) {
-  .st-galeria {
-    grid-template-columns: 1fr;
+  .studioimg1,
+  .studioimg2,
+  .studioimg3,
+  .studioimg4 {
+    grid-column: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
   }
 }
 
+/* PÁGINAS DE ESTILOS*/
 
-/* #####################################################
-   PÁGINAS DE ESTILOS (realismo, lettering, japanese,
-   fine line y black & grey)
-   Las 5 páginas usan la misma maqueta (Figma, 1440px).
-   El body lleva la clase "pagina-estilo" + la del estilo.
-   ##################################################### */
-
-/* ---------- Portada: texto + nombre gigante ---------- */
-/* ocupa justo una pantalla: el texto y el nombre se ven
-   enteros sin hacer scroll y las fotos empiezan debajo */
+/*Portada*/
 .portada {
   display: flex;
   flex-direction: column;
@@ -1647,49 +1516,46 @@ header .menu a[aria-current="page"]::after {
   line-height: 1.3;
 }
 
-.nombre-estilo {
+.nombreestilo {
   margin-top: clamp(24px, 9vh, 110px);
-  /* -0.16em quita el hueco que deja la línea debajo de las letras
-     y 0.75vw deja abajo el mismo espacio que hay a los lados */
   margin-bottom: calc(0.75vw - 0.16em);
   font-family: var(--titulos);
   font-weight: 900;
-  /* tamaño en vw para que la palabra llegue de lado a lado */
   font-size: 19.9vw;
   line-height: 0.82;
   text-align: center;
   white-space: nowrap;
 }
 
-/* cada palabra tiene un largo distinto, así que cada una lleva su tamaño */
-.lettering .nombre-estilo {
+.lettering .nombreestilo {
   font-size: 19.25vw;
 }
 
-.japanese .nombre-estilo {
+.japanese .nombreestilo {
   font-size: 20.3vw;
 }
 
-.fine-line .nombre-estilo {
+.fineline .nombreestilo {
   font-size: 21.8vw;
 }
 
-.black-grey .nombre-estilo {
+.blackgrey .nombreestilo {
   font-size: 15.55vw;
   letter-spacing: -0.05em;
 }
 
-/* ---------- Collage de fotos (CSS Grid) ---------- */
-/* columnas de Figma: 723 + 351 + 366 = 1440 */
+/* ---------- Collage de fotos ---------- */
 .collage {
   display: grid;
   grid-template-columns: 723fr 351fr 366fr;
-  background: var(--negro);
+  gap: 0 min(2px, 0.139vw);
+  padding: 0 min(4px, 0.278vw);
+  background: var(--gris);
 }
 
 .foto {
   display: grid;
-  /* una sola celda del tamaño exacto del hueco */
+  place-self: stretch;
   grid-template: minmax(0, 1fr) / minmax(0, 1fr);
   padding: 0;
   border: 0;
@@ -1699,6 +1565,7 @@ header .menu a[aria-current="page"]::after {
 }
 
 .foto img {
+  grid-area: 1 / 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1716,29 +1583,23 @@ header .menu a[aria-current="page"]::after {
   outline-offset: -4px;
 }
 
-/* Japanese: la foto en color (la crea estilos.js) está encima
-   de la de blanco y negro, invisible, y aparece poco a poco.
-   Las dos ocupan la misma celda del grid de .foto */
-.foto img {
-  grid-area: 1 / 1;
-}
 
-.foto .foto-color {
+.foto .fotocolor {
   opacity: 0;
   transition:
     opacity 1.2s ease,
     transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.foto.en-color .foto-color {
+.foto.encolor .fotocolor {
   opacity: 1;
 }
 
-.arriba-izq {
+.arribaizq {
   aspect-ratio: 723 / 1023;
 }
 
-.arriba-der {
+.arribader {
   grid-column: 2 / 4;
   aspect-ratio: 717 / 1023;
 }
@@ -1753,41 +1614,27 @@ header .menu a[aria-current="page"]::after {
   grid-row: span 3;
 }
 
-.lado-1,
-.lado-2,
-.lado-3 {
+.lado1,
+.lado2,
+.lado3 {
   grid-column: 3;
   aspect-ratio: 366 / 368;
 }
 
-/* ---------- Artistas del estilo (Flexbox) ---------- */
-/* La sección mide una pantalla: las 3 tarjetas arriba y
-   "ARTISTAS" abajo (12vw, a la izquierda). Las tarjetas son lo más
-   grandes posible, pero en pantallas bajas se hacen más
-   pequeñas para que todo quepa. */
+/*Artistas del estilo */
 .equipo {
-  /* ancho máximo de una tarjeta para que quepa en la pantalla:
-     alto de pantalla - huecos - "ARTISTAS" (11vw) - textos (80px),
-     dividido entre 1.69 (la foto más alta mide 558/331 = 1.69) */
   --ancho-max: calc((88vh - 11vw - 80px) / 1.69);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  align-content: space-between;
-  gap: 4vh clamp(10px, 1.15vw, 16px);
-  min-height: 100vh;
-  min-height: 100svh;
-  /* espacio entre el collage de fotos y esta sección */
+  align-content: flex-start;
+  gap: clamp(24px, 3.8vw, 55px) clamp(10px, 1.15vw, 16px);
   margin-top: clamp(90px, 14vw, 200px);
   padding-top: 5.6vh;
-  /* al dejar de hacer scroll cerca, la página se coloca
-     para que la sección se vea entera (ver scroll-snap abajo) */
   scroll-snap-align: end;
 }
 
-/* ajuste suave del scroll: solo afecta a .equipo, que es el
-   único elemento con scroll-snap-align (páginas de estilos) */
 html {
   scroll-snap-type: y proximity;
 }
@@ -1796,15 +1643,19 @@ html {
   width: min(27vw, var(--ancho-max));
 }
 
-/* la primera foto de realismo y fine line es más estrecha (269px) */
-.realismo .persona:first-child,
-.fine-line .persona:first-child {
+.realismo .persona:first-of-type,
+.fineline .persona:first-of-type {
   width: min(22vw, var(--ancho-max) * 0.81);
 }
 
 .persona img {
   width: 100%;
   height: auto;
+}
+
+.enlacepersona {
+  display: block;
+  text-decoration: none;
 }
 
 .persona h3 {
@@ -1820,20 +1671,18 @@ html {
   font-size: clamp(13px, min(1.1vw, 1.6vh), 16px);
 }
 
-/* cabecera: "ARTISTAS" a la izquierda y la frase a la derecha,
-   alineados por la base de las letras */
-.cabecera-artistas {
+.cabeceraartistas {
   flex-basis: 100%;
+  order: 1;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 2vw;
   padding: 0 4.4vw 0 1.6vw;
-  /* título y frase separados del borde de abajo (3vw) */
   margin-bottom: calc(3vw - 0.16 * 12vw);
 }
 
-.titulo-artistas {
+.tituloartistas {
   font-family: var(--titulos);
   font-weight: 900;
   font-size: 12vw;
@@ -1841,25 +1690,21 @@ html {
   white-space: nowrap;
 }
 
-/* la frase, pequeña y fina, al lado del título */
-.frase-estilo {
+.fraseestilo {
   font-family: var(--titulos);
   font-weight: 300;
   font-size: clamp(14px, 1.8vw, 30px);
   letter-spacing: -0.03em;
-  /* la parte de arriba de la frase (sube 0.69em) queda a la misma
-     altura que la de ARTISTAS (sube 0.68 x 12vw) */
   position: relative;
   top: calc(0.69em - 0.68 * 12vw);
 }
 
-/* el formulario queda más separado del título, como en Figma */
-.pagina-estilo #reserva {
+.paginaestilo #reserva {
   padding-top: clamp(60px, 14vw, 200px);
 }
 
-/* ---------- Visor de fotos (ventana modal) ---------- */
-.visor {
+/* Ventana de fotos*/
+.ventana {
   display: none;
   position: fixed;
   inset: 0;
@@ -1870,42 +1715,42 @@ html {
   background: rgba(0, 0, 0, 0.92);
 }
 
-.visor img {
+.ventana img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   border-radius: 5px;
 }
 
-.visor button {
+.ventana button {
   position: absolute;
   padding: 0;
   border: 0;
   background: none;
   color: var(--gris);
-  font-size: 40px;
+  font-size: 28px;
   line-height: 1;
   cursor: pointer;
 }
 
-.visor-cerrar {
+.ventanacerrar {
   top: 16px;
   right: 24px;
 }
 
-.visor-antes {
+.ventanaantes {
   left: 24px;
 }
 
-.visor-despues {
+.ventanadespues {
   right: 24px;
 }
 
-.visor button:hover {
+.ventana button:hover {
   opacity: 0.6;
 }
 
-.visor-contador {
+.ventanacontador {
   position: absolute;
   bottom: 20px;
   left: 0;
@@ -1913,26 +1758,31 @@ html {
   color: var(--gris);
   font-size: 14px;
   text-align: center;
+  pointer-events: none;
 }
 
-/* mientras el visor está abierto la página no hace scroll */
-body.sin-scroll {
+body.sinscroll {
   overflow: hidden;
 }
 
-/* ---------- Tablet ---------- */
+/* responsive */
 @media (max-width: 900px) {
   .intro {
     width: auto;
     margin: 0 20px;
   }
 
+  .collage {
+    gap: 0 4px;
+    padding: 0;
+  }
+
   .persona {
     width: min(calc((100% - 60px) / 3), var(--ancho-max));
   }
 
-  .realismo .persona:first-child,
-  .fine-line .persona:first-child {
+  .realismo .persona:first-of-type,
+  .fineline .persona:first-of-type {
     width: min(calc((100% - 60px) / 3 * 0.81), var(--ancho-max) * 0.81);
   }
 
@@ -1940,39 +1790,36 @@ body.sin-scroll {
     padding: 5.6vh 20px 0;
   }
 
-  /* la frase en una sola línea al lado de ARTISTAS */
-  .frase-estilo {
+  .fraseestilo {
     font-size: 14px;
     white-space: nowrap;
   }
 
-  .visor {
+  .ventana {
     padding: 60px 16px;
   }
 
-  .visor-flecha {
-    top: auto;
+  .ventanaflecha {
     bottom: 10px;
   }
 
-  .visor-antes {
+  .ventanaantes {
     left: 20px;
   }
 
-  .visor-despues {
+  .ventanadespues {
     right: 20px;
   }
 }
 
-/* ---------- Móvil ---------- */
+/* responsive*/
 @media (max-width: 600px) {
-  /* el collage pasa a 2 columnas */
   .collage {
     grid-template-columns: 1fr 1fr;
   }
 
-  .arriba-izq,
-  .arriba-der {
+  .arribaizq,
+  .arribader {
     grid-column: auto;
     aspect-ratio: 3 / 4;
   }
@@ -1988,29 +1835,26 @@ body.sin-scroll {
     aspect-ratio: 1;
   }
 
-  .lado-1,
-  .lado-2 {
+  .lado1,
+  .lado2 {
     grid-column: auto;
   }
 
-  .lado-3 {
+  .lado3 {
     grid-column: 1 / 3;
     aspect-ratio: 2 / 1;
   }
 
-  /* artistas en una sola columna */
-  /* en móvil no cabe en una pantalla: altura normal y sin ajuste de scroll */
   .equipo {
     flex-direction: column;
     align-items: center;
     gap: 36px;
-    min-height: 0;
     scroll-snap-align: none;
   }
 
   .persona,
-  .realismo .persona:first-child,
-  .fine-line .persona:first-child {
+  .realismo .persona:first-of-type,
+  .fineline .persona:first-of-type {
     width: min(100%, 331px);
   }
 
@@ -2022,9 +1866,7 @@ body.sin-scroll {
     font-size: 14px;
   }
 
-  /* en columna el flex-basis sería la altura: lo quitamos.
-     La frase pasa debajo de ARTISTAS */
-  .cabecera-artistas {
+  .cabeceraartistas {
     flex-basis: auto;
     width: 100%;
     flex-direction: column;
@@ -2034,39 +1876,36 @@ body.sin-scroll {
     padding: 0;
   }
 
-  .titulo-artistas {
+  .tituloartistas {
     font-size: 18vw;
   }
 
-  .frase-estilo {
+  .fraseestilo {
     top: 0;
     font-size: 16px;
   }
 }
 
-/* =====================================================
-   PÁGINAS DE ARTISTA (tomas, nora, dario, hugo, amara,
-   mei, ines, ernesto) · medidas de Figma (1440 px)
-   ===================================================== */
-.pagina-artista {
+/* PÁGINAS DE ARTISTA*/
+.paginaartista {
   --ar-u: calc(min(100vw, 1440px) / 1440);
 }
 
-/* ---------- Cabecera de la ficha ---------- */
+/* ficha*/
 .ficha {
   height: min(calc(780 * var(--ar-u)), 100svh);
   min-height: calc(700 * var(--ar-u));
   background: var(--gris);
 }
 
-.ficha-caja {
+.fichacaja {
   position: relative;
   width: calc(1440 * var(--ar-u));
   height: 100%;
   margin: 0 auto;
 }
 
-.ficha-foto {
+.fichafoto {
   position: absolute;
   top: calc(140 * var(--ar-u));
   left: calc(89 * var(--ar-u));
@@ -2076,7 +1915,7 @@ body.sin-scroll {
   filter: grayscale(1);
 }
 
-.ficha-nombre {
+.fichanombre {
   position: absolute;
   top: calc(140 * var(--ar-u));
   left: calc(472 * var(--ar-u));
@@ -2088,7 +1927,7 @@ body.sin-scroll {
   text-transform: uppercase;
 }
 
-.ficha-etiqueta {
+.fichaetiqueta {
   position: absolute;
   bottom: calc(92 * var(--ar-u));
   left: calc(121 * var(--ar-u));
@@ -2097,8 +1936,8 @@ body.sin-scroll {
   font-size: calc(24 * var(--ar-u));
 }
 
-.ficha-estilos,
-.ficha-rol {
+.fichaestilos,
+.ficharol {
   position: absolute;
   bottom: calc(48 * var(--ar-u));
   font-family: var(--titulos);
@@ -2107,15 +1946,15 @@ body.sin-scroll {
   white-space: nowrap;
 }
 
-.ficha-estilos {
+.fichaestilos {
   left: calc(121 * var(--ar-u));
 }
 
-.ficha-rol {
+.ficharol {
   right: calc(76 * var(--ar-u));
 }
 
-/* ---------- Fotos de trabajos ---------- */
+/* fotos*/
 .obras {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2158,7 +1997,7 @@ body.sin-scroll {
   outline-offset: -4px;
 }
 
-/* ---------- Sobre el artista ---------- */
+/* sobre artista */
 .sobre {
   position: relative;
   width: calc(1440 * var(--ar-u));
@@ -2166,7 +2005,7 @@ body.sin-scroll {
   margin: 0 auto;
 }
 
-.sobre-etiqueta {
+.sobreetiqueta {
   position: absolute;
   top: calc(160 * var(--ar-u));
   left: calc(203 * var(--ar-u));
@@ -2175,7 +2014,7 @@ body.sin-scroll {
   font-size: calc(36 * var(--ar-u));
 }
 
-.sobre-texto {
+.sobretexto {
   position: absolute;
   top: calc(241 * var(--ar-u));
   left: calc(201 * var(--ar-u));
@@ -2186,7 +2025,7 @@ body.sin-scroll {
   line-height: 1.2;
 }
 
-.sobre-titulo {
+.sobretitulo {
   position: absolute;
   top: calc(890 * var(--ar-u));
   left: calc(120 * var(--ar-u));
@@ -2196,17 +2035,14 @@ body.sin-scroll {
   line-height: 1;
 }
 
-.pagina-artista #reserva {
+.paginaartista #reserva {
   padding-top: clamp(60px, 7.5vw, 108px);
 }
 
-.pagina-artista .menu a[aria-current="page"] {
-  opacity: 1;
-}
 
-/* ---------- Tablet / móvil ---------- */
+/* responsive */
 @media (max-width: 900px) {
-  .pagina-artista {
+  .paginaartista {
     --ar-u: calc(100vw / 720);
   }
 
@@ -2215,7 +2051,7 @@ body.sin-scroll {
     padding: 110px 20px 30px;
   }
 
-  .ficha-caja {
+  .fichacaja {
     display: grid;
     grid-template-columns: 38% 1fr;
     gap: 16px 20px;
@@ -2223,31 +2059,31 @@ body.sin-scroll {
     height: auto;
   }
 
-  .ficha-caja > * {
+  .fichacaja > * {
     position: static;
   }
 
-  .ficha-foto {
+  .fichafoto {
     grid-row: 1 / 3;
     width: 100%;
     height: auto;
     aspect-ratio: 290 / 344;
   }
 
-  .ficha-nombre {
+  .fichanombre {
     width: auto;
     font-size: clamp(34px, 11vw, 80px);
     align-self: start;
   }
 
-  .ficha-etiqueta {
+  .fichaetiqueta {
     grid-column: 1 / 3;
     margin-top: 24px;
     font-size: 18px;
   }
 
-  .ficha-estilos,
-  .ficha-rol {
+  .fichaestilos,
+  .ficharol {
     grid-column: 1 / 3;
     font-size: clamp(20px, 5vw, 30px);
     white-space: normal;
@@ -2268,18 +2104,18 @@ body.sin-scroll {
     position: static;
   }
 
-  .sobre-etiqueta {
+  .sobreetiqueta {
     font-size: 18px;
   }
 
-  .sobre-texto {
+  .sobretexto {
     width: auto;
     margin-top: 14px;
     font-size: clamp(16px, 4vw, 22px);
     line-height: 1.4;
   }
 
-  .sobre-titulo {
+  .sobretitulo {
     margin-top: 40px;
     font-size: clamp(30px, 8vw, 48px);
   }
@@ -2295,25 +2131,11 @@ body.sin-scroll {
   }
 }
 
-/* "Descubre a ..." ahora es un enlace a la página del artista */
-a.ver-artista {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  text-decoration: none;
-}
-
-/* la foto de cada artista de la home también lleva a su página */
-.foto-artista {
+.fotoartista {
   display: block;
-  cursor: pointer;
 }
 
-/* =====================================================
-   TRANSICIÓN ENTRE PÁGINAS: la página se disuelve en la siguiente
-   (home ⇄ studio, artistas, estilos…) en vez de cambiar de golpe
-   ===================================================== */
+/* TRANSICIÓN ENTRE PÁGINAS*/
 @view-transition {
   navigation: auto;
 }

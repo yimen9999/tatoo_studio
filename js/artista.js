@@ -1,77 +1,65 @@
-/* =====================================================
-   EL GATO NEGRO · Páginas de ARTISTA
-   Visor de fotos: al pinchar un trabajo se abre en grande
-   y se puede pasar al anterior o al siguiente con jQuery.
-   (el menú y el formulario con validación están en script.js)
-   ===================================================== */
+// js artista
+
+// ventana flotante fotos
+
 $(function () {
   "use strict";
 
-  var $fotos = $(".obra");
-  var $visor = $(".visor");
-  var $imgVisor = $visor.find("img");
-  var $contador = $visor.find(".visor-contador");
-  var actual = 0;
-  var ultimoBoton = null; // para devolver el foco al cerrar
+  
+  var $fotos = $(".obra, .studioimg");
+  var $ventana = $(".ventana");
+  var $imgventana = $ventana.find("img");
+  var $contador = $ventana.find(".ventanacontador");
+  var actual = 0; 
+  var ultimoboton = null; 
 
-  function mostrarFoto(i) {
+
+  function mostrarfoto(i) {
     var total = $fotos.length;
-    actual = (i + total) % total; // da la vuelta al llegar al final
+    actual = (i + total) % total; 
     var $img = $fotos.eq(actual).find("img");
 
-    $imgVisor.stop(true).fadeTo(150, 0, function () {
-      $imgVisor.attr({ src: $img.attr("src"), alt: $img.attr("alt") }).fadeTo(200, 1);
+    $imgventana.stop(true).fadeTo(150, 0, function () {
+      $imgventana.attr({ src: $img.attr("src"), alt: $img.attr("alt") }).fadeTo(200, 1);
     });
     $contador.text(actual + 1 + " / " + total);
   }
 
-  function abrirVisor(i) {
-    ultimoBoton = $fotos.get(i);
-    mostrarFoto(i);
-    $("body").addClass("sin-scroll");
-    $visor.css("display", "flex").hide().fadeIn(250);
-    $visor.find(".visor-cerrar").trigger("focus");
+ 
+  function abrirventana(i) {
+    ultimoboton = $fotos.get(i);
+    mostrarfoto(i);
+    $("body").addClass("sinscroll");
+    $ventana.css("display", "flex").hide().fadeIn(250);
+    $ventana.find(".ventanacerrar").trigger("focus");
   }
 
-  function cerrarVisor() {
-    $visor.fadeOut(200, function () {
-      $("body").removeClass("sin-scroll");
+
+  function cerrarventana() {
+    $ventana.fadeOut(200, function () {
+      $("body").removeClass("sinscroll");
     });
-    if (ultimoBoton) {
-      ultimoBoton.focus();
+    if (ultimoboton) {
+      ultimoboton.focus();
     }
   }
 
   $fotos.on("click", function () {
-    abrirVisor($fotos.index(this));
+    abrirventana($fotos.index(this));
   });
 
-  $visor.find(".visor-cerrar").on("click", cerrarVisor);
-  $visor.find(".visor-antes").on("click", function () {
-    mostrarFoto(actual - 1);
+
+  $ventana.find(".ventanacerrar").on("click", cerrarventana);
+  $ventana.find(".ventanaantes").on("click", function () {
+    mostrarfoto(actual - 1);
   });
-  $visor.find(".visor-despues").on("click", function () {
-    mostrarFoto(actual + 1);
+  $ventana.find(".ventanadespues").on("click", function () {
+    mostrarfoto(actual + 1);
   });
 
-  // clic en el fondo oscuro (fuera de la foto) también cierra
-  $visor.on("click", function (e) {
+  $ventana.on("click", function (e) {
     if (e.target === this) {
-      cerrarVisor();
-    }
-  });
-
-  // teclado: Escape cierra y las flechas cambian de foto
-  $(document).on("keydown", function (e) {
-    if (!$visor.is(":visible")) {
-      return;
-    }
-    if (e.key === "Escape") {
-      cerrarVisor();
-    } else if (e.key === "ArrowLeft") {
-      mostrarFoto(actual - 1);
-    } else if (e.key === "ArrowRight") {
-      mostrarFoto(actual + 1);
+      cerrarventana();
     }
   });
 });

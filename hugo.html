@@ -5,31 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Hugo Sarmiento, Head Artist de El Gato Negro, estudio de tatuaje en Madrid. Estilos: Lettering, Japanese."
-    />
+      content="Hugo Sarmiento, Head Artist de El Gato Negro, estudio de tatuaje en Madrid. Estilos: Lettering, Japanese."/>
     <title>Hugo Sarmiento | El Gato Negro</title>
     <link rel="icon" type="image/png" href="IMG/favicon.png" />
 
-    <!-- fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&amp;family=League+Spartan:wght@100;300;400;500;900&amp;display=swap"
+      rel="stylesheet"/>
+
+    <link
       rel="stylesheet"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body id="inicio" class="pagina-artista">
-    <!-- MENU -->
+
+  <!-- nav-->
+  <body id="inicio" class="paginaartista">
+    
     <header>
       <nav>
         <a class="logo" href="index.html">EL GATO NEGRO</a>
 
         <button class="hamburguesa" type="button" aria-label="Abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
+          <i class="fa-solid fa-bars"></i>
         </button>
 
         <ul class="menu">
@@ -41,27 +42,26 @@
       </nav>
     </header>
 
-
+       <!-- hero -->
     <main>
-      <!-- CABECERA: foto, nombre, estilos y cargo -->
+   
       <section class="ficha">
-        <div class="ficha-caja">
+        <div class="fichacaja">
           <img
-            class="ficha-foto"
+            class="fichafoto fotohugo"
             src="IMG/Artistas/A4.jpg"
             alt="Hugo Sarmiento"
             width="1104"
             height="960"
-            style="object-position: 100% center"
           />
-          <h1 class="ficha-nombre">Hugo Sarmiento</h1>
-          <p class="ficha-etiqueta">Estilos:</p>
-          <p class="ficha-estilos">Lettering, Japanese</p>
-          <p class="ficha-rol">Head Artist</p>
+          <h1 class="fichanombre">Hugo Sarmiento</h1>
+          <p class="fichaetiqueta">Estilos:</p>
+          <p class="fichaestilos">Lettering, Japanese</p>
+          <p class="ficharol">Head Artist</p>
         </div>
       </section>
 
-      <!-- TRABAJOS 1 (al pinchar se abren en grande) -->
+      <!-- trabajos 1 -->
       <section class="obras" aria-label="Trabajos de Hugo Sarmiento">
         <h2 class="oculto">Trabajos de Hugo Sarmiento</h2>
         <button class="obra completa" type="button" aria-label="Ver trabajo 1 en grande">
@@ -75,14 +75,14 @@
         </button>
       </section>
 
-      <!-- SOBRE EL ARTISTA -->
+      <!-- sobre el artista -->
       <section class="sobre">
-        <h2 class="sobre-etiqueta">Sobre el artista</h2>
-        <p class="sobre-texto">Hugo es el artista principal de Gato Negro y la voz con más experiencia del equipo. Con más de cuatro décadas de oficio, su trabajo se centra en el lettering, el black and grey y el tatuaje japonés, uniendo la caligrafía, los sombreados suaves y la iconografía clásica de Japón. Todos sus diseños nacen a mano en su cuaderno antes de llegar a la piel. Su estilo es elegante y sobrio, fiel a las raíces del tatuaje, y es quien guía al resto de artistas del estudio compartiendo todo lo que el oficio le ha enseñado.</p>
-        <p class="sobre-titulo" aria-hidden="true">Últimos trabajos</p>
+        <h2 class="sobreetiqueta">Sobre el artista</h2>
+        <p class="sobretexto">Hugo es el artista principal de Gato Negro y la voz con más experiencia del equipo. Con más de cuatro décadas de oficio, su trabajo se centra en el lettering, el black and grey y el tatuaje japonés, uniendo la caligrafía, los sombreados suaves y la iconografía clásica de Japón. Todos sus diseños nacen a mano en su cuaderno antes de llegar a la piel. Su estilo es elegante y sobrio, fiel a las raíces del tatuaje, y es quien guía al resto de artistas del estudio compartiendo todo lo que el oficio le ha enseñado.</p>
+        <p class="sobretitulo" aria-hidden="true">Últimos trabajos</p>
       </section>
 
-      <!-- TRABAJOS 2 -->
+      <!-- trabajos 2 -->
       <section class="obras" aria-label="Más trabajos de Hugo Sarmiento">
         <h2 class="oculto">Últimos trabajos</h2>
         <button class="obra completa" type="button" aria-label="Ver trabajo 4 en grande">
@@ -96,7 +96,7 @@
         </button>
       </section>
 
-      <!-- RESERVA -->
+      <!-- reserva -->
       <section id="reserva">
         <h2 class="titulo">¿TIENES UNA IDEA?</h2>
         <p class="subtitulo">RESERVA UNA CITA CON NOSOTROS</p>
@@ -120,18 +120,21 @@
           </div>
           <div class="campo">
             <label for="artista">ARTISTA</label>
-            <select id="artista" name="artista">
-              <option value="">Elige un artista</option>
-              <option value="tomas">Tomás Arrieta</option>
-              <option value="nora">Nora Valcárcel</option>
-              <option value="dario">Darío Mendes</option>
-              <option value="hugo">Hugo Sarmiento</option>
-              <option value="amara">Amara Ndiaye</option>
-              <option value="mei">Mei Ochoa</option>
-              <option value="ines">Inés Lorente</option>
-              <option value="ernesto">Ernesto Vidal</option>
-              <option value="cualquiera">Sin preferencia</option>
-            </select>
+            <div class="selector">
+              <select id="artista" name="artista">
+                <option value="">Elige un artista</option>
+                <option value="tomas">Tomás Arrieta</option>
+                <option value="nora">Nora Valcárcel</option>
+                <option value="dario">Darío Mendes</option>
+                <option value="hugo">Hugo Sarmiento</option>
+                <option value="amara">Amara Ndiaye</option>
+                <option value="mei">Mei Ochoa</option>
+                <option value="ines">Inés Lorente</option>
+                <option value="ernesto">Ernesto Vidal</option>
+                <option value="cualquiera">Sin preferencia</option>
+              </select>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
           </div>
           <div class="campo">
             <label for="zona">LUGAR DEL CUERPO</label>
@@ -154,10 +157,10 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- footer -->
     <footer>
       <div class="columnas">
-        <div class="bloque">
+        <div>
           <h2>DESCÚBRENOS</h2>
           <ul class="enlaces">
             <li><a href="index.html#quienes">¿QUIÉNES SOMOS?</a></li>
@@ -170,7 +173,7 @@
           </ul>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>ESTILOS</h2>
           <ul class="enlaces">
             <li><a href="realismo.html">REALISMO</a></li>
@@ -181,7 +184,7 @@
           </ul>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>SÍGUENOS</h2>
           <ul class="enlaces redes">
             <li>
@@ -189,35 +192,17 @@
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noopener"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                INSTAGRAM</a
+                ><i class="fa-solid fa-arrow-right"></i>INSTAGRAM</a
               >
             </li>
             <li>
               <a href="https://www.tiktok.com/" target="_blank" rel="noopener"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                TIKTOK</a
+                ><i class="fa-solid fa-arrow-right"></i>TIKTOK</a
               >
             </li>
             <li>
               <a href="https://www.youtube.com/" target="_blank" rel="noopener"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                YOUTUBE</a
+                ><i class="fa-solid fa-arrow-right"></i>YOUTUBE</a
               >
             </li>
           </ul>
@@ -225,26 +210,21 @@
       </div>
 
       <div class="columnas">
-        <div class="bloque">
+        <div>
           <h2>DIRECCIÓN</h2>
           <address>
             <p>
-              <img
-                src="IMG/iconos/ubicacion.svg"
-                alt=""
-                width="16"
-                height="16"
-              />
-              <a href="https://www.google.com/maps/place/C.+del+Esp%C3%ADritu+Santo,+21,+Centro,+28004+Madrid/@40.4254117,-3.7071054,17z/data=!3m1!4b1!4m6!3m5!1s0xd422862f664e7ad:0xa2b58b1fc3310ff6!8m2!3d40.4254117!4d-3.7045305!16s%2Fg%2F11cnd8j7w0?entry=ttu&amp;g_ep=EgoyMDI2MTEwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">C/ DEL ESPÍRITU SANTO 21, 28004 MADRID</a>
+              <i class="fa-solid fa-location-dot"></i>
+              C/ DEL ESPÍRITU SANTO 21, 28004 MADRID
             </p>
             <p>
-              <img src="IMG/iconos/reloj.svg" alt="" width="14" height="14" />
+              <i class="fa-regular fa-clock"></i>
               L–V 10–21 · S 9–20 · D 10–19
             </p>
           </address>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>CONTÁCTANOS</h2>
           <address>
             <p><a href="tel:+34654786284">+34 654 786 284</a></p>
@@ -261,13 +241,13 @@
       </div>
     </footer>
 
-    <!-- VISOR DE FOTOS (ventana modal con jQuery) -->
-    <div class="visor" role="dialog" aria-modal="true" aria-label="Trabajo en grande">
-      <button class="visor-cerrar" type="button" aria-label="Cerrar">&times;</button>
-      <button class="visor-flecha visor-antes" type="button" aria-label="Trabajo anterior">&larr;</button>
+    <!-- ventana flotante -->
+    <div class="ventana" role="dialog" aria-modal="true" aria-label="Trabajo en grande">
+      <button class="ventanacerrar" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      <button class="ventanaflecha ventanaantes" type="button" aria-label="Trabajo anterior"><i class="fa-solid fa-arrow-left"></i></button>
       <img src="IMG/Artistas/hugo/1.jpg" alt="" />
-      <button class="visor-flecha visor-despues" type="button" aria-label="Trabajo siguiente">&rarr;</button>
-      <p class="visor-contador"></p>
+      <button class="ventanaflecha ventanadespues" type="button" aria-label="Trabajo siguiente"><i class="fa-solid fa-arrow-right"></i></button>
+      <p class="ventanacontador"></p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

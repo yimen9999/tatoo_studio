@@ -5,37 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Tatuajes de estilo Fine line en El Gato Negro, estudio de tatuaje en el centro de Madrid."
-    />
+      content="Tatuajes de estilo Fine line en El Gato Negro, estudio de tatuaje en el centro de Madrid."/>
     <title>Fine line | El Gato Negro</title>
     <link rel="icon" type="image/png" href="IMG/favicon.png" />
 
-    <!-- fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&amp;family=League+Spartan:wght@300;400;500;900&amp;display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
 
-    <!-- AOS (animaciones al hacer scroll) -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body id="inicio" class="pagina-estilo fine-line">
-    <!-- MENU -->
+
+    <!-- nav-->
+  <body id="inicio" class="paginaestilo fineline">
+
     <header>
       <nav>
         <a class="logo" href="index.html">EL GATO NEGRO</a>
 
         <button class="hamburguesa" type="button" aria-label="Abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
+          <i class="fa-solid fa-bars"></i>
         </button>
 
         <ul class="menu">
@@ -47,21 +42,22 @@
       </nav>
     </header>
 
+    <!-- portada -->
+
     <main>
-      <!-- CAPAS: la portada se queda fija y el collage sube encima -->
       <div class="capas">
-      <!-- PORTADA: texto + nombre del estilo -->
-      <section class="portada capa-fija">
+      
+      <section class="portada capafija">
         <p class="intro">
           El fine line se basa en líneas muy finas y precisas para crear tatuajes delicados y minimalistas. Es perfecto para flores, pequeños símbolos, constelaciones o dibujos con mucho detalle en poco espacio. Trabajamos con agujas muy finas y a un ritmo tranquilo, porque aquí cada trazo se nota. Te aconsejamos sobre el tamaño y la zona para que las líneas se mantengan limpias con el paso del tiempo.
         </p>
-        <h1 class="nombre-estilo">FINE LINE</h1>
+        <h1 class="nombreestilo">FINE LINE</h1>
       </section>
 
-      <!-- COLLAGE DE FOTOS (al pinchar se abren en grande) -->
-      <section class="collage capa-sube" aria-label="Trabajos de Fine line">
+      <!-- collage fotos -->
+      <section class="collage capasube" aria-label="Trabajos de Fine line">
         <h2 class="oculto">Trabajos de Fine line</h2>
-        <button class="foto arriba-izq" type="button" aria-label="Ver foto 1 en grande">
+        <button class="foto arribaizq" type="button" aria-label="Ver foto 1 en grande">
           <img
             src="IMG/fine%20line/F4.png"
             alt="Tatuaje de estilo Fine line, foto 1"
@@ -70,7 +66,7 @@
             loading="lazy"
           />
         </button>
-        <button class="foto arriba-der" type="button" aria-label="Ver foto 2 en grande">
+        <button class="foto arribader" type="button" aria-label="Ver foto 2 en grande">
           <img
             src="IMG/fine%20line/F2.png"
             alt="Tatuaje de estilo Fine line, foto 2"
@@ -97,7 +93,7 @@
             loading="lazy"
           />
         </button>
-        <button class="foto lado-1" type="button" aria-label="Ver foto 5 en grande">
+        <button class="foto lado1" type="button" aria-label="Ver foto 5 en grande">
           <img
             src="IMG/fine%20line/F6.png"
             alt="Tatuaje de estilo Fine line, foto 5"
@@ -106,7 +102,7 @@
             loading="lazy"
           />
         </button>
-        <button class="foto lado-2" type="button" aria-label="Ver foto 6 en grande">
+        <button class="foto lado2" type="button" aria-label="Ver foto 6 en grande">
           <img
             src="IMG/fine%20line/F3.png"
             alt="Tatuaje de estilo Fine line, foto 6"
@@ -115,7 +111,7 @@
             loading="lazy"
           />
         </button>
-        <button class="foto lado-3" type="button" aria-label="Ver foto 7 en grande">
+        <button class="foto lado3" type="button" aria-label="Ver foto 7 en grande">
           <img
             src="IMG/fine%20line/F5.png"
             alt="Tatuaje de estilo Fine line, foto 7"
@@ -128,49 +124,54 @@
 
       </div>
 
-      <!-- ARTISTAS DE ESTE ESTILO -->
-      <section class="equipo" aria-labelledby="titulo-artistas">
-        <article class="persona">
-          <img
-            src="IMG/fine%20line/A1.png"
-            alt="Nora Valcárcel"
-            width="269"
-            height="298"
-            loading="lazy"
-          />
-          <h3>Nora Valcárcel</h3>
-          <p>Flores y dibujos botánicos de línea fina</p>
-        </article>
-        <article class="persona">
-          <img
-            src="IMG/fine%20line/A2.png"
-            alt="Inés Lorente"
-            width="331"
-            height="558"
-            loading="lazy"
-          />
-          <h3>Inés Lorente</h3>
-          <p>Pequeños símbolos y tatuajes minimalistas</p>
-        </article>
-        <article class="persona">
-          <img
-            src="IMG/fine%20line/A3.png"
-            alt="Mei Ochoa"
-            width="331"
-            height="378"
-            loading="lazy"
-          />
-          <h3>Mei Ochoa</h3>
-          <p>Ilustraciones delicadas con mucho detalle</p>
-        </article>
-        <!-- título a la izquierda y la frase a la derecha -->
-        <div class="cabecera-artistas">
-          <h2 class="titulo-artistas" id="titulo-artistas">ARTISTAS</h2>
-          <p class="frase-estilo">Donde las ideas cobran vida en la piel</p>
+      <!-- artistas estilo -->
+      <section class="equipo" aria-labelledby="tituloartistas">
+        <div class="cabeceraartistas">
+          <h2 class="tituloartistas" id="tituloartistas">ARTISTAS</h2>
+          <p class="fraseestilo">Donde las ideas cobran vida en la piel</p>
         </div>
+        <article class="persona">
+          <a class="enlacepersona" href="nora.html">
+            <img
+              src="IMG/fine%20line/A1.png"
+              alt="Nora Valcárcel"
+              width="269"
+              height="298"
+              loading="lazy"
+            />
+            <h3>Nora Valcárcel</h3>
+            <p>Flores y dibujos botánicos de línea fina</p>
+          </a>
+        </article>
+        <article class="persona">
+          <a class="enlacepersona" href="ernesto.html">
+            <img
+              src="IMG/fine%20line/A2.png"
+              alt="Ernesto Vidal"
+              width="331"
+              height="558"
+              loading="lazy"
+            />
+            <h3>Ernesto Vidal</h3>
+            <p>Pequeños símbolos y tatuajes minimalistas</p>
+          </a>
+        </article>
+        <article class="persona">
+          <a class="enlacepersona" href="amara.html">
+            <img
+              src="IMG/fine%20line/A3.png"
+              alt="Amara Ndiaye"
+              width="331"
+              height="378"
+              loading="lazy"
+            />
+            <h3>Amara Ndiaye</h3>
+            <p>Ilustraciones delicadas con mucho detalle</p>
+          </a>
+        </article>
       </section>
 
-      <!-- RESERVA -->
+      <!-- cita -->
       <section id="reserva">
         <h2 class="titulo">¿TIENES UNA IDEA?</h2>
         <p class="subtitulo">RESERVA UNA CITA CON NOSOTROS</p>
@@ -194,18 +195,21 @@
           </div>
           <div class="campo">
             <label for="artista">ARTISTA</label>
-            <select id="artista" name="artista">
-              <option value="">Elige un artista</option>
-              <option value="tomas">Tomás Arrieta</option>
-              <option value="nora">Nora Valcárcel</option>
-              <option value="dario">Darío Mendes</option>
-              <option value="hugo">Hugo Sarmiento</option>
-              <option value="amara">Amara Ndiaye</option>
-              <option value="mei">Mei Ochoa</option>
-              <option value="ines">Inés Lorente</option>
-              <option value="ernesto">Ernesto Vidal</option>
-              <option value="cualquiera">Sin preferencia</option>
-            </select>
+            <div class="selector">
+              <select id="artista" name="artista">
+                <option value="">Elige un artista</option>
+                <option value="tomas">Tomás Arrieta</option>
+                <option value="nora">Nora Valcárcel</option>
+                <option value="dario">Darío Mendes</option>
+                <option value="hugo">Hugo Sarmiento</option>
+                <option value="amara">Amara Ndiaye</option>
+                <option value="mei">Mei Ochoa</option>
+                <option value="ines">Inés Lorente</option>
+                <option value="ernesto">Ernesto Vidal</option>
+                <option value="cualquiera">Sin preferencia</option>
+              </select>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
           </div>
           <div class="campo">
             <label for="zona">LUGAR DEL CUERPO</label>
@@ -228,10 +232,10 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- footer -->
     <footer>
       <div class="columnas">
-        <div class="bloque">
+        <div>
           <h2>DESCÚBRENOS</h2>
           <ul class="enlaces">
             <li><a href="index.html#quienes">¿QUIÉNES SOMOS?</a></li>
@@ -244,7 +248,7 @@
           </ul>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>ESTILOS</h2>
           <ul class="enlaces">
             <li><a href="realismo.html">REALISMO</a></li>
@@ -255,7 +259,7 @@
           </ul>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>SÍGUENOS</h2>
           <ul class="enlaces redes">
             <li>
@@ -263,35 +267,17 @@
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noopener"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                INSTAGRAM</a
+                ><i class="fa-solid fa-arrow-right"></i>INSTAGRAM</a
               >
             </li>
             <li>
               <a href="https://www.tiktok.com/" target="_blank" rel="noopener"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                TIKTOK</a
+                ><i class="fa-solid fa-arrow-right"></i>TIKTOK</a
               >
             </li>
             <li>
               <a href="https://www.youtube.com/" target="_blank" rel="noopener"
-                ><img
-                  src="IMG/iconos/flecha.svg"
-                  alt=""
-                  width="12"
-                  height="12"
-                />
-                YOUTUBE</a
+                ><i class="fa-solid fa-arrow-right"></i>YOUTUBE</a
               >
             </li>
           </ul>
@@ -299,26 +285,21 @@
       </div>
 
       <div class="columnas">
-        <div class="bloque">
+        <div>
           <h2>DIRECCIÓN</h2>
           <address>
             <p>
-              <img
-                src="IMG/iconos/ubicacion.svg"
-                alt=""
-                width="16"
-                height="16"
-              />
-              <a href="https://www.google.com/maps/place/C.+del+Esp%C3%ADritu+Santo,+21,+Centro,+28004+Madrid/@40.4254117,-3.7071054,17z/data=!3m1!4b1!4m6!3m5!1s0xd422862f664e7ad:0xa2b58b1fc3310ff6!8m2!3d40.4254117!4d-3.7045305!16s%2Fg%2F11cnd8j7w0?entry=ttu&amp;g_ep=EgoyMDI2MTEwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">C/ DEL ESPÍRITU SANTO 21, 28004 MADRID</a>
+              <i class="fa-solid fa-location-dot"></i>
+              C/ DEL ESPÍRITU SANTO 21, 28004 MADRID
             </p>
             <p>
-              <img src="IMG/iconos/reloj.svg" alt="" width="14" height="14" />
+              <i class="fa-regular fa-clock"></i>
               L–V 10–21 · S 9–20 · D 10–19
             </p>
           </address>
         </div>
 
-        <div class="bloque">
+        <div>
           <h2>CONTÁCTANOS</h2>
           <address>
             <p><a href="tel:+34654786284">+34 654 786 284</a></p>
@@ -335,18 +316,17 @@
       </div>
     </footer>
 
-    <!-- VISOR DE FOTOS (ventana modal con jQuery) -->
-    <div class="visor" role="dialog" aria-modal="true" aria-label="Foto en grande">
-      <button class="visor-cerrar" type="button" aria-label="Cerrar">&times;</button>
-      <button class="visor-flecha visor-antes" type="button" aria-label="Foto anterior">&larr;</button>
+    <!-- ventana flotante -->
+    <div class="ventana" role="dialog" aria-modal="true" aria-label="Foto en grande">
+      <button class="ventanacerrar" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      <button class="ventanaflecha ventanaantes" type="button" aria-label="Foto anterior"><i class="fa-solid fa-arrow-left"></i></button>
       <img src="IMG/fine%20line/F4.png" alt="" />
-      <button class="visor-flecha visor-despues" type="button" aria-label="Foto siguiente">&rarr;</button>
-      <p class="visor-contador"></p>
+      <button class="ventanaflecha ventanadespues" type="button" aria-label="Foto siguiente"><i class="fa-solid fa-arrow-right"></i></button>
+      <p class="ventanacontador"></p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.2/dist/simpleParallax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@7.0.0/dist/vanilla/simpleParallaxVanilla.umd.js"></script>
     <script src="js/script.js"></script>
     <script src="js/estilos.js"></script>
   </body>
