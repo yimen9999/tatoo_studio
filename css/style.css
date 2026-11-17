@@ -1,5 +1,5 @@
 
-/*Variables*/
+/* variables */
 
 :root {
   --gris: #e0e0e0;
@@ -12,9 +12,14 @@
   --alto-menu: 80px;
   --i: 0;
   --op: 0.5;
+  --ancho-max: calc((88vh - 11vw - 80px) / 1.69);
+  --st-u: calc(min(100vw, 1160px) / 1440);
+  --margen: max(0px, (100vw - 1440 * var(--st-u)) / 2);
+  --vis-alto: min(calc(640 * var(--st-u)), calc(100svh - 110px));
+  --ar-u: calc(min(100vw, 1440px) / 1440);
 }
 
-/*Reset*/
+/* estructura pagina reset  */
 *,
 *::before,
 *::after {
@@ -90,7 +95,7 @@ textarea {
   line-height: 1;
 }
 
-/* MENU*/
+/* navbar */
 header {
   display: contents;
 }
@@ -203,7 +208,7 @@ header .menu a.activo::after {
   font-size: 24px;
 }
 
-/* CAPAS*/
+/* capa de pagina dos sube al hero*/
 .capas {
   position: relative;
 }
@@ -303,7 +308,7 @@ header .menu a.activo::after {
   grid-column: 2;
 }
 
-/* PASOS DE SCROLL*/
+/* info DE SCROLL*/
 .pasos {
   display: none;
 }
@@ -513,9 +518,7 @@ footer .redes i {
   transform: rotate(-45deg);
 }
 
-/* =====================================================
-   RESEÑAS · carrusel jQuery
-   ===================================================== */
+/* reseñas carrusel*/
 #resenas {
   padding: clamp(44px, 6vw, 84px) 8vw clamp(50px, 5vw, 70px);
 }
@@ -626,7 +629,7 @@ footer .redes i {
   transform: scale(1.2);
 }
 
-/*FAQ · acordeón jQuery*/
+/*FAQ acordeon*/
 
 #faq {
   padding: 0 8vw clamp(44px, 5vw, 70px);
@@ -954,6 +957,7 @@ footer .volver:hover {
 @media (max-width: 900px) {
   :root {
     --alto-menu: 56px;
+    --ar-u: calc(100vw / 720);
   }
 
   html {
@@ -1128,10 +1132,6 @@ footer .volver:hover {
 
 /* PÁGINA STUDIO */
 
-:root {
-  --st-u: calc(min(100vw, 1160px) / 1440);
-}
-
 header .menu a[aria-current="page"]::after {
   transform: scaleX(1);
 }
@@ -1152,7 +1152,6 @@ header .menu a[aria-current="page"]::after {
 
 /* TEXTOSinfo*/
 .studiointro {
-  --margen: max(0px, (100vw - 1440 * var(--st-u)) / 2);
   height: calc(712 * var(--st-u));
   background: var(--gris);
 }
@@ -1250,7 +1249,7 @@ header .menu a[aria-current="page"]::after {
   text-align: right;
 }
 
-/* IMg*/
+/* galeria imag*/
 .studiogaleria {
   position: relative;
   width: calc(1440 * var(--st-u));
@@ -1288,7 +1287,6 @@ header .menu a[aria-current="page"]::after {
 .studiovisitanos {
   position: relative;
   width: calc(1440 * var(--st-u));
-  --vis-alto: min(calc(640 * var(--st-u)), calc(100svh - 110px));
   height: var(--vis-alto);
   margin: 0 auto calc(120 * var(--st-u));
 }
@@ -1544,7 +1542,7 @@ header .menu a[aria-current="page"]::after {
   letter-spacing: -0.05em;
 }
 
-/* ---------- Collage de fotos ---------- */
+/* Collage */
 .collage {
   display: grid;
   grid-template-columns: 723fr 351fr 366fr;
@@ -1621,9 +1619,8 @@ header .menu a[aria-current="page"]::after {
   aspect-ratio: 366 / 368;
 }
 
-/*Artistas del estilo */
+/*Artistas estilo */
 .equipo {
-  --ancho-max: calc((88vh - 11vw - 80px) / 1.69);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -1665,6 +1662,11 @@ html {
   text-transform: uppercase;
 }
 
+.enlacepersona:hover h3,
+.enlacepersona:focus-visible h3 {
+  text-decoration: underline;
+}
+
 .persona p {
   max-width: 238px;
   margin-top: 6px;
@@ -1703,7 +1705,7 @@ html {
   padding-top: clamp(60px, 14vw, 200px);
 }
 
-/* Ventana de fotos*/
+/* Ventana flotante*/
 .ventana {
   display: none;
   position: fixed;
@@ -1887,11 +1889,8 @@ body.sinscroll {
 }
 
 /* PÁGINAS DE ARTISTA*/
-.paginaartista {
-  --ar-u: calc(min(100vw, 1440px) / 1440);
-}
 
-/* ficha*/
+/* ficha info artista */
 .ficha {
   height: min(calc(780 * var(--ar-u)), 100svh);
   min-height: calc(700 * var(--ar-u));
@@ -2042,10 +2041,6 @@ body.sinscroll {
 
 /* responsive */
 @media (max-width: 900px) {
-  .paginaartista {
-    --ar-u: calc(100vw / 720);
-  }
-
   .ficha {
     height: auto;
     padding: 110px 20px 30px;
@@ -2135,7 +2130,7 @@ body.sinscroll {
   display: block;
 }
 
-/* TRANSICIÓN ENTRE PÁGINAS*/
+/* transicion entre htmls*/
 @view-transition {
   navigation: auto;
 }
