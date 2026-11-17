@@ -1,4 +1,5 @@
-/* el gato negro · páginas de estilos */
+ 
+ 
 $(function () {
   "use strict";
 
@@ -9,7 +10,7 @@ $(function () {
   var actual = 0;
   var ultimoboton = null;
 
-  /* 1. japanese · blanco y negro → color */
+  /* JAPANESEblanco y negro a color*/
   $fotos.find("img[data-color]").each(function () {
     var $img = $(this);
     $("<img>")
@@ -31,7 +32,8 @@ $(function () {
       $(this).removeClass("encolor");
     });
 
-  /* 2. visor de fotos */
+  /*VISOR DE FOTOS*/
+
   function rutafoto(i) {
     var $img = $fotos.eq(i).find("img").first();
     return $img.data("color") || $img.attr("src");
@@ -98,7 +100,8 @@ $(function () {
     }
   });
 
-  /* 3. simpleparallax · fotos de los artistas */
+  /*   SIMPLEPARALLAXfotos de los artistas*/
+
   var fotosartistas = document.querySelectorAll(".persona img");
   if (window.SimpleParallax && fotosartistas.length) {
     new SimpleParallax(fotosartistas, {

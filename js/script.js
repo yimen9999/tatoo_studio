@@ -1,10 +1,10 @@
-/* el gato negro · estudio de tatuaje */
+
 $(function () {
   "use strict";
 
   var $ventana = $(window);
 
-  /* 1. aos · textos sobre el estudio */
+  /* AOS textos estudio */
   if (window.innerWidth <= 900) {
     $("#estudio [data-aos-anchor]").removeAttr(
       "data-aos-anchor data-aos-anchor-placement data-aos-offset",
@@ -24,7 +24,7 @@ $(function () {
     });
   }
 
-  /* 1b. capas */
+  /*  CAPAS*/
   var capas = [];
 
   $(".capas").each(function () {
@@ -75,7 +75,7 @@ $(function () {
     animarcapas();
   }
 
-  /* 2. menú responsive */
+  /*   2. MENUBURGER RESPONSIVE */
   var $header = $("header");
   var $boton = $(".hamburguesa");
   var $menu = $(".menu");
@@ -142,7 +142,8 @@ $(function () {
     });
   }
 
-  /* 3. simpleparallax · galería de artistas */
+  /*SIMPLEPARALLAX galería artistas*/
+
   var imagenesartistas = document.querySelectorAll(".artista img");
   if (window.SimpleParallax && imagenesartistas.length) {
     new SimpleParallax(imagenesartistas, {
@@ -154,7 +155,8 @@ $(function () {
     });
   }
 
-  /* 4. tarjetas flotantes · estilos de tatuaje */
+  /*TARJETAS FLOTANTES estilos*/
+  
   var $tarjetas = $(".estilo");
   var tarjetaspendientes = false;
 
@@ -211,7 +213,8 @@ $(function () {
     }
   }
 
-  /* scroll / resize */
+  /*   Scroll*/
+
   $ventana.on("scroll resize", function () {
     marcarmenu();
     pediranimaciontarjetas();
@@ -219,7 +222,7 @@ $(function () {
   marcarmenu();
   animartarjetas();
 
-  /* 5. carrusel de reseñas */
+  /* CARRUSEL DE RESEÑAS*/
   (function carrusel() {
     var $slider = $(".slider");
     if (!$slider.length) {
@@ -395,7 +398,8 @@ $(function () {
     avanzar();
   })();
 
-  /* 6. acordeón faq */
+  /* ACORDEÓN FAQ*/
+
   (function acordeon() {
     var $preguntas = $("#faq .pregunta");
     if (!$preguntas.length) {
@@ -447,7 +451,8 @@ $(function () {
 
   })();
 
-  /* 7. validación del formulario de citas */
+  /*VALIDACIÓN DEL FORMULARIO DE CITAS*/
+  
   (function formulario() {
     var $form = $("#formulario");
     if (!$form.length) {
